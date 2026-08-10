@@ -399,9 +399,12 @@ func await_landing():
 		await get_tree().physics_frame
 		if !is_inside_tree():
 			break
+			
+	if is_inside_tree():
+		$LandingSound.play()
 	
 	
-	$LandingSound.play()
+	
 
 
 func _on_shoot_timer_timeout() -> void:

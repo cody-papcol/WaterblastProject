@@ -16,4 +16,5 @@ surface_material_override/0 = SubResource("StandardMaterial3D_at7ji")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+shadow_enabled = true
 omni_range = 10.0

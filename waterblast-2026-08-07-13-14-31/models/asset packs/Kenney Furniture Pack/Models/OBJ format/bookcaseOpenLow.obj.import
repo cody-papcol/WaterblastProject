@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cas6c4ygqy3nu"
+path="res://.godot/imported/bookcaseOpenLow.obj-085e8b25e86d84c6ea29bb627ab9fff1.mesh"
+
+[deps]
+
+files=["res://.godot/imported/bookcaseOpenLow.obj-085e8b25e86d84c6ea29bb627ab9fff1.mesh"]
+
+source_file="res://models/asset packs/Kenney Furniture Pack/Models/OBJ format/bookcaseOpenLow.obj"
+dest_files=["res://.godot/imported/bookcaseOpenLow.obj-085e8b25e86d84c6ea29bb627ab9fff1.mesh", "res://.godot/imported/bookcaseOpenLow.obj-085e8b25e86d84c6ea29bb627ab9fff1.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
