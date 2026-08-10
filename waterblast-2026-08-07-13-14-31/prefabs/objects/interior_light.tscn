@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://djk7qvamxld3l"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lhilu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_at7ji"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 100.0
+
+[node name="InteriorLight" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_lhilu")
+surface_material_override/0 = SubResource("StandardMaterial3D_at7ji")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+omni_range = 10.0

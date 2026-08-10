@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://dyh23rcgu8p7v"]
+
+[ext_resource type="Script" uid="uid://cfq1dwjmn6m17" path="res://scripts/bullet.gd" id="1_fh0yl"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_lv25w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fh0yl"]
+albedo_color = Color(0.537255, 0.854902, 1, 1)
+metallic = 0.11
+metallic_specular = 1.0
+roughness = 0.23
+
+[sub_resource type="Curve" id="Curve_fh0yl"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lv25w"]
+curve = SubResource("Curve_fh0yl")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fh0yl"]
+lifetime_randomness = 0.1
+spread = 81.867
+initial_velocity_max = 2.0
+scale_min = 0.1
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_lv25w")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.25
+
+[sub_resource type="SphereMesh" id="SphereMesh_lv25w"]
+
+[node name="bullet" type="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+continuous_cd = true
+contact_monitor = true
+max_contacts_reported = 1
+script = ExtResource("1_fh0yl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+shape = SubResource("SphereShape3D_lv25w")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_fh0yl")
+cast_shadow = 0
+amount = 32
+lifetime = 0.2
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_fh0yl")
+draw_pass_1 = SubResource("SphereMesh_lv25w")

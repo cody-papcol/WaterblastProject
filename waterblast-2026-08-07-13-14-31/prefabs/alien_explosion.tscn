@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://deebqqtlaycjg"]
+
+[ext_resource type="Script" uid="uid://dsx8hrniucfkf" path="res://scripts/alien_explosion.gd" id="1_e04qc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e04qc"]
+albedo_color = Color(0.454524, 0.454524, 0.454524, 1)
+metallic = 0.6
+roughness = 0.3
+
+[sub_resource type="Curve" id="Curve_ra51u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.661765, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_e04qc"]
+curve = SubResource("Curve_ra51u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tfi1g"]
+emission_shape = 3
+emission_box_extents = Vector3(0.25, 1, 0.25)
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_e04qc")
+collision_mode = 1
+collision_friction = 0.5
+collision_bounce = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_iltau"]
+
+[node name="AlienExplosion" type="Node3D"]
+script = ExtResource("1_e04qc")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_e04qc")
+amount = 24
+lifetime = 3.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_tfi1g")
+draw_pass_1 = SubResource("BoxMesh_iltau")
+
+[node name="DeathTimer" type="Timer" parent="."]
+wait_time = 2.9
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="DeathTimer" to="." method="_on_death_timer_timeout"]

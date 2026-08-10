@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cah8i4euo25m3"]
+
+[ext_resource type="PackedScene" uid="uid://cx68df4lsvtwn" path="res://models/waterguns/Kenney Blasters/blaster-h.glb" id="1_p608m"]
+
+[node name="blaster-h2" instance=ExtResource("1_p608m")]
