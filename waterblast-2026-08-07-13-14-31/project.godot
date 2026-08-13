@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Waterblast 2026-08-07 13-14-31"
-run/main_scene="uid://bkxlq4xfamc4t"
+run/main_scene="uid://7lw80pym6omf"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

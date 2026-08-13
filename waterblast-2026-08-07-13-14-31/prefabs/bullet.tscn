@@ -51,3 +51,10 @@ lifetime = 0.2
 fixed_fps = 0
 process_material = SubResource("ParticleProcessMaterial_fh0yl")
 draw_pass_1 = SubResource("SphereMesh_lv25w")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

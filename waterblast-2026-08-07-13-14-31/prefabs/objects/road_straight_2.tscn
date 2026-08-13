@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ywwp6dglegic"]
+
+[ext_resource type="PackedScene" uid="uid://dywan8tlyml5w" path="res://models/asset packs/Kenney Road Pack/Models/GLB format/road-straight.glb" id="1_fuvpt"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_3fga3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0a1dh"]
+albedo_color = Color(0.548963, 0.548963, 0.548963, 1)
+uv1_scale = Vector3(-0.7, -0.7, -0.7)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[node name="road-straight2" instance=ExtResource("1_fuvpt")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 0.146424, 0, -0.0283673, -0.465199)
+mesh = SubResource("BoxMesh_3fga3")
+surface_material_override/0 = SubResource("StandardMaterial3D_0a1dh")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 0.146424, 0, -0.0283673, 0.434801)
+mesh = SubResource("BoxMesh_3fga3")
+surface_material_override/0 = SubResource("StandardMaterial3D_0a1dh")

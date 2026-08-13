@@ -21,3 +21,12 @@ func _process(_delta: float) -> void:
 		bulletexplosion.add_collision_exception_with(get_collision_exceptions().get(0))
 		get_parent().add_child(bulletexplosion)
 		queue_free()
+
+
+func _on_timer_timeout() -> void:
+	var bulletexplosion : RigidBody3D = bulletexplosion_prefab.instantiate()
+	bulletexplosion.transform = transform
+	bulletexplosion.apply_impulse(linear_velocity)
+	bulletexplosion.add_collision_exception_with(get_collision_exceptions().get(0))
+	get_parent().add_child(bulletexplosion)
+	queue_free()

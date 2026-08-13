@@ -7,6 +7,7 @@ class_name enemy
 
 @onready var alienExplosionPrefab = preload("res://prefabs/alien_explosion.tscn")
 @onready var alienDamageSoundPrefab = preload("res://prefabs/alien_damage_sound.tscn")
+@onready var alienDeathSoundPrefab = preload("res://prefabs/alien_death_sound.tscn")
 
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var DamageTimer: Timer = $DamageTimer
@@ -32,15 +33,17 @@ func _process(_delta: float) -> void:
 func _physics_process(_delta: float) -> void:
 	if nav_agent.is_navigation_finished():
 		return
-		
-	var next_position: Vector3 = nav_agent.get_next_path_position()
-	velocity = global_position.direction_to(next_position) * MoveSpeed
+	if not global_position.distance_to(player.global_position) < AttackReach:
+		var next_position: Vector3 = nav_agent.get_next_path_position()
+		velocity = global_position.direction_to(next_position) * MoveSpeed
+	else:
+		velocity = Vector3(0, 0, 0)
 	
 	move_and_slide()
 
 func damage(amount):
 	
-	damageSound.play()
+	
 	
 	health += -amount
 	
@@ -57,6 +60,10 @@ func damage(amount):
 		get_parent().add_child(damageSound)
 		
 		queue_free()
+	else:
+		var deathSound = alienDeathSoundPrefab.instantiate()
+		deathSound.transform = transform
+		get_parent().add_child(deathSound)
 
 
 func _on_damage_timer_timeout() -> void:

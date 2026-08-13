@@ -1,0 +1,26 @@
+[remap]
+
+importer="3d_texture"
+type="CompressedTexture3D"
+uid="uid://1y43cr1x45jv"
+path="res://.godot/imported/suburb_level.GPUParticlesCollisionSDF3D_data.exr-30250f2e32d02534010134f40b08b185.ctex3d"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://BakedParticleCollisions/suburb_level.GPUParticlesCollisionSDF3D_data.exr"
+dest_files=["res://.godot/imported/suburb_level.GPUParticlesCollisionSDF3D_data.exr-30250f2e32d02534010134f40b08b185.ctex3d"]
+
+[params]
+
+compress/mode=3
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=1
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=1
+slices/vertical=95

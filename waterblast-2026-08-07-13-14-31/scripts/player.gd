@@ -57,15 +57,23 @@ const FOV_CHANGE = 1.5
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
+	$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = false
+	$Head/Camera3D/blockbench_export/RifleStableArm.visible = false
+	$Head/Camera3D/blockbench_export/ShotgunMesh.visible = false
+	$Head/Camera3D/blockbench_export/PistolArm.visible = false
+	$Head/Camera3D/blockbench_export/PistolMesh.visible = false
+	$Head/Camera3D/blockbench_export/RifleMesh.visible = false
+	$Head/Camera3D/blockbench_export/WasherMesh1.visible = false
+	
 	if weapon == 0:
 		firerate = 0.15
 		max_ammo = 20
 		bulletDamage = 25
-		bullet_velocity = 20.0
+		bullet_velocity = 200.0
 		
 		# visibility of models
 		$Head/Camera3D/blockbench_export/PistolArm.visible = true
-		$Head/Camera3D/blockbench_export/PistolModel.visible = true
+		$Head/Camera3D/blockbench_export/PistolMesh.visible = true
 		
 	# Rifle
 	if weapon == 1:
@@ -118,7 +126,7 @@ func change_weapon(num):
 		firerate = 0.15
 		max_ammo = 20
 		bulletDamage = 25
-		bullet_velocity = 20.0
+		bullet_velocity = 200.0
 		weapon = 0
 		
 		# visibility of models
@@ -171,6 +179,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		head.rotate_y(-event.relative.x * SENSITIVITY)
 		camera.rotate_x(-event.relative.y * SENSITIVITY)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-85), deg_to_rad(85))
+		
+	# escape button to menu
+	if Input.is_action_just_pressed("escape"):
+		get_tree().change_scene_to_file("res://levels/main_menu.tscn")
 	
 	# damage test button
 	if Input.is_action_just_pressed("testdamage"):
@@ -212,7 +224,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	
 	# INFINITE HEALING TEST
-	_damage(-0.5)
+	_damage(-1)
 	
 	# shooting mechanics, USE JUST PRESSED NOT PRESSED
 	if Input.is_action_pressed("shoot") and reloading == false and sprinting == false:
@@ -220,72 +232,77 @@ func _physics_process(delta: float) -> void:
 		# checking with delay
 		if can_shoot:
 			
-			# dealing with ammo
-			if ammo > 0:
+			if !$Head/Camera3D/blockbench_export/Muzzle/Blocking.is_colliding():
 				
-				ammo += -1
-				
-				if weapon == 2:
-					for x in shotgunPellets:
-						var new_bullet : RigidBody3D = bullet_prefab.instantiate()
-						new_bullet.global_transform = muzzle.global_transform
-						var shotgunDirection = muzzle.global_transform.basis.z
-
-						shotgunDirection += muzzle.global_transform.basis.x * randf_range(-shotgunSpread, shotgunSpread)
-						shotgunDirection += muzzle.global_transform.basis.y * randf_range(-shotgunSpread, shotgunSpread)
-						shotgunDirection = shotgunDirection.normalized()
-
-						new_bullet.apply_impulse(shotgunDirection * bullet_velocity)
+				# dealing with ammo
+				if ammo > 0:
+					
+					ammo += -1
+					
+					if weapon == 2:
 						
+						#shotgun bullet spawns
+						for x in shotgunPellets:
+							var new_bullet : RigidBody3D = bullet_prefab.instantiate()
+							new_bullet.global_transform = muzzle.global_transform
+							var shotgunDirection = muzzle.global_transform.basis.z
+
+							shotgunDirection += muzzle.global_transform.basis.x * randf_range(-shotgunSpread, shotgunSpread)
+							shotgunDirection += muzzle.global_transform.basis.y * randf_range(-shotgunSpread, shotgunSpread)
+							shotgunDirection = shotgunDirection.normalized()
+
+							new_bullet.apply_impulse(shotgunDirection * bullet_velocity)
+							
+							new_bullet.add_collision_exception_with($".")
+							new_bullet.add_collision_exception_with(new_bullet)
+							new_bullet.weaponDamage = bulletDamage
+							get_parent().add_child(new_bullet)
+					
+					
+					# creating bullet for Washer
+					elif weapon == 3:
+						var new_bullet : RigidBody3D = bullet_prefab.instantiate()
+						new_bullet.global_transform = $Head/Camera3D/blockbench_export/Muzzle.global_transform
+						
+						# randomize direction
+						var washerDirection = muzzle.global_transform.basis.z
+						washerDirection += muzzle.global_transform.basis.x * randf_range(-washerSpread, washerSpread)
+						washerDirection += muzzle.global_transform.basis.y * randf_range(-washerSpread, washerSpread)
+						washerDirection = washerDirection.normalized()
+						
+						new_bullet.apply_impulse(washerDirection * bullet_velocity)
 						new_bullet.add_collision_exception_with($".")
 						new_bullet.add_collision_exception_with(new_bullet)
 						new_bullet.weaponDamage = bulletDamage
 						get_parent().add_child(new_bullet)
-				
-				
-				# creating bullet
-				elif weapon == 3:
-					var new_bullet : RigidBody3D = bullet_prefab.instantiate()
-					new_bullet.global_transform = $Head/Camera3D/blockbench_export/Muzzle.global_transform
 					
-					# randomize direction
-					var washerDirection = muzzle.global_transform.basis.z
-					washerDirection += muzzle.global_transform.basis.x * randf_range(-washerSpread, washerSpread)
-					washerDirection += muzzle.global_transform.basis.y * randf_range(-washerSpread, washerSpread)
-					washerDirection = washerDirection.normalized()
+					# other bullets
+					else:
+						var new_bullet : RigidBody3D = bullet_prefab.instantiate()
+						new_bullet.global_transform = $Head/Camera3D/blockbench_export/Muzzle.global_transform
+						new_bullet.apply_impulse($Head/Camera3D/blockbench_export/Muzzle.global_transform.basis.z * bullet_velocity)
+						new_bullet.add_collision_exception_with($".")
+						new_bullet.add_collision_exception_with(new_bullet)
+						new_bullet.weaponDamage = bulletDamage
+						get_parent().add_child(new_bullet)
 					
-					new_bullet.apply_impulse(washerDirection * bullet_velocity)
-					new_bullet.add_collision_exception_with($".")
-					new_bullet.add_collision_exception_with(new_bullet)
-					new_bullet.weaponDamage = bulletDamage
-					get_parent().add_child(new_bullet)
-				
-				else:
-					var new_bullet : RigidBody3D = bullet_prefab.instantiate()
-					new_bullet.global_transform = $Head/Camera3D/blockbench_export/Muzzle.global_transform
-					new_bullet.apply_impulse($Head/Camera3D/blockbench_export/Muzzle.global_transform.basis.z * bullet_velocity)
-					new_bullet.add_collision_exception_with($".")
-					new_bullet.add_collision_exception_with(new_bullet)
-					new_bullet.weaponDamage = bulletDamage
-					get_parent().add_child(new_bullet)
-				
-				#starting firerate timer
-				can_shoot = false
-				shootTimer.start()
-				
-				# shoot sound
-				$SpraySound.play()
-				
-				if ammo == 0:
+					#starting firerate timer
+					can_shoot = false
+					shootTimer.start()
+					
+					# shoot sound
+					$SpraySound.play()
+					
+					if ammo == 0:
+						reloading = true
+						$AnimationPlayer.play("reload")
+						$ReloadTimer.start()
+					
+				elif reloading == false:
+					# reload
 					reloading = true
 					$AnimationPlayer.play("reload")
 					$ReloadTimer.start()
-				
-			elif reloading == false:
-				# reload
-				reloading = true
-				$AnimationPlayer.play("reload")
-				$ReloadTimer.start()
 			
 	
 	#check for interaction collisions
