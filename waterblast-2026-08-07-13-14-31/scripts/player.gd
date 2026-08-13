@@ -69,7 +69,7 @@ func _ready() -> void:
 		firerate = 0.15
 		max_ammo = 20
 		bulletDamage = 25
-		bullet_velocity = 200.0
+		bullet_velocity = 20.0
 		
 		# visibility of models
 		$Head/Camera3D/blockbench_export/PistolArm.visible = true
@@ -126,7 +126,7 @@ func change_weapon(num):
 		firerate = 0.15
 		max_ammo = 20
 		bulletDamage = 25
-		bullet_velocity = 200.0
+		bullet_velocity = 20.0
 		weapon = 0
 		
 		# visibility of models
