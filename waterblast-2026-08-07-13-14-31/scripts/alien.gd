@@ -12,44 +12,77 @@ class_name enemy
 @onready var nav_agent: NavigationAgent3D = $NavigationAgent3D
 @onready var DamageTimer: Timer = $DamageTimer
 @onready var damageSound: AudioStreamPlayer3D = $DamageSoundPlayer
+@onready var mesh: Node3D = $"character-g2"
+@onready var meshAnims: AnimationPlayer = $"character-g2/AnimationPlayer"
 
 var health: int = 100
 var player: CharacterBody3D = null
 
 var canDamage = true
 
+var running = false
+
+var isAlive = true
+
+
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("player")[0]
 	
 func _process(_delta: float) -> void:
-	nav_agent.set_target_position(player.global_position)
 	
-	if global_position.distance_to(player.global_position) < AttackReach and canDamage:
-		var attack: Attack = Attack.new(10.0, self)
-		player.HealthComponent.damage(attack)
-		canDamage = false
-		DamageTimer.start()
+	if isAlive:
+	
+		nav_agent.set_target_position(player.global_position)
+		
+		look_at(Vector3(player.position.x, global_position.y, player.position.z))
+		
+		if global_position.distance_to(player.global_position) < AttackReach and canDamage:
+			var attack: Attack = Attack.new(10.0, self)
+			player.HealthComponent.damage(attack)
+			canDamage = false
+			
+			# attack animation
+			meshAnims.play("attack-melee-right")
+			
+			DamageTimer.start()
 		
 func _physics_process(_delta: float) -> void:
-	if nav_agent.is_navigation_finished():
-		return
-	if not global_position.distance_to(player.global_position) < AttackReach:
-		var next_position: Vector3 = nav_agent.get_next_path_position()
-		velocity = global_position.direction_to(next_position) * MoveSpeed
-	else:
-		velocity = Vector3(0, 0, 0)
 	
-	move_and_slide()
-
+	if isAlive:
+		if nav_agent.is_navigation_finished():
+			return
+		if not global_position.distance_to(player.global_position) < AttackReach:
+			var next_position: Vector3 = nav_agent.get_next_path_position()
+			velocity = global_position.direction_to(next_position) * MoveSpeed
+			running = true
+		else:
+			velocity = Vector3(0, 0, 0)
+			running = false
+		
+		move_and_slide()
+		
+		if running:
+			meshAnims.play("walk")
+	
 func damage(amount):
 	
 	
-	
-	health += -amount
+	if isAlive:
+		health += -amount
 	
 	if health <= 0:
 		
+		isAlive = false
+		$CollisionShape3D.disabled = true
+		damageSound.play()
+		
+		meshAnims.play("die")
+		
 		player.playerCoins += 1
+		
+		await get_tree().create_timer(1).timeout
+		
+		
 		
 		var explosion = alienExplosionPrefab.instantiate()
 		explosion.transform = transform

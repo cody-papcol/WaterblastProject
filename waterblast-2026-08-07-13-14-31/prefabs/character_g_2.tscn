@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bps36fdeoiw6h"]
+
+[ext_resource type="PackedScene" uid="uid://b4l13x4kqnoes" path="res://models/asset packs/Kenney Character Pack/Models/GLB format/character-g.glb" id="1_m6iet"]
+
+[node name="character-g2" instance=ExtResource("1_m6iet")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

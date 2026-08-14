@@ -53,6 +53,7 @@ const FOV_CHANGE = 1.5
 @onready var HealthComponent = $HealthComponent
 @onready var muzzle = $Head/Camera3D/blockbench_export/Muzzle
 @onready var CoinLabel = $HUD/Control/CoinLabel
+@onready var blocking = $Head/Camera3D/blockbench_export/Muzzle/Blocking
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -232,7 +233,7 @@ func _physics_process(delta: float) -> void:
 		# checking with delay
 		if can_shoot:
 			
-			if !$Head/Camera3D/blockbench_export/Muzzle/Blocking.is_colliding():
+			if !blocking.is_colliding():
 				
 				# dealing with ammo
 				if ammo > 0:

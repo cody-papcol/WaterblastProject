@@ -366,8 +366,8 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00120968, 0.5, 0.600651)
 
 [node name="Blocking" type="RayCast3D" parent="Head/Camera3D/blockbench_export/Muzzle"]
-transform = Transform3D(1, -2.53518e-06, -2.53518e-06, 2.53518e-06, -4.37114e-08, 1, -2.53518e-06, -1, -4.3705e-08, -1.75834e-06, 0, -0.7)
-target_position = Vector3(0, -0.4, 0)
+transform = Transform3D(1, -2.53518e-06, -2.53518e-06, 2.53518e-06, -4.37114e-08, 1, -2.53518e-06, -1, -4.3705e-08, -1.66893e-06, 0, -0.7)
+target_position = Vector3(0, -0.75, 0)
 
 [node name="RifleTriggerArm" type="MeshInstance3D" parent="Head/Camera3D/blockbench_export"]
 transform = Transform3D(0.105516, 0, 0, 0, 0.156346, 0, 0, 0, 1, 0.0112146, 0.324512, -0.579874)
