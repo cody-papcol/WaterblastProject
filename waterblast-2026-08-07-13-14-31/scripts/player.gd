@@ -185,9 +185,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("escape"):
 		get_tree().change_scene_to_file("res://levels/main_menu.tscn")
 	
-	# damage test button
-	if Input.is_action_just_pressed("testdamage"):
-		_damage(-5)
 		
 	# initial footstep sounds
 	if Input.is_action_just_pressed("forward") or Input.is_action_just_pressed("back") or Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
@@ -224,8 +221,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func _physics_process(delta: float) -> void:
 	
-	# INFINITE HEALING TEST
-	_damage(-1)
 	
 	# shooting mechanics, USE JUST PRESSED NOT PRESSED
 	if Input.is_action_pressed("shoot") and reloading == false and sprinting == false:
