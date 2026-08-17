@@ -22,6 +22,9 @@ AttackReach = 1.6
 shape = SubResource("CapsuleShape3D_fahsj")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+avoidance_enabled = true
+radius = 0.75
+neighbor_distance = 10.0
 
 [node name="GPUParticlesCollisionSphere3D" type="GPUParticlesCollisionSphere3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.435989, 0)

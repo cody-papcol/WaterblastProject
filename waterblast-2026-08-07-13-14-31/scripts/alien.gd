@@ -18,6 +18,8 @@ class_name enemy
 var health: int = 100
 var player: CharacterBody3D = null
 
+var nextPosition
+
 var canDamage = true
 
 var running = false
@@ -34,7 +36,10 @@ func _process(_delta: float) -> void:
 	
 		nav_agent.set_target_position(player.global_position)
 		
-		look_at(Vector3(player.position.x, global_position.y, player.position.z))
+		nextPosition = nav_agent.get_next_path_position()
+		
+		if Vector3(velocity.x, 0, velocity.z).length_squared() > 0.001:
+			look_at(global_position + Vector3(velocity.x, 0, velocity.z), Vector3.UP)
 		
 		if global_position.distance_to(player.global_position) < AttackReach and canDamage:
 			var attack: Attack = Attack.new(10.0, self)
@@ -42,6 +47,7 @@ func _process(_delta: float) -> void:
 			canDamage = false
 			
 			# attack animation
+			look_at(Vector3(player.position.x, global_position.y, player.position.z))
 			meshAnims.play("attack-melee-right")
 			
 			DamageTimer.start()

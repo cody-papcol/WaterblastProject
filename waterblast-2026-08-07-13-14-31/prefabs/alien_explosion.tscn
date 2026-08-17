@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dsx8hrniucfkf" path="res://scripts/alien_explosion.gd" id="1_e04qc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e04qc"]
-albedo_color = Color(0.864675, 0.864675, 0.864675, 1)
+albedo_color = Color(0.820063, 0.913151, 0.912859, 1)
 metallic = 0.6
 roughness = 0.3
 
@@ -34,7 +34,7 @@ collision_bounce = 0.2
 script = ExtResource("1_e04qc")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0.8)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0.8)
 material_override = SubResource("StandardMaterial3D_e04qc")
 cast_shadow = 0
 amount = 24

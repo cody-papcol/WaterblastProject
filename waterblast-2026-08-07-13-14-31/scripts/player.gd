@@ -221,6 +221,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func _physics_process(delta: float) -> void:
 	
+	#infinite health test
+	_damage(-20)
 	
 	# shooting mechanics, USE JUST PRESSED NOT PRESSED
 	if Input.is_action_pressed("shoot") and reloading == false and sprinting == false:
