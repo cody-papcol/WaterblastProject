@@ -320,7 +320,6 @@ func _physics_process(delta: float) -> void:
 						new_bullet.weaponDamage = bulletDamage
 						get_parent().add_child(new_bullet)
 					
-					print(bullet_velocity)
 					
 					#starting firerate timer
 					can_shoot = false
@@ -350,7 +349,7 @@ func _physics_process(delta: float) -> void:
 		await_landing()
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		$FootstepSound.play()
 	
@@ -583,9 +582,10 @@ func upgrade_washer():
 			max_ammo = washerMaxAmmo
 			
 		if washerLevel == 3:
-			washerSpread = 1
+			washerSpread = 0.02
+			print(washerSpread)
 			
-		shotgunLevel += 1
+		washerLevel += 1
 		change_weapon(3)
 
 func on_death() -> void:
