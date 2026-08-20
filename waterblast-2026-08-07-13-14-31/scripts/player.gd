@@ -9,6 +9,11 @@ const SPRINT_SPEED = 10.0
 const JUMP_VELOCITY = 4.5
 const SENSITIVITY = 0.003
 
+# water total
+var max_total_water = 250
+var total_water = max_total_water
+
+
 # weapon vars
 var bullet_velocity = 20.0
 @export var max_ammo = 25
@@ -97,6 +102,9 @@ func _ready() -> void:
 	$Head/Camera3D/blockbench_export/PistolMesh.visible = false
 	$Head/Camera3D/blockbench_export/RifleMesh.visible = false
 	$Head/Camera3D/blockbench_export/WasherMesh1.visible = false
+	
+	$HUD/Control/TextureProgressBar.max_value = max_total_water
+	$HUD/Control/TextureProgressBar.value = total_water
 	
 	if weapon == 0:
 		firerate = pistolFireRate
@@ -237,7 +245,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		activate()
 	
 	#handling reload
-	if Input.is_action_just_pressed("reload") and ammo != max_ammo:
+	if Input.is_action_just_pressed("reload") and ammo != max_ammo and total_water != 0:
+		
 		reloading = true
 		sprinting = false
 		$AnimationPlayer.play("reload")
@@ -245,14 +254,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	
 	# handling weapon select
-	if Input.is_action_just_pressed("WeaponSlot1"):
-		change_weapon(0)
-	if Input.is_action_just_pressed("WeaponSlot2"):
-		change_weapon(1)
-	if Input.is_action_just_pressed("WeaponSlot3"):
-		change_weapon(2)
-	if Input.is_action_just_pressed("WeaponSlot4"):
-		change_weapon(3)
+	if not in_shop:
+		if Input.is_action_just_pressed("WeaponSlot1"):
+			change_weapon(0)
+		if Input.is_action_just_pressed("WeaponSlot2"):
+			change_weapon(1)
+		if Input.is_action_just_pressed("WeaponSlot3"):
+			change_weapon(2)
+		if Input.is_action_just_pressed("WeaponSlot4"):
+			change_weapon(3)
 	
 	
 func _physics_process(delta: float) -> void:
@@ -264,7 +274,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("shoot") and reloading == false and sprinting == false:
 		
 		# checking with delay
-		if can_shoot:
+		if can_shoot and not in_shop:
 			
 			if !blocking.is_colliding():
 				
@@ -328,12 +338,12 @@ func _physics_process(delta: float) -> void:
 					# shoot sound
 					$SpraySound.play()
 					
-					if ammo == 0:
+					if ammo == 0 and total_water != 0:
 						reloading = true
 						$AnimationPlayer.play("reload")
 						$ReloadTimer.start()
 					
-				elif reloading == false:
+				elif reloading == false and total_water != 0:
 					# reload
 					reloading = true
 					$AnimationPlayer.play("reload")
@@ -372,6 +382,8 @@ func _physics_process(delta: float) -> void:
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	
+	
 	var input_dir := Input.get_vector("left", "right", "forward", "back")
 	var direction: Vector3 = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
@@ -380,6 +392,7 @@ func _physics_process(delta: float) -> void:
 			moving = true
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
+				
 		else:
 			moving = false
 			velocity.x = lerp(velocity.x, direction.x * speed, delta * 12.0)
@@ -412,13 +425,29 @@ func _headbob(time) -> Vector3:
 
 # reload timer end
 func _on_reload_timer_timeout() -> void:
+	
 	reloading = false
-	ammo = max_ammo
+	
+	if total_water >= max_ammo:
+		
+		total_water -= max_ammo - ammo
+		ammo = max_ammo
+		
+		
+	else:
+		ammo = total_water
+		total_water = 0
+	
+	print(total_water)
+	$HUD/Control/TextureProgressBar.value = total_water
+	
 	if Input.is_action_pressed("sprint"):
 		sprinting = true
 		$FootstepTimer.wait_time = sprinting_wait_time
 		$AnimationPlayer.play("sprint")
 		
+
+# player damage functionality
 
 func _damage(value):
 	if value >= 0:
@@ -501,6 +530,7 @@ func open_shop():
 func close_shop():
 	$Shop.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	in_shop = false
 
 # Pistol Upgrades
 
@@ -590,3 +620,7 @@ func upgrade_washer():
 
 func on_death() -> void:
 	get_tree().change_scene_to_file("res://levels/death_menu.tscn")
+
+func refill_water():
+	total_water = max_total_water
+	$HUD/Control/TextureProgressBar.value = total_water

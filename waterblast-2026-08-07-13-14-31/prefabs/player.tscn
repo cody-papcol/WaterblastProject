@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://blu33aniy8w0f"]
+[gd_scene load_steps=47 format=4 uid="uid://blu33aniy8w0f"]
 
 [ext_resource type="Script" uid="uid://cbbixouox3gx2" path="res://scripts/player.gd" id="1_4dohe"]
 [ext_resource type="PackedScene" uid="uid://ppgrpdptbss1" path="res://prefabs/basicpistol.tscn" id="2_r66lb"]
@@ -8,7 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://dx5kfmt4kleoy" path="res://sounds/freesound_community-male_hurt7-48124.wav" id="4_ht1c8"]
 [ext_resource type="AudioStream" uid="uid://cp43rpvawpjb8" path="res://sounds/homemade_sfx-spray-puff-272431-[AudioTrimmer.com].wav" id="5_g2jcq"]
 [ext_resource type="AudioStream" uid="uid://d0pmt6nf8u5pq" path="res://sounds/footsteps/footstep1.wav" id="6_kbsxf"]
+[ext_resource type="Texture2D" uid="uid://cytg777y70k3c" path="res://textures/largeemptybottle.png" id="6_x0bak"]
+[ext_resource type="Texture2D" uid="uid://vu0h6o28veiq" path="res://textures/bottlecap.png" id="7_lulei"]
 [ext_resource type="AudioStream" uid="uid://csivo5djq3sxt" path="res://sounds/footsteps/footstep2.wav" id="7_rgeog"]
+[ext_resource type="Texture2D" uid="uid://rtnfb1iyyg20" path="res://textures/bottleprogress2.png" id="8_edtk3"]
 [ext_resource type="AudioStream" uid="uid://pmds3mh41c0h" path="res://sounds/footsteps/footstep3.wav" id="8_opo22"]
 [ext_resource type="AudioStream" uid="uid://dtcma18n2c2mm" path="res://sounds/freesound_community-land2-43790.wav" id="9_rgeog"]
 [ext_resource type="PackedScene" uid="uid://vj18yqocsb7v" path="res://Components/health_component.tscn" id="10_opo22"]
@@ -447,10 +450,10 @@ mouse_filter = 2
 
 [node name="AmmoLabel" type="Label" parent="HUD/Control"]
 layout_mode = 0
-offset_left = 2094.0
-offset_top = 1260.0
-offset_right = 2451.0
-offset_bottom = 1349.0
+offset_left = 1907.0
+offset_top = 1273.0
+offset_right = 2264.0
+offset_bottom = 1362.0
 theme_override_font_sizes/font_size = 60
 text = "25/25"
 horizontal_alignment = 2
@@ -486,6 +489,20 @@ offset_right = 2487.0
 offset_bottom = 136.0
 theme_override_font_sizes/font_size = 50
 text = "0 Coins"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="HUD/Control"]
+layout_mode = 0
+offset_left = 2147.0
+offset_top = 1102.0
+offset_right = 4067.0
+offset_bottom = 2182.0
+scale = Vector2(0.287999, 0.287999)
+max_value = 500.0
+value = 500.0
+fill_mode = 3
+texture_under = ExtResource("6_x0bak")
+texture_over = ExtResource("7_lulei")
+texture_progress = ExtResource("8_edtk3")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="HUD"]
 anchors_preset = 15
