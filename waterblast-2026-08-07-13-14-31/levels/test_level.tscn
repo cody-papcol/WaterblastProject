@@ -1,16 +1,16 @@
-[gd_scene load_steps=30 format=3 uid="uid://h0drc7yjy48w"]
+[gd_scene load_steps=27 format=3 uid="uid://h0drc7yjy48w"]
 
 [ext_resource type="PackedScene" uid="uid://blu33aniy8w0f" path="res://prefabs/player.tscn" id="1_46lwt"]
 [ext_resource type="Script" uid="uid://de8xo7gyu2q04" path="res://scripts/level scripts/test_level.gd" id="1_w7r7j"]
 [ext_resource type="PackedScene" uid="uid://b5md7pj74o74e" path="res://prefabs/alien.tscn" id="2_x25rp"]
 [ext_resource type="Texture2D" uid="uid://d2li3v4qhnw2g" path="res://textures/objects/woodfloor.jpg" id="3_e7anx"]
 [ext_resource type="Material" uid="uid://d305q53ab43qc" path="res://textures/materials/interiorwall.tres" id="4_ur00s"]
-[ext_resource type="Script" uid="uid://bqowveb6oftdd" path="res://scripts/interact_test.gd" id="5_o6mel"]
 [ext_resource type="PackedScene" uid="uid://bq0l34xbuw8i1" path="res://models/objects/low-poly_oven/scene.gltf" id="6_e7anx"]
 [ext_resource type="PackedScene" uid="uid://bp05skb5155qx" path="res://models/asset packs/Kenney Furniture Pack/Models/GLTF format/bedDouble.glb" id="8_wkb0e"]
 [ext_resource type="PackedScene" uid="uid://djk7qvamxld3l" path="res://prefabs/objects/interior_light.tscn" id="8_wndkh"]
 [ext_resource type="PackedScene" uid="uid://w5611lgj5js0" path="res://models/asset packs/Kenney Furniture Pack/Models/GLTF format/table.glb" id="9_ly3hx"]
 [ext_resource type="PackedScene" uid="uid://dkjws7vtm1kso" path="res://models/asset packs/Kenney Furniture Pack/Models/GLTF format/chairCushion.glb" id="10_4n8tn"]
+[ext_resource type="PackedScene" uid="uid://1x4eib13253g" path="res://prefabs/health_powerup_test.tscn" id="10_wkb0e"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_46lwt"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -56,15 +56,6 @@ size = Vector3(6, 5.6, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wkb0e"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_w7r7j"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ur00s"]
-albedo_color = Color(1, 0, 0, 1)
-metallic = 1.0
-roughness = 0.54
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_o6mel"]
-
 [sub_resource type="BoxMesh" id="BoxMesh_ur00s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ly3hx"]
@@ -82,9 +73,8 @@ environment = SubResource("Environment_gmgay")
 
 [node name="Player" parent="." instance=ExtResource("1_46lwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.2, -4)
-shotgunSpread = 0.15
-washerSpread = 0.1
 shotgunPellets = 6
+washerSpread = 0.1
 weapon = 3
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -754,22 +744,8 @@ autostart = true
 [node name="SpawnLocation" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, -5)
 
-[node name="HealthPowerupTest" type="StaticBody3D" parent="."]
+[node name="HealthPowerupTest" parent="." instance=ExtResource("10_wkb0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 0)
-script = ExtResource("5_o6mel")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="HealthPowerupTest"]
-mesh = SubResource("BoxMesh_w7r7j")
-surface_material_override/0 = SubResource("StandardMaterial3D_ur00s")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HealthPowerupTest"]
-shape = SubResource("BoxShape3D_o6mel")
-
-[node name="Label3D" type="Label3D" parent="HealthPowerupTest"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-visible = false
-billboard = 1
-text = "E to interact"
 
 [node name="Spawner1" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 0.81113, 2)

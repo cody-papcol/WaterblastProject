@@ -15,9 +15,40 @@ var bullet_velocity = 20.0
 @onready var ammo = 0
 var bulletDamage = 0
 @export var firerate = 0.05
-@export var shotgunSpread = 0.2
+
+
+
+# individual weapon variables
+# pistol
+var pistolBulletVelocity = 20.0
+var pistolDamage = 30.0
+var pistolMaxAmmo = 20
+var pistolFireRate = 0.15
+var pistolLevel = 0
+
+# rifle
+var rifleBulletVelocity = 35.0
+var rifleDamage = 40
+var rifleMaxAmmo = 30
+var rifleFireRate = 0.1
+var rifleLevel = 0
+
+# shotgun
+var shotgunBulletVelocity = 20.0
+var shotgunDamage = 20
+var shotgunMaxAmmo = 15
+var shotgunFireRate = 0.5
+@export var shotgunSpread = 0.15
+@export var shotgunPellets = 5
+var shotgunLevel = 0
+
+# washer
+var washerBulletVelocity = 50.0
+var washerDamage = 20.0
+var washerMaxAmmo = 100
+var washerFireRate = 0.02
 @export var washerSpread = 0.5
-@export var shotgunPellets = 10
+var washerLevel = 0
 
 # vars
 var sprinting = false
@@ -27,6 +58,7 @@ var health = 100
 var walking_wait_time = 0.6
 var sprinting_wait_time = 0.3
 var playerCoins = 0
+var in_shop = false
 
 var can_shoot = true
 var current_interactable = null
@@ -67,10 +99,10 @@ func _ready() -> void:
 	$Head/Camera3D/blockbench_export/WasherMesh1.visible = false
 	
 	if weapon == 0:
-		firerate = 0.15
-		max_ammo = 20
-		bulletDamage = 25
-		bullet_velocity = 20.0
+		firerate = pistolFireRate
+		max_ammo = pistolMaxAmmo
+		bulletDamage = pistolDamage
+		bullet_velocity = pistolBulletVelocity
 		
 		# visibility of models
 		$Head/Camera3D/blockbench_export/PistolArm.visible = true
@@ -78,10 +110,10 @@ func _ready() -> void:
 		
 	# Rifle
 	if weapon == 1:
-		firerate = 0.1
-		max_ammo = 50
-		bulletDamage = 40
-		bullet_velocity = 35.0
+		firerate = rifleFireRate
+		max_ammo = rifleMaxAmmo
+		bulletDamage = rifleDamage
+		bullet_velocity = rifleBulletVelocity
 		
 		$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = true
 		$Head/Camera3D/blockbench_export/RifleStableArm.visible = true
@@ -89,20 +121,20 @@ func _ready() -> void:
 		
 	# Shotgun
 	if weapon == 2:
-		firerate = 0.5
-		max_ammo = 30
-		bulletDamage = 20
-		bullet_velocity = 20.0
+		firerate = shotgunFireRate
+		max_ammo = shotgunMaxAmmo
+		bulletDamage = shotgunDamage
+		bullet_velocity = shotgunBulletVelocity
 		$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = true
 		$Head/Camera3D/blockbench_export/RifleStableArm.visible = true
 		$Head/Camera3D/blockbench_export/ShotgunMesh.visible = true
 		
 	# Pressure Washer
 	if weapon == 3:
-		firerate = 0.02
-		max_ammo = 100
-		bulletDamage = 20
-		bullet_velocity = 50.0
+		firerate = washerFireRate
+		max_ammo = washerMaxAmmo
+		bulletDamage = washerDamage
+		bullet_velocity = washerBulletVelocity
 		$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = true
 		$Head/Camera3D/blockbench_export/RifleStableArm.visible = true
 		$Head/Camera3D/blockbench_export/WasherMesh1.visible = true
@@ -124,10 +156,10 @@ func change_weapon(num):
 	
 	# Pistol
 	if num == 0:
-		firerate = 0.15
-		max_ammo = 20
-		bulletDamage = 25
-		bullet_velocity = 20.0
+		firerate = pistolFireRate
+		max_ammo = pistolMaxAmmo
+		bulletDamage = pistolDamage
+		bullet_velocity = pistolBulletVelocity
 		weapon = 0
 		
 		# visibility of models
@@ -136,10 +168,10 @@ func change_weapon(num):
 		
 	# Rifle
 	if num == 1:
-		firerate = 0.1
-		max_ammo = 50
-		bulletDamage = 40
-		bullet_velocity = 35.0
+		firerate = rifleFireRate
+		max_ammo = rifleMaxAmmo
+		bulletDamage = rifleDamage
+		bullet_velocity = rifleBulletVelocity
 		weapon = 1
 		
 		$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = true
@@ -148,10 +180,10 @@ func change_weapon(num):
 		
 	# Shotgun
 	if num == 2:
-		firerate = 0.5
-		max_ammo = 30
-		bulletDamage = 20
-		bullet_velocity = 20.0
+		firerate = shotgunFireRate
+		max_ammo = shotgunMaxAmmo
+		bulletDamage = shotgunDamage
+		bullet_velocity = shotgunBulletVelocity
 		weapon = 2
 		
 		$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = true
@@ -160,10 +192,10 @@ func change_weapon(num):
 		
 	# Pressure Washer
 	if num == 3:
-		firerate = 0.02
-		max_ammo = 100
-		bulletDamage = 20
-		bullet_velocity = 50.0
+		firerate = washerFireRate
+		max_ammo = washerMaxAmmo
+		bulletDamage = washerDamage
+		bullet_velocity = washerBulletVelocity
 		weapon = 3
 		
 		$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = true
@@ -183,7 +215,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 	# escape button to menu
 	if Input.is_action_just_pressed("escape"):
-		get_tree().change_scene_to_file("res://levels/main_menu.tscn")
+		if in_shop:
+			close_shop()
+			in_shop = false
+		else:
+			get_tree().change_scene_to_file("res://levels/main_menu.tscn")
 	
 		
 	# initial footstep sounds
@@ -283,6 +319,8 @@ func _physics_process(delta: float) -> void:
 						new_bullet.add_collision_exception_with(new_bullet)
 						new_bullet.weaponDamage = bulletDamage
 						get_parent().add_child(new_bullet)
+					
+					print(bullet_velocity)
 					
 					#starting firerate timer
 					can_shoot = false
@@ -455,7 +493,100 @@ func on_damage(attack):
 	_damage(0)
 	#overlay_fade()
 
+# shop logic
+func open_shop():
+	$Shop.visible = true
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	in_shop = true
+	
+func close_shop():
+	$Shop.visible = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
+# Pistol Upgrades
+
+func upgrade_pistol():
+	if pistolLevel < 4:
+		
+		if pistolLevel == 0:
+			pistolFireRate = 0.1
+			firerate = pistolFireRate
+			
+		if pistolLevel == 1:
+			pistolBulletVelocity = 40.0
+			bullet_velocity = pistolBulletVelocity
+			
+		if pistolLevel == 2:
+			pistolMaxAmmo = 35
+			max_ammo = pistolMaxAmmo
+			
+		if pistolLevel == 3:
+			pistolDamage = 40
+			bulletDamage = pistolDamage
+			
+		pistolLevel += 1
+		change_weapon(0)
+
+func upgrade_rifle():
+	if rifleLevel < 4:
+		
+		if rifleLevel == 0:
+			rifleFireRate = 0.07
+			firerate = rifleFireRate
+			
+		if rifleLevel == 1:
+			rifleBulletVelocity = 50.0
+			
+		if rifleLevel == 2:
+			rifleMaxAmmo = 75
+			max_ammo = rifleMaxAmmo
+			
+		if rifleLevel == 3:
+			rifleDamage = 50
+			bulletDamage = rifleDamage
+			
+		rifleLevel += 1
+		change_weapon(1)
+		
+func upgrade_shotgun():
+	if shotgunLevel < 4:
+		
+		if shotgunLevel == 0:
+			shotgunFireRate = 0.3
+			firerate = shotgunFireRate
+			
+		if shotgunLevel == 1:
+			shotgunBulletVelocity = 35.0
+			
+		if shotgunLevel == 2:
+			shotgunMaxAmmo = 40
+			max_ammo = shotgunMaxAmmo
+			
+		if shotgunLevel == 3:
+			shotgunPellets = 8
+			
+		shotgunLevel += 1
+		change_weapon(2)
+
+func upgrade_washer():
+	if washerLevel < 4:
+		
+		if washerLevel == 0:
+			washerFireRate = 0.01
+			firerate = washerFireRate
+			
+		if washerLevel == 1:
+			washerBulletVelocity = 80.0
+			
+		if washerLevel == 2:
+			washerMaxAmmo = 200
+			max_ammo = washerMaxAmmo
+			
+		if washerLevel == 3:
+			washerSpread = 1
+			
+		shotgunLevel += 1
+		change_weapon(3)
 
 func on_death() -> void:
 	get_tree().change_scene_to_file("res://levels/death_menu.tscn")

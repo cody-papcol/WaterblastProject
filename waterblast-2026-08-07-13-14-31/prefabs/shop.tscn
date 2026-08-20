@@ -1,0 +1,111 @@
+[gd_scene load_steps=6 format=3 uid="uid://d4j2udlakrhwr"]
+
+[ext_resource type="Script" uid="uid://1610eaden1xk" path="res://scripts/shop.gd" id="1_eu8to"]
+[ext_resource type="Texture2D" uid="uid://b5wm6yjoaul46" path="res://textures/gunicons/Screenshot 2026-08-20 101102.png" id="2_wamvd"]
+[ext_resource type="Texture2D" uid="uid://c0kkll7qa11lv" path="res://textures/gunicons/Screenshot 2026-08-20 120012.png" id="3_wamvd"]
+[ext_resource type="Texture2D" uid="uid://wspentpj5g3c" path="res://textures/gunicons/Screenshot 2026-08-20 120030.png" id="4_hxg2x"]
+[ext_resource type="Texture2D" uid="uid://burqko3wvjt8g" path="res://textures/gunicons/Screenshot 2026-08-20 120155.png" id="5_pba2h"]
+
+[node name="Shop" type="CanvasLayer"]
+script = ExtResource("1_eu8to")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Pistol" type="Node2D" parent="Control"]
+position = Vector2(145, 163)
+
+[node name="Button" type="Button" parent="Control/Pistol"]
+offset_left = 252.0
+offset_top = 128.0
+offset_right = 615.0
+offset_bottom = 378.0
+icon = ExtResource("2_wamvd")
+icon_alignment = 1
+expand_icon = true
+
+[node name="pistolUpgrade" type="Button" parent="Control/Pistol"]
+offset_left = 245.0
+offset_top = 412.0
+offset_right = 627.0
+offset_bottom = 508.0
+theme_override_font_sizes/font_size = 36
+text = "Upgrade (0)"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Rifle" type="Node2D" parent="Control"]
+position = Vector2(585, 163)
+
+[node name="Button" type="Button" parent="Control/Rifle"]
+offset_left = 252.0
+offset_top = 128.0
+offset_right = 615.0
+offset_bottom = 378.0
+icon = ExtResource("3_wamvd")
+icon_alignment = 1
+expand_icon = true
+
+[node name="rifleUpgrade" type="Button" parent="Control/Rifle"]
+offset_left = 245.0
+offset_top = 412.0
+offset_right = 627.0
+offset_bottom = 508.0
+theme_override_font_sizes/font_size = 36
+text = "Upgrade (0)"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Shotgun" type="Node2D" parent="Control"]
+position = Vector2(1025, 163)
+
+[node name="Button" type="Button" parent="Control/Shotgun"]
+offset_left = 252.0
+offset_top = 128.0
+offset_right = 615.0
+offset_bottom = 378.0
+icon = ExtResource("4_hxg2x")
+icon_alignment = 1
+expand_icon = true
+
+[node name="shotgunUpgrade" type="Button" parent="Control/Shotgun"]
+offset_left = 245.0
+offset_top = 412.0
+offset_right = 627.0
+offset_bottom = 508.0
+theme_override_font_sizes/font_size = 36
+text = "Upgrade (0)"
+icon_alignment = 1
+expand_icon = true
+
+[node name="Washer" type="Node2D" parent="Control"]
+position = Vector2(1457, 163)
+
+[node name="Button" type="Button" parent="Control/Washer"]
+offset_left = 252.0
+offset_top = 128.0
+offset_right = 615.0
+offset_bottom = 378.0
+icon = ExtResource("5_pba2h")
+icon_alignment = 1
+expand_icon = true
+
+[node name="washerUpgrade" type="Button" parent="Control/Washer"]
+offset_left = 245.0
+offset_top = 412.0
+offset_right = 627.0
+offset_bottom = 508.0
+theme_override_font_sizes/font_size = 36
+text = "Upgrade (0)"
+icon_alignment = 1
+expand_icon = true
+
+[connection signal="pressed" from="Control/Pistol/pistolUpgrade" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control/Rifle/rifleUpgrade" to="." method="_on_rifle_upgrade_pressed"]
+[connection signal="pressed" from="Control/Shotgun/shotgunUpgrade" to="." method="_on_shotgun_upgrade_pressed"]
+[connection signal="pressed" from="Control/Washer/washerUpgrade" to="." method="_on_washer_upgrade_pressed"]

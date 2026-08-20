@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://7lw80pym6omf"]
+[gd_scene load_steps=18 format=3 uid="uid://7lw80pym6omf"]
 
 [ext_resource type="PackedScene" uid="uid://blu33aniy8w0f" path="res://prefabs/player.tscn" id="1_6nicb"]
 [ext_resource type="Script" uid="uid://buqnsirtl6u55" path="res://scripts/level scripts/suburb_level.gd" id="1_x6xy7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cs7pgbk5actfu" path="res://prefabs/objects/garbage_truck.tscn" id="6_tigl3"]
 [ext_resource type="PackedScene" uid="uid://ywwp6dglegic" path="res://prefabs/objects/road_straight_2.tscn" id="7_at8fb"]
 [ext_resource type="PackedScene" uid="uid://bdbiily60s0r7" path="res://prefabs/objects/fence_2.tscn" id="9_ryuii"]
+[ext_resource type="PackedScene" uid="uid://dqqvedqhiw4g5" path="res://prefabs/weapon_shop.tscn" id="10_k8mdq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wafb2"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -49,9 +50,7 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_6nicb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3.38998, 5)
-shotgunSpread = 0.15
 washerSpread = 0.1
-shotgunPellets = 5
 weapon = 0
 
 [node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="."]
@@ -304,10 +303,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4169, 2.60312, -22.127)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9364, 2.60312, 17.913)
 
 [node name="SpawnTimerTest" type="Timer" parent="."]
+wait_time = 0.8
 autostart = true
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.636383, -0.399902, 0.622437)
 size = Vector3(76.7964, 1.2002, 70.0237)
+
+[node name="WeaponShop" parent="." instance=ExtResource("10_k8mdq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 1, -8)
 
 [connection signal="timeout" from="SpawnTimerTest" to="." method="_on_test_enemy_spawn_timer_timeout"]
