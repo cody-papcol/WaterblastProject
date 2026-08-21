@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://7lw80pym6omf"]
+[gd_scene load_steps=21 format=3 uid="uid://7lw80pym6omf"]
 
 [ext_resource type="PackedScene" uid="uid://blu33aniy8w0f" path="res://prefabs/player.tscn" id="1_6nicb"]
 [ext_resource type="Script" uid="uid://buqnsirtl6u55" path="res://scripts/level scripts/suburb_level.gd" id="1_x6xy7"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bdbiily60s0r7" path="res://prefabs/objects/fence_2.tscn" id="9_ryuii"]
 [ext_resource type="PackedScene" uid="uid://dqqvedqhiw4g5" path="res://prefabs/weapon_shop.tscn" id="10_k8mdq"]
 [ext_resource type="PackedScene" uid="uid://j407ud7lwlhu" path="res://prefabs/water_refill_station.tscn" id="11_6rvia"]
+[ext_resource type="PackedScene" uid="uid://1x4eib13253g" path="res://prefabs/health_powerup_test.tscn" id="12_by1bd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wafb2"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -307,7 +308,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4169, 2.60312, -22.127)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9364, 2.60312, 17.913)
 
 [node name="SpawnTimerTest" type="Timer" parent="."]
-autostart = true
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.636383, -0.399902, 0.622437)
@@ -348,5 +348,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38, 3, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MapWalls/Wall3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, 0.5)
 shape = SubResource("BoxShape3D_6rvia")
+
+[node name="HealthPowerupTest" parent="." instance=ExtResource("12_by1bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 1, -9)
+
+[node name="HealthPowerupTest2" parent="." instance=ExtResource("12_by1bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -9)
+
+[node name="HealthPowerupTest3" parent="." instance=ExtResource("12_by1bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1, 7)
+
+[node name="HealthPowerupTest4" parent="." instance=ExtResource("12_by1bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 1, -10)
+
+[node name="HealthPowerupTest5" parent="." instance=ExtResource("12_by1bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 1, 8)
+
+[node name="HealthPowerupTest6" parent="." instance=ExtResource("12_by1bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 1, 8)
+
+[node name="HealthPowerupTest7" parent="." instance=ExtResource("12_by1bd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1, 7)
 
 [connection signal="timeout" from="SpawnTimerTest" to="." method="_on_test_enemy_spawn_timer_timeout"]

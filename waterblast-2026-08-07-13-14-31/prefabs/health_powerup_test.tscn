@@ -12,6 +12,8 @@ roughness = 0.54
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6mel"]
 
 [node name="HealthPowerupTest" type="StaticBody3D"]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_wp230")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -26,3 +28,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 billboard = 1
 text = "E to interact"
+
+[node name="RespawnTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[connection signal="timeout" from="RespawnTimer" to="." method="_on_respawn_timer_timeout"]

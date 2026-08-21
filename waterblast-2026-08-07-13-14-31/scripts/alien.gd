@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 class_name enemy
 
+signal death
+
 @export var MoveSpeed: float = 4.0
 @export var AttackReach: float = 1.7
 
@@ -85,6 +87,8 @@ func damage(amount):
 		meshAnims.play("die")
 		
 		player.playerCoins += 1
+		
+		death.emit()
 		
 		await get_tree().create_timer(1).timeout
 		

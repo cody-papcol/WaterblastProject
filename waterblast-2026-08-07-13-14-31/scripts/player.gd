@@ -62,7 +62,10 @@ var reloading = false
 var health = 100
 var walking_wait_time = 0.6
 var sprinting_wait_time = 0.3
+
+# Player Coins
 var playerCoins = 0
+
 var in_shop = false
 
 var can_shoot = true
@@ -266,9 +269,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	
 func _physics_process(delta: float) -> void:
-	
-	#infinite health test
-	_damage(-20)
 	
 	# shooting mechanics, USE JUST PRESSED NOT PRESSED
 	if Input.is_action_pressed("shoot") and reloading == false and sprinting == false:
@@ -613,7 +613,6 @@ func upgrade_washer():
 			
 		if washerLevel == 3:
 			washerSpread = 0.02
-			print(washerSpread)
 			
 		washerLevel += 1
 		change_weapon(3)

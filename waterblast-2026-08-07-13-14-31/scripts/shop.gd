@@ -10,87 +10,138 @@ var washer = 0
 
 func _on_button_2_pressed() -> void:
 	if pistol < 4:
+		
+		var hasUpgraded = false
+		
 		if pistol == 0 and player.playerCoins >= 10:
 			player.upgrade_pistol()
 			player.playerCoins += -10
-			
-		if pistol == 1 and player.playerCoins >= 30:
+			pistol += 1
+			$Control/Pistol/pistolUpgrade.text = "Upgrade (" + str(pistol) + ')'
+			hasUpgraded = true
+		
+		if pistol == 1 and player.playerCoins >= 20 and hasUpgraded == false:
 			player.upgrade_pistol()
 			player.playerCoins += -20
-			
-		if pistol == 2 and player.playerCoins >= 100:
+			pistol += 1
+			$Control/Pistol/pistolUpgrade.text = "Upgrade (" + str(pistol) + ')'
+			hasUpgraded = true
+
+		if pistol == 2 and player.playerCoins >= 50 and hasUpgraded == false:
 			player.upgrade_pistol()
 			player.playerCoins += -50
+			pistol += 1
+			$Control/Pistol/pistolUpgrade.text = "Upgrade (" + str(pistol) + ')'
+			hasUpgraded = true
 		
-		if pistol == 3 and player.playerCoins >= 250:
+		if pistol == 3 and player.playerCoins >= 100 and hasUpgraded == false:
 			player.upgrade_pistol()
 			player.playerCoins += -100
+			pistol += 1
+			$Control/Pistol/pistolUpgrade.text = "Upgrade (" + str(pistol) + ')'
+			hasUpgraded = true
 		
-		pistol += 1
-		$Control/Pistol/pistolUpgrade.text = "Upgrade (" + str(pistol) + ')'
+		
 
 func _on_rifle_upgrade_pressed() -> void:
 	if rifle < 4:
-		if rifle == 0 and player.playerCoins >= 10:
+		
+		var hasUpgraded = false
+		
+		if rifle == 0 and player.playerCoins >= 10 and hasUpgraded == false:
 			player.upgrade_rifle()
 			player.playerCoins += -10
+			rifle += 1
+			$Control/Rifle/rifleUpgrade.text = "Upgrade (" + str(rifle) + ')'
+			hasUpgraded = true
 			
-		if rifle == 1 and player.playerCoins >= 30:
+		if rifle == 1 and player.playerCoins >= 20 and hasUpgraded == false:
 			player.upgrade_rifle()
 			player.playerCoins += -20
+			rifle += 1
+			$Control/Rifle/rifleUpgrade.text = "Upgrade (" + str(rifle) + ')'
+			hasUpgraded = true
 			
-		if rifle == 2 and player.playerCoins >= 100:
+		if rifle == 2 and player.playerCoins >= 50 and hasUpgraded == false:
 			player.upgrade_rifle()
 			player.playerCoins += -50
+			rifle += 1
+			$Control/Rifle/rifleUpgrade.text = "Upgrade (" + str(rifle) + ')'
+			hasUpgraded = true
 		
-		if rifle == 3 and player.playerCoins >= 250:
+		if rifle == 3 and player.playerCoins >= 100 and hasUpgraded == false:
 			player.upgrade_rifle()
 			player.playerCoins += -100
+			rifle += 1
+			$Control/Rifle/rifleUpgrade.text = "Upgrade (" + str(rifle) + ')'
+			hasUpgraded = true
 		
-		rifle += 1
-		$Control/Rifle/rifleUpgrade.text = "Upgrade (" + str(rifle) + ')'
+		
 
 
 func _on_shotgun_upgrade_pressed() -> void:
 	if shotgun < 4:
-		if shotgun == 0 and player.playerCoins >= 10:
+		
+		var hasUpgraded = false
+		
+		if shotgun == 0 and player.playerCoins >= 10 and hasUpgraded == false:
 			player.upgrade_shotgun()
 			player.playerCoins += -10
+			shotgun += 1
+			$Control/Shotgun/shotgunUpgrade.text = "Upgrade (" + str(shotgun) + ')'
+			hasUpgraded = true
 			
-		if shotgun == 1 and player.playerCoins >= 30:
+		if shotgun == 1 and player.playerCoins >= 20 and hasUpgraded == false:
 			player.upgrade_shotgun()
 			player.playerCoins += -20
+			shotgun += 1
+			$Control/Shotgun/shotgunUpgrade.text = "Upgrade (" + str(shotgun) + ')'
+			hasUpgraded = true
 			
-		if shotgun == 2 and player.playerCoins >= 100:
+		if shotgun == 2 and player.playerCoins >= 50 and hasUpgraded == false:
 			player.upgrade_shotgun()
 			player.playerCoins += -50
+			shotgun += 1
+			$Control/Shotgun/shotgunUpgrade.text = "Upgrade (" + str(shotgun) + ')'
+			hasUpgraded = true
 		
-		if shotgun == 3 and player.playerCoins >= 250:
+		if shotgun == 3 and player.playerCoins >= 100 and hasUpgraded == false:
 			player.upgrade_shotgun()
 			player.playerCoins += -100
-		
-		shotgun += 1
-		$Control/Shotgun/shotgunUpgrade.text = "Upgrade (" + str(shotgun) + ')'
-		
+			shotgun += 1
+			$Control/Shotgun/shotgunUpgrade.text = "Upgrade (" + str(shotgun) + ')'
+			hasUpgraded = true
 
 
 func _on_washer_upgrade_pressed() -> void:
 	if washer < 4:
-		if washer == 0 and player.playerCoins >= 10:
+		
+		var hasUpgraded = false
+		
+		if washer == 0 and player.playerCoins >= 10 and hasUpgraded == false:
 			player.upgrade_washer()
 			player.playerCoins += -10
+			washer += 1
+			$Control/Washer/washerUpgrade.text = "Upgrade (" + str(washer) + ')'
+			hasUpgraded = true
 			
-		if washer == 1 and player.playerCoins >= 30:
+		if washer == 1 and player.playerCoins >= 20 and hasUpgraded == false:
 			player.upgrade_washer()
 			player.playerCoins += -20
+			washer += 1
+			$Control/Washer/washerUpgrade.text = "Upgrade (" + str(washer) + ')'
+			hasUpgraded = true
 			
-		if washer == 2 and player.playerCoins >= 100:
+		if washer == 2 and player.playerCoins >= 50 and hasUpgraded == false:
 			player.upgrade_washer()
 			player.playerCoins += -50
+			washer += 1
+			$Control/Washer/washerUpgrade.text = "Upgrade (" + str(washer) + ')'
+			hasUpgraded = true
 		
-		if washer == 3 and player.playerCoins >= 250:
+		if washer == 3 and player.playerCoins >= 100 and hasUpgraded == false:
 			player.upgrade_washer()
 			player.playerCoins += -100
-		
-		washer += 1
-		$Control/Washer/washerUpgrade.text = "Upgrade (" + str(washer) + ')'
+			washer += 1
+			$Control/Washer/washerUpgrade.text = "Upgrade (" + str(washer) + ')'
+			hasUpgraded = true
