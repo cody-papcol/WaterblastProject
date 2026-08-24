@@ -1,0 +1,52 @@
+[gd_scene load_steps=9 format=3 uid="uid://dvqgiabbylddg"]
+
+[ext_resource type="Texture2D" uid="uid://bxyww00gkpmji" path="res://textures/grasstexture.png" id="1_0j17f"]
+[ext_resource type="PackedScene" uid="uid://blu33aniy8w0f" path="res://prefabs/player.tscn" id="2_04r6o"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_04r6o"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_q570m"]
+sky_material = SubResource("ProceduralSkyMaterial_04r6o")
+
+[sub_resource type="Environment" id="Environment_kwbrl"]
+background_mode = 2
+sky = SubResource("Sky_q570m")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_1gxma"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_04r6o"]
+albedo_texture = ExtResource("1_0j17f")
+uv1_scale = Vector3(0.695, 0.695, 0.695)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_04r6o"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="SupermarketLevel" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kwbrl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+collision_layer = 3
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(98.943, 0, 0, 0, 0.2, 0, 0, 0, 98.67, 0, 0, 0)
+mesh = SubResource("BoxMesh_1gxma")
+surface_material_override/0 = SubResource("StandardMaterial3D_04r6o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(98.943, 0, 0, 0, 0.2, 0, 0, 0, 98.67, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_04r6o")
+
+[node name="Player" parent="." instance=ExtResource("2_04r6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.18998, 3)

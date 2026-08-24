@@ -10,23 +10,21 @@ var spawnLocation: int = 0
 var playerCoins = 0
 
 var waveNum = 0
-var leftInWave = 0
+var targetEnemyNum = 0
+var spawnedEnemies = 0
 
 var enemyNum = 0
 
-func _ready():
-	_start_wave(1)
 
-func _on_test_enemy_spawn_timer_timeout() -> void:
-	if enemyNum < 50:
-		_spawn_enemy()
+func _ready():
+	_start_wave(0)
 
 func enemy_death():
 	enemyNum += -1
-	print(enemyNum)
 	
-	if enemyNum == 0:
+	if enemyNum == 0 and spawnedEnemies == targetEnemyNum:
 		print('wave ended')
+		print(enemyNum)
 		waveResetTimer.start()
 	
 func _spawn_enemy():
@@ -38,15 +36,24 @@ func _spawn_enemy():
 	alien.transform = spawns[spawnLocation].transform
 	alien.connect("death", enemy_death)
 	add_child(alien)
-	enemyNum += 1
+	
 	
 	# adding player collision exception with alien
 	player.blocking.add_exception(alien)
 
 func _start_wave(num):
-	waveNum += 1
 	
-	for x in waveNum * 5:
+	# adding one value to the enemy number and starting spawning process
+	
+	num += 1
+	waveNum = num
+	spawnedEnemies = 0
+	targetEnemyNum = num * 5
+	
+	# enemy spawning
+	for x in targetEnemyNum:
+		enemyNum += 1
+		spawnedEnemies += 1
 		_spawn_enemy()
 		await get_tree().create_timer(0.5).timeout
 

@@ -78,7 +78,7 @@ func damage(amount):
 	if isAlive:
 		health += -amount
 	
-	if health <= 0:
+	if health <= 0 and isAlive == true:
 		
 		isAlive = false
 		$CollisionShape3D.disabled = true

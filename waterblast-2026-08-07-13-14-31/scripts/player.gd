@@ -41,18 +41,18 @@ var rifleLevel = 0
 # shotgun
 var shotgunBulletVelocity = 20.0
 var shotgunDamage = 20
-var shotgunMaxAmmo = 15
+var shotgunMaxAmmo = 30
 var shotgunFireRate = 0.5
 @export var shotgunSpread = 0.15
 @export var shotgunPellets = 5
 var shotgunLevel = 0
 
 # washer
-var washerBulletVelocity = 50.0
+var washerBulletVelocity = 30.0
 var washerDamage = 20.0
 var washerMaxAmmo = 100
 var washerFireRate = 0.02
-@export var washerSpread = 0.5
+@export var washerSpread = 0.1
 var washerLevel = 0
 
 # vars
@@ -281,7 +281,6 @@ func _physics_process(delta: float) -> void:
 				# dealing with ammo
 				if ammo > 0:
 					
-					ammo += -1
 					
 					if weapon == 2:
 						
@@ -300,6 +299,7 @@ func _physics_process(delta: float) -> void:
 							new_bullet.add_collision_exception_with($".")
 							new_bullet.add_collision_exception_with(new_bullet)
 							new_bullet.weaponDamage = bulletDamage
+							ammo += -1
 							get_parent().add_child(new_bullet)
 					
 					
@@ -318,6 +318,7 @@ func _physics_process(delta: float) -> void:
 						new_bullet.add_collision_exception_with($".")
 						new_bullet.add_collision_exception_with(new_bullet)
 						new_bullet.weaponDamage = bulletDamage
+						ammo += -1
 						get_parent().add_child(new_bullet)
 					
 					# other bullets
@@ -328,6 +329,7 @@ func _physics_process(delta: float) -> void:
 						new_bullet.add_collision_exception_with($".")
 						new_bullet.add_collision_exception_with(new_bullet)
 						new_bullet.weaponDamage = bulletDamage
+						ammo += -1
 						get_parent().add_child(new_bullet)
 					
 					
@@ -438,7 +440,6 @@ func _on_reload_timer_timeout() -> void:
 		ammo = total_water
 		total_water = 0
 	
-	print(total_water)
 	$HUD/Control/TextureProgressBar.value = total_water
 	
 	if Input.is_action_pressed("sprint"):
@@ -588,7 +589,7 @@ func upgrade_shotgun():
 			shotgunBulletVelocity = 35.0
 			
 		if shotgunLevel == 2:
-			shotgunMaxAmmo = 40
+			shotgunMaxAmmo = 80
 			max_ammo = shotgunMaxAmmo
 			
 		if shotgunLevel == 3:

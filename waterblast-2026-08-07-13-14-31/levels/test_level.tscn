@@ -74,7 +74,6 @@ environment = SubResource("Environment_gmgay")
 [node name="Player" parent="." instance=ExtResource("1_46lwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.2, -4)
 shotgunPellets = 6
-washerSpread = 0.1
 weapon = 3
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
