@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3mc3qv1yg6un"]
+
+[ext_resource type="PackedScene" uid="uid://ohgsigtacsah" path="res://models/asset packs/Kenney Supermarket Pack/Models/GLB format/shelf-end.glb" id="1_hkkr8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oll2o"]
+size = Vector3(0.6, 1, 0.4)
+
+[node name="shelf-end2" instance=ExtResource("1_hkkr8")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.2)
+shape = SubResource("BoxShape3D_oll2o")

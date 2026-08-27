@@ -14,3 +14,5 @@ func _on_test_enemy_spawn_timer_timeout() -> void:
 	var alien: CharacterBody3D = alien_prefab.instantiate()
 	alien.transform = spawns[spawnLocation].transform
 	add_child(alien)
+	
+	player.blocking.add_exception(alien)

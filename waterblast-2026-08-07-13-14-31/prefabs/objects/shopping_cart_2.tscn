@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1ps0mavj75mx"]
+
+[ext_resource type="PackedScene" uid="uid://cadpodeidnthv" path="res://models/asset packs/Kenney Supermarket Pack/Models/GLB format/shopping-cart.glb" id="1_8825r"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j3hph"]
+points = PackedVector3Array(0.10762, 0.347, 0.218975, -0.125, 0.00533494, -0.123186, 0.123161, 0.00273576, -0.124685, 0.145376, 0.385129, -0.242461, -0.14889, 0.385097, -0.24247, -0.125, 0.0416115, 0.174044, -0.147186, 0.346503, 0.181823, 0.124225, 0.0159371, 0.163363, -0.153801, 0.338241, -0.257701, 0.12189, 0.0556361, -0.174475, 0.143997, 0.172027, 0.189554, -0.111014, 0.172, 0.218667, 0.150263, 0.338241, -0.257701, -0.125, 0.00533494, 0.130486, 0.143997, 0.346869, 0.189554, -0.125, 0.0198382, -0.159432, -0.147186, 0.172042, 0.181823, 0.107476, 0.172, 0.218667, -0.111159, 0.347, 0.218975, -0.147467, 0.172, -0.123707, 0.122976, 0.00301885, 0.132267, 0.144177, 0.172, -0.123892, 0.12156, 0.0197004, -0.159546, -0.125, 0.0561148, -0.173921, 0.129577, 0.172, 0.211749, 0.122198, 0.0407017, 0.175171, -0.140165, 0.172, 0.196761, -0.125, 0.0198382, 0.159464, 0.129527, 0.347, 0.211663, -0.125753, 0.347, 0.211663, -0.12559, 0.172, 0.211365, -0.140348, 0.347, 0.19704)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8825r"]
+size = Vector3(0.4, 1, 0.4)
+
+[node name="shopping-cart2" instance=ExtResource("1_8825r")]
+
+[node name="BulletCollision" type="StaticBody3D" parent="." index="1"]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BulletCollision" index="0"]
+shape = SubResource("ConvexPolygonShape3D_j3hph")
+
+[node name="PlayerCollision" type="StaticBody3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49012e-08, 0, -1.49012e-08)
+shape = SubResource("BoxShape3D_8825r")

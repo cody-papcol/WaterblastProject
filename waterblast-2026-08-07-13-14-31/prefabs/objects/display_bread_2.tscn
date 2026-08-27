@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://7sdmtpfkxr10"]
+
+[ext_resource type="PackedScene" uid="uid://x18sno7dmgjy" path="res://models/asset packs/Kenney Supermarket Pack/Models/GLB format/display-bread.glb" id="1_45tbe"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f7qds"]
+size = Vector3(1, 0.4, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_45tbe"]
+size = Vector3(1, 0.7, 0.6)
+
+[node name="display-bread2" instance=ExtResource("1_45tbe")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="BulletCollision" type="StaticBody3D" parent="." index="1"]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BulletCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+shape = SubResource("BoxShape3D_f7qds")
+
+[node name="PlayerCollision" type="StaticBody3D" parent="." index="2"]
+
+[node name="CollisionShape" type="CollisionShape3D" parent="PlayerCollision" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
+shape = SubResource("BoxShape3D_45tbe")

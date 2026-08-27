@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://cse5hio2gfskw"]
+
+[ext_resource type="PackedScene" uid="uid://brdcbf108nci2" path="res://models/asset packs/Kenney Supermarket Pack/Models/GLB format/fence-door-rotate.glb" id="1_rekif"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sgnv0"]
+size = Vector3(1, 0.4, 0.2)
+
+[node name="fence-door-rotate2" instance=ExtResource("1_rekif")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="door-left" parent="fence-door-rotate" index="0"]
+transform = Transform3D(1, 0, -3.48787e-16, 0, 1, 0, 3.48787e-16, 0, 1, -0.3, 0.129, -7.21911e-16)
+
+[node name="door-right" parent="fence-door-rotate" index="1"]
+transform = Transform3D(1, 0, 3.48787e-16, 0, 1, 0, -3.48787e-16, 0, 1, 0.3, 0.129, -7.21911e-16)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+transform = Transform3D(0.7, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -7.45058e-09)
+shape = SubResource("BoxShape3D_sgnv0")

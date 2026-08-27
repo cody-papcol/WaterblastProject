@@ -85,6 +85,8 @@ var t_bob = 0.0
 @export var fov = 80.0
 const FOV_CHANGE = 1.5
 
+@export var blocking_nodes: Array
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var gun = $Head/Camera3D/blockbench_export
@@ -108,6 +110,9 @@ func _ready() -> void:
 	
 	$HUD/Control/TextureProgressBar.max_value = max_total_water
 	$HUD/Control/TextureProgressBar.value = total_water
+	
+	for x in blocking_nodes:
+		blocking.add_exception(x)
 	
 	if weapon == 0:
 		firerate = pistolFireRate
