@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://blu33aniy8w0f"]
+[gd_scene load_steps=48 format=4 uid="uid://blu33aniy8w0f"]
 
 [ext_resource type="Script" uid="uid://cbbixouox3gx2" path="res://scripts/player.gd" id="1_4dohe"]
 [ext_resource type="PackedScene" uid="uid://ppgrpdptbss1" path="res://prefabs/basicpistol.tscn" id="2_r66lb"]
@@ -270,6 +270,102 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(0, 3.14159, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/blockbench_export/WasherMesh1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.19209e-07, 0.422832, -0.0507639)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/blockbench_export/WasherMesh1/magazine:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.0354508, -0.03396)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/blockbench_export/RifleTriggerArm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0112146, 0.324512, -0.579874)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Head/Camera3D/blockbench_export/RifleStableArm:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.327128, 0.297865, -0.22126)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Head/Camera3D/blockbench_export/RifleTriggerArm:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Head/Camera3D/blockbench_export/RifleStableArm:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.691011, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Head/Camera3D/blockbench_export/WasherMesh1:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 2.27374e-13)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Head/Camera3D/blockbench_export/WasherMesh1/magazine:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_4dohe"]
 resource_name = "reload"
@@ -285,6 +381,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 3.14159, 0), Vector3(-1.01404, 3.14159, 0), Vector3(-1.01404, 3.14159, 0), Vector3(0, 3.14159, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/blockbench_export/WasherMesh1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.41, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.19209e-07, 0.422832, -0.0507639), Vector3(0.4, 0.422833, -0.0507644), Vector3(-1.19209e-07, 0.422832, -0.0507639)]
 }
 
 [sub_resource type="Animation" id="Animation_1txc5"]
@@ -303,10 +411,111 @@ tracks/0/keys = {
 "values": [Vector3(0, 3.14159, 0), Vector3(0, 3.66519, -0.380482)]
 }
 
+[sub_resource type="Animation" id="Animation_lulei"]
+resource_name = "reloadWasher"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/blockbench_export/WasherMesh1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.633333, 2.06, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.19209e-07, 0.422832, -0.0507639), Vector3(0.0363844, 0.504122, -0.0819243), Vector3(0.0363844, 0.504122, -0.0819243), Vector3(-1.19209e-07, 0.422832, -0.0507639)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/blockbench_export/WasherMesh1/magazine:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.633333, 1.26667, 2.06667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0354508, -0.03396), Vector3(0, -0.0354508, -0.03396), Vector3(-0.197707, -0.611308, 0.0170446), Vector3(0, -0.0354508, -0.03396), Vector3(0, -0.0354508, -0.03396)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/blockbench_export/RifleTriggerArm:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.633333, 2.04, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0112146, 0.324512, -0.579874), Vector3(-0.02517, 0.243222, -0.548714), Vector3(-0.02517, 0.243222, -0.548714), Vector3(0.0112146, 0.324512, -0.579874)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/blockbench_export/RifleStableArm:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.633333, 1.26667, 2.06667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.327128, 0.297865, -0.22126), Vector3(0.466477, 0.260042, -0.289424), Vector3(0.816024, -0.241074, -0.289425), Vector3(0.466477, 0.260042, -0.289424), Vector3(0.327128, 0.297865, -0.22126)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Head/Camera3D/blockbench_export/RifleTriggerArm:rotation")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.633333, 2.04, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.333418, 0.203877, 0.239635), Vector3(-0.333418, 0.203877, 0.239635), Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Head/Camera3D/blockbench_export/RifleStableArm:rotation")
+tracks/5/interp = 2
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.633333, 1.26667, 2.06667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.691011, 0), Vector3(-0.157769, -0.675662, -0.193568), Vector3(-0.157769, -0.675662, -0.193568), Vector3(-0.157769, -0.675662, -0.193568), Vector3(0, -0.691011, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Head/Camera3D/blockbench_export/WasherMesh1:rotation")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.633333, 2.06, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 2.27374e-13), Vector3(0.333358, 3.49066, -0.23911), Vector3(0.333358, 3.49066, -0.23911), Vector3(0, 3.14159, 2.27374e-13)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Head/Camera3D/blockbench_export/WasherMesh1/magazine:rotation")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.633333, 1.26667, 2.06667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(-1.49012e-08, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1txc5"]
 _data = {
 &"RESET": SubResource("Animation_r66lb"),
 &"reload": SubResource("Animation_4dohe"),
+&"reloadWasher": SubResource("Animation_lulei"),
 &"sprint": SubResource("Animation_1txc5")
 }
 
@@ -339,6 +548,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38998, 0)
 script = ExtResource("1_4dohe")
 max_ammo = 60
 firerate = 0.15
+playerCoins = 53923
 weapon = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -415,7 +625,7 @@ mesh = SubResource("ArrayMesh_lulei")
 skeleton = NodePath("")
 
 [node name="WasherMesh1" type="MeshInstance3D" parent="Head/Camera3D/blockbench_export"]
-transform = Transform3D(-1, 0, 8.74227e-08, 0, 1, 0, -8.74227e-08, 0, -1, -1.19209e-07, 0.422832, -0.0507639)
+transform = Transform3D(-1, 2.27374e-13, 1.50996e-07, 2.27374e-13, 1, 0, -1.50996e-07, 3.43325e-20, -1, -1.19209e-07, 0.422832, -0.0507639)
 mesh = SubResource("ArrayMesh_edtk3")
 skeleton = NodePath("")
 

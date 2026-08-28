@@ -13,20 +13,19 @@ var waveNum = 0
 var targetEnemyNum = 0
 var spawnedEnemies = 0
 
-var enemyNum = 0
+var enemyNum = 5
 
 
 func _ready():
+	pass
 	
-	_start_wave(0)
 
 func enemy_death():
 	enemyNum += -1
 	
 	if enemyNum == 0 and spawnedEnemies == targetEnemyNum:
-		print('wave ended')
-		print(enemyNum)
 		waveResetTimer.start()
+		print("start timer")
 	
 func _spawn_enemy():
 	
@@ -50,6 +49,8 @@ func _start_wave(num):
 	waveNum = num
 	spawnedEnemies = 0
 	targetEnemyNum = num * 5
+	
+	print("wave started")
 	
 	# enemy spawning
 	for x in targetEnemyNum:

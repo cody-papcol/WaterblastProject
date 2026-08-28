@@ -64,7 +64,7 @@ var walking_wait_time = 0.6
 var sprinting_wait_time = 0.3
 
 # Player Coins
-var playerCoins = 0
+@export var playerCoins = 0
 
 var in_shop = false
 
@@ -111,7 +111,7 @@ func _ready() -> void:
 	$HUD/Control/TextureProgressBar.max_value = max_total_water
 	$HUD/Control/TextureProgressBar.value = total_water
 	
-	for x in blocking_nodes:
+	for x in get_tree().get_nodes_in_group("enemies"):
 		blocking.add_exception(x)
 	
 	if weapon == 0:
@@ -257,7 +257,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		reloading = true
 		sprinting = false
-		$AnimationPlayer.play("reload")
+		if weapon == 3:
+			$AnimationPlayer.play("RESET")
+			$AnimationPlayer.play("reloadWasher")
+		else:
+			$AnimationPlayer.play("reload")
 		$ReloadTimer.start()
 	
 	
@@ -347,13 +351,21 @@ func _physics_process(delta: float) -> void:
 					
 					if ammo == 0 and total_water != 0:
 						reloading = true
-						$AnimationPlayer.play("reload")
+						if weapon == 3:
+							
+							$AnimationPlayer.play("reloadWasher")
+						else:
+							$AnimationPlayer.play("reload")
 						$ReloadTimer.start()
 					
 				elif reloading == false and total_water != 0:
 					# reload
 					reloading = true
-					$AnimationPlayer.play("reload")
+					if weapon == 3:
+						
+						$AnimationPlayer.play("reloadWasher")
+					else:
+						$AnimationPlayer.play("reload")
 					$ReloadTimer.start()
 			
 	
@@ -432,6 +444,8 @@ func _headbob(time) -> Vector3:
 
 # reload timer end
 func _on_reload_timer_timeout() -> void:
+	
+	$AnimationPlayer.play("RESET")
 	
 	reloading = false
 	

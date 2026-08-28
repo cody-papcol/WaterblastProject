@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bqno3oapluiit" path="res://sounds/splashes/freesound_community-water-splash-46402.wav" id="4_10r58"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h8t1"]
-albedo_color = Color(0.376471, 0.811765, 1, 1)
+albedo_color = Color(0.398429, 0.790752, 0.999999, 1)
 metallic = 0.36
 roughness = 0.35
 

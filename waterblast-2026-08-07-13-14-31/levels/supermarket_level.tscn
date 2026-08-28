@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dvqgiabbylddg"]
+[gd_scene load_steps=32 format=3 uid="uid://dvqgiabbylddg"]
 
 [ext_resource type="Texture2D" uid="uid://bxyww00gkpmji" path="res://textures/grasstexture.png" id="1_0j17f"]
 [ext_resource type="Script" uid="uid://dtblk05pvccu6" path="res://scripts/level scripts/supermarket_level.gd" id="1_c3nkb"]
@@ -19,6 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://cse5hio2gfskw" path="res://prefabs/objects/fence_door_rotate_2.tscn" id="14_5c1de"]
 [ext_resource type="PackedScene" uid="uid://d1ps0mavj75mx" path="res://prefabs/objects/shopping_cart_2.tscn" id="16_l308u"]
 [ext_resource type="CompressedTexture3D" uid="uid://rrc04ji1lk2u" path="res://BakedParticleCollisions/supermarket_level.GPUParticlesCollisionSDF3D_data.exr" id="17_n50qs"]
+[ext_resource type="PackedScene" uid="uid://dqqvedqhiw4g5" path="res://prefabs/weapon_shop.tscn" id="20_270wb"]
+[ext_resource type="PackedScene" uid="uid://j407ud7lwlhu" path="res://prefabs/water_refill_station.tscn" id="21_osgtw"]
+[ext_resource type="PackedScene" uid="uid://1x4eib13253g" path="res://prefabs/health_powerup_test.tscn" id="22_osgtw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_04r6o"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -66,7 +69,7 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_04r6o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.18998, 3)
-blocking_nodes = [ExtResource("8_fsp84"), null, null, null, null]
+blocking_nodes = [null, null, null, null, null]
 
 [node name="Lights" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
@@ -1181,22 +1184,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.34807, 0, -9.3856)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.0825, 0, 9.64962)
 
 [node name="WaveResetTimer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 5.0
+one_shot = true
 
 [node name="InitialAliens" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.15578, 0)
 
-[node name="Alien" parent="InitialAliens" instance=ExtResource("8_fsp84")]
+[node name="Alien" parent="InitialAliens" groups=["Enemies"] instance=ExtResource("8_fsp84")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.5188, 4.60343, 16.4241)
 
-[node name="Alien2" parent="InitialAliens" instance=ExtResource("8_fsp84")]
+[node name="Alien2" parent="InitialAliens" groups=["Enemies"] instance=ExtResource("8_fsp84")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.98883, 4.53852, 9.43533)
 
-[node name="Alien3" parent="InitialAliens" instance=ExtResource("8_fsp84")]
+[node name="Alien3" parent="InitialAliens" groups=["Enemies"] instance=ExtResource("8_fsp84")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.6547, 4.53852, 9.5272)
 
-[node name="Alien4" parent="InitialAliens" instance=ExtResource("8_fsp84")]
+[node name="Alien4" parent="InitialAliens" groups=["Enemies"] instance=ExtResource("8_fsp84")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.1531, 4.53852, -3.63446)
 
-[node name="Alien5" parent="InitialAliens" instance=ExtResource("8_fsp84")]
+[node name="Alien5" parent="InitialAliens" groups=["Enemies"] instance=ExtResource("8_fsp84")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.7183, 4.05062, -9.40457)
+
+[node name="WeaponShop" parent="." instance=ExtResource("20_270wb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.117, 0.507, -3.50861)
+
+[node name="WaterRefill" parent="." instance=ExtResource("21_osgtw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.415, 1.44563, -10.595)
+
+[node name="HealthPowerupTest" parent="." instance=ExtResource("22_osgtw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.96826, 1.22851, 25.6478)
+
+[connection signal="timeout" from="WaveResetTimer" to="." method="_on_wave_reset_timer_timeout"]
+[connection signal="death" from="InitialAliens/Alien" to="." method="enemy_death"]
+[connection signal="death" from="InitialAliens/Alien2" to="." method="enemy_death"]
+[connection signal="death" from="InitialAliens/Alien3" to="." method="enemy_death"]
+[connection signal="death" from="InitialAliens/Alien4" to="." method="enemy_death"]
+[connection signal="death" from="InitialAliens/Alien5" to="." method="enemy_death"]
