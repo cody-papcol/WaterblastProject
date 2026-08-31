@@ -21,7 +21,8 @@ var bullet_velocity = 20.0
 var bulletDamage = 0
 @export var firerate = 0.05
 
-
+var unlockedWeapons = 0
+var level = 0
 
 # individual weapon variables
 # pistol
@@ -112,6 +113,7 @@ func _ready() -> void:
 	$HUD/Control/TextureProgressBar.value = total_water
 	
 	AudioServer.set_bus_volume_db(0, linear_to_db(0.5))
+		
 	
 	for x in get_tree().get_nodes_in_group("enemies"):
 		blocking.add_exception(x)
@@ -223,7 +225,7 @@ func change_weapon(num):
 	
 	
 	shootTimer.wait_time = firerate
-	ammo = max_ammo
+	ammo = 0
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -261,15 +263,15 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	
 	# handling weapon select
-	if not in_shop:
-		if Input.is_action_just_pressed("WeaponSlot1"):
-			change_weapon(0)
-		if Input.is_action_just_pressed("WeaponSlot2"):
-			change_weapon(1)
-		if Input.is_action_just_pressed("WeaponSlot3"):
-			change_weapon(2)
-		if Input.is_action_just_pressed("WeaponSlot4"):
-			change_weapon(3)
+	#if not in_shop:
+		#if Input.is_action_just_pressed("WeaponSlot1"):
+		#	change_weapon(0)
+	#	if Input.is_action_just_pressed("WeaponSlot2"):
+		#	change_weapon(1)
+		#if Input.is_action_just_pressed("WeaponSlot3"):
+		#	change_weapon(2)
+		#if Input.is_action_just_pressed("WeaponSlot4"):
+		#	change_weapon(3)
 	
 	
 func _physics_process(delta: float) -> void:

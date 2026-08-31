@@ -17,8 +17,8 @@ var enemyNum = 5
 
 
 func _ready():
-	pass
-	
+	player.level = 3
+	player.unlockedWeapons = 3
 
 func enemy_death():
 	enemyNum += -1

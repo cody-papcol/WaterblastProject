@@ -20,7 +20,7 @@ grow_vertical = 2
 [node name="Pistol" type="Node2D" parent="Control"]
 position = Vector2(145, 163)
 
-[node name="Button" type="Button" parent="Control/Pistol"]
+[node name="pistolButton" type="Button" parent="Control/Pistol"]
 offset_left = 252.0
 offset_top = 128.0
 offset_right = 615.0
@@ -42,7 +42,7 @@ expand_icon = true
 [node name="Rifle" type="Node2D" parent="Control"]
 position = Vector2(585, 163)
 
-[node name="Button" type="Button" parent="Control/Rifle"]
+[node name="rifleButton" type="Button" parent="Control/Rifle"]
 offset_left = 252.0
 offset_top = 128.0
 offset_right = 615.0
@@ -64,7 +64,7 @@ expand_icon = true
 [node name="Shotgun" type="Node2D" parent="Control"]
 position = Vector2(1025, 163)
 
-[node name="Button" type="Button" parent="Control/Shotgun"]
+[node name="shotgunButton" type="Button" parent="Control/Shotgun"]
 offset_left = 252.0
 offset_top = 128.0
 offset_right = 615.0
@@ -86,7 +86,7 @@ expand_icon = true
 [node name="Washer" type="Node2D" parent="Control"]
 position = Vector2(1457, 163)
 
-[node name="Button" type="Button" parent="Control/Washer"]
+[node name="washerButton" type="Button" parent="Control/Washer"]
 offset_left = 252.0
 offset_top = 128.0
 offset_right = 615.0
@@ -105,7 +105,11 @@ text = "Upgrade (0)"
 icon_alignment = 1
 expand_icon = true
 
+[connection signal="pressed" from="Control/Pistol/pistolButton" to="." method="_on_pistol_button_pressed"]
 [connection signal="pressed" from="Control/Pistol/pistolUpgrade" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control/Rifle/rifleButton" to="." method="_on_rifle_button_pressed"]
 [connection signal="pressed" from="Control/Rifle/rifleUpgrade" to="." method="_on_rifle_upgrade_pressed"]
+[connection signal="pressed" from="Control/Shotgun/shotgunButton" to="." method="_on_shotgun_button_pressed"]
 [connection signal="pressed" from="Control/Shotgun/shotgunUpgrade" to="." method="_on_shotgun_upgrade_pressed"]
+[connection signal="pressed" from="Control/Washer/washerButton" to="." method="_on_washer_button_pressed"]
 [connection signal="pressed" from="Control/Washer/washerUpgrade" to="." method="_on_washer_upgrade_pressed"]

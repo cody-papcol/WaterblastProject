@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://h0drc7yjy48w"]
+[gd_scene load_steps=29 format=3 uid="uid://h0drc7yjy48w"]
 
 [ext_resource type="PackedScene" uid="uid://blu33aniy8w0f" path="res://prefabs/player.tscn" id="1_46lwt"]
 [ext_resource type="Script" uid="uid://de8xo7gyu2q04" path="res://scripts/level scripts/test_level.gd" id="1_w7r7j"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://w5611lgj5js0" path="res://models/asset packs/Kenney Furniture Pack/Models/GLTF format/table.glb" id="9_ly3hx"]
 [ext_resource type="PackedScene" uid="uid://dkjws7vtm1kso" path="res://models/asset packs/Kenney Furniture Pack/Models/GLTF format/chairCushion.glb" id="10_4n8tn"]
 [ext_resource type="PackedScene" uid="uid://1x4eib13253g" path="res://prefabs/health_powerup_test.tscn" id="10_wkb0e"]
+[ext_resource type="PackedScene" uid="uid://j407ud7lwlhu" path="res://prefabs/water_refill_station.tscn" id="12_axl34"]
+[ext_resource type="PackedScene" uid="uid://dqqvedqhiw4g5" path="res://prefabs/weapon_shop.tscn" id="13_8hjdj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_46lwt"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -74,7 +76,7 @@ environment = SubResource("Environment_gmgay")
 [node name="Player" parent="." instance=ExtResource("1_46lwt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2.2, -4)
 shotgunPellets = 6
-weapon = 3
+weapon = 0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_46lwt")
@@ -733,9 +735,6 @@ shape = SubResource("BoxShape3D_wkb0e")
 transform = Transform3D(1, 0, -2.84217e-14, 0, 1, 0, 0, 0, 1, -1.19209e-06, -0.266077, 0.0646968)
 size = Vector3(1, 1.46785, 0.870605)
 
-[node name="Alien" parent="." instance=ExtResource("2_x25rp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, 0)
-
 [node name="TestEnemySpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
@@ -745,38 +744,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2, -5)
 
 [node name="HealthPowerupTest" parent="." instance=ExtResource("10_wkb0e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 1, 0)
-
-[node name="Spawner1" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 0.81113, 2)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawner1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 0)
-mesh = SubResource("BoxMesh_ur00s")
-surface_material_override/0 = SubResource("StandardMaterial3D_ly3hx")
-
-[node name="Spawner2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0.81113, 11.6)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawner2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0, 0)
-mesh = SubResource("BoxMesh_ur00s")
-surface_material_override/0 = SubResource("StandardMaterial3D_ly3hx")
-
-[node name="Spawner3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7, 0.81113, 24.6)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawner3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, 0)
-mesh = SubResource("BoxMesh_ur00s")
-surface_material_override/0 = SubResource("StandardMaterial3D_ly3hx")
-
-[node name="Spawner4" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9, 0.81113, 7.6)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Spawner4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1)
-mesh = SubResource("BoxMesh_ur00s")
-surface_material_override/0 = SubResource("StandardMaterial3D_ly3hx")
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -825,4 +792,64 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7096, 3.95, 37.1415)
 [node name="InteriorLight15" parent="Lights" instance=ExtResource("8_wndkh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70957, 3.95, 37.1415)
 
+[node name="Alien" parent="." instance=ExtResource("2_x25rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -6)
+
+[node name="Alien2" parent="." instance=ExtResource("2_x25rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, 12)
+
+[node name="Alien3" parent="." instance=ExtResource("2_x25rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 23)
+
+[node name="Alien4" parent="." instance=ExtResource("2_x25rp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 1, 32)
+
+[node name="WaterRefill" parent="." instance=ExtResource("12_axl34")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1, 40)
+
+[node name="WeaponShop" parent="." instance=ExtResource("13_8hjdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1, 35)
+
+[node name="WaveResetTimer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="AlienSpawnLocations" type="Node3D" parent="."]
+
+[node name="Spawn1" type="StaticBody3D" parent="AlienSpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.6, 0.81113, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AlienSpawnLocations/Spawn1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3, 0, 0)
+mesh = SubResource("BoxMesh_ur00s")
+surface_material_override/0 = SubResource("StandardMaterial3D_ly3hx")
+
+[node name="Spawn2" type="StaticBody3D" parent="AlienSpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5, 0.81113, 11.6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AlienSpawnLocations/Spawn2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7, 0, 0)
+mesh = SubResource("BoxMesh_ur00s")
+surface_material_override/0 = SubResource("StandardMaterial3D_ly3hx")
+
+[node name="Spawn3" type="StaticBody3D" parent="AlienSpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7, 0.81113, 24.6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AlienSpawnLocations/Spawn3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, 0)
+mesh = SubResource("BoxMesh_ur00s")
+surface_material_override/0 = SubResource("StandardMaterial3D_ly3hx")
+
+[node name="Spawn4" type="StaticBody3D" parent="AlienSpawnLocations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9, 0.81113, 7.6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AlienSpawnLocations/Spawn4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.1)
+mesh = SubResource("BoxMesh_ur00s")
+surface_material_override/0 = SubResource("StandardMaterial3D_ly3hx")
+
 [connection signal="timeout" from="TestEnemySpawnTimer" to="." method="_on_test_enemy_spawn_timer_timeout"]
+[connection signal="death" from="Alien" to="." method="enemy_death"]
+[connection signal="death" from="Alien2" to="." method="enemy_death"]
+[connection signal="death" from="Alien3" to="." method="enemy_death"]
+[connection signal="death" from="Alien4" to="." method="enemy_death"]
+[connection signal="timeout" from="WaveResetTimer" to="." method="_on_wave_reset_timer_timeout"]

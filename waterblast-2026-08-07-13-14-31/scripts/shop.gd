@@ -145,3 +145,23 @@ func _on_washer_upgrade_pressed() -> void:
 			washer += 1
 			$Control/Washer/washerUpgrade.text = "Upgrade (" + str(washer) + ')'
 			hasUpgraded = true
+
+
+func _on_pistol_button_pressed() -> void:
+	if player.unlockedWeapons > 0:
+		player.change_weapon(0)
+
+
+func _on_rifle_button_pressed() -> void:
+	if player.unlockedWeapons > 1:
+		player.change_weapon(1)
+
+
+func _on_shotgun_button_pressed() -> void:
+	if player.unlockedWeapons > 2:
+		player.change_weapon(2)
+
+
+func _on_washer_button_pressed() -> void:
+	if player.unlockedWeapons > 3:
+		player.change_weapon(3)

@@ -13,12 +13,14 @@ var waveNum = 0
 var targetEnemyNum = 0
 var spawnedEnemies = 0
 
-var enemyNum = 0
+var enemyNum = 4
 
 
 func _ready():
-	_start_wave(0)
-
+	
+	player.level = 2
+	player.unlockedWeapons = 2
+	
 func enemy_death():
 	enemyNum += -1
 	
