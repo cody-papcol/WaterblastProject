@@ -111,6 +111,8 @@ func _ready() -> void:
 	$HUD/Control/TextureProgressBar.max_value = max_total_water
 	$HUD/Control/TextureProgressBar.value = total_water
 	
+	AudioServer.set_bus_volume_db(0, linear_to_db(0.5))
+	
 	for x in get_tree().get_nodes_in_group("enemies"):
 		blocking.add_exception(x)
 	
@@ -255,14 +257,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	#handling reload
 	if Input.is_action_just_pressed("reload") and ammo != max_ammo and total_water != 0:
 		
-		reloading = true
-		sprinting = false
-		if weapon == 3:
-			$AnimationPlayer.play("RESET")
-			$AnimationPlayer.play("reloadWasher")
-		else:
-			$AnimationPlayer.play("reload")
-		$ReloadTimer.start()
+		reload()
 	
 	
 	# handling weapon select
@@ -350,23 +345,12 @@ func _physics_process(delta: float) -> void:
 					$SpraySound.play()
 					
 					if ammo == 0 and total_water != 0:
-						reloading = true
-						if weapon == 3:
-							
-							$AnimationPlayer.play("reloadWasher")
-						else:
-							$AnimationPlayer.play("reload")
-						$ReloadTimer.start()
+						
+						reload()
 					
 				elif reloading == false and total_water != 0:
-					# reload
-					reloading = true
-					if weapon == 3:
-						
-						$AnimationPlayer.play("reloadWasher")
-					else:
-						$AnimationPlayer.play("reload")
-					$ReloadTimer.start()
+					
+					reload()
 			
 	
 	#check for interaction collisions
@@ -643,3 +627,20 @@ func on_death() -> void:
 func refill_water():
 	total_water = max_total_water
 	$HUD/Control/TextureProgressBar.value = total_water
+
+func reload():
+	# reload
+	reloading = true
+	sprinting = false
+	
+	if weapon == 2:
+		$AnimationPlayer.play("RESET")
+		await $AnimationPlayer.animation_finished
+		$AnimationPlayer.play("shotgunReload")
+	elif weapon == 3:
+		$AnimationPlayer.play("RESET")
+		await $AnimationPlayer.animation_finished
+		$AnimationPlayer.play("reloadWasher")
+	else:
+		$AnimationPlayer.play("reload")
+	$ReloadTimer.start()
