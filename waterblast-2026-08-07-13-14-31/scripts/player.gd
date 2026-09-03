@@ -6,11 +6,11 @@ extends CharacterBody3D
 var speed
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 10.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 3.5
 const SENSITIVITY = 0.003
 
 # water total
-var max_total_water = 250
+var max_total_water = 100
 var total_water = max_total_water
 
 
@@ -51,8 +51,8 @@ var shotgunLevel = 0
 # washer
 var washerBulletVelocity = 30.0
 var washerDamage = 20.0
-var washerMaxAmmo = 100
-var washerFireRate = 0.02
+var washerMaxAmmo = 60
+var washerFireRate = 0.03
 @export var washerSpread = 0.1
 var washerLevel = 0
 
@@ -105,6 +105,7 @@ func _ready() -> void:
 	$Head/Camera3D/blockbench_export/RifleStableArm.visible = false
 	$Head/Camera3D/blockbench_export/ShotgunMesh.visible = false
 	$Head/Camera3D/blockbench_export/PistolArm.visible = false
+	$Head/Camera3D/blockbench_export/PistolReloadArm.visible = false
 	$Head/Camera3D/blockbench_export/PistolMesh.visible = false
 	$Head/Camera3D/blockbench_export/RifleMesh.visible = false
 	$Head/Camera3D/blockbench_export/WasherMesh1.visible = false
@@ -126,6 +127,7 @@ func _ready() -> void:
 		
 		# visibility of models
 		$Head/Camera3D/blockbench_export/PistolArm.visible = true
+		$Head/Camera3D/blockbench_export/PistolReloadArm.visible = true
 		$Head/Camera3D/blockbench_export/PistolMesh.visible = true
 		
 	# Rifle
@@ -170,6 +172,7 @@ func change_weapon(num):
 	$Head/Camera3D/blockbench_export/RifleStableArm.visible = false
 	$Head/Camera3D/blockbench_export/ShotgunMesh.visible = false
 	$Head/Camera3D/blockbench_export/PistolArm.visible = false
+	$Head/Camera3D/blockbench_export/PistolReloadArm.visible = false
 	$Head/Camera3D/blockbench_export/PistolMesh.visible = false
 	$Head/Camera3D/blockbench_export/RifleMesh.visible = false
 	$Head/Camera3D/blockbench_export/WasherMesh1.visible = false
@@ -184,6 +187,7 @@ func change_weapon(num):
 		
 		# visibility of models
 		$Head/Camera3D/blockbench_export/PistolArm.visible = true
+		$Head/Camera3D/blockbench_export/PistolReloadArm.visible = true
 		$Head/Camera3D/blockbench_export/PistolMesh.visible = true
 		
 	# Rifle
@@ -291,22 +295,40 @@ func _physics_process(delta: float) -> void:
 					if weapon == 2:
 						
 						#shotgun bullet spawns
-						for x in shotgunPellets:
-							var new_bullet : RigidBody3D = bullet_prefab.instantiate()
-							new_bullet.global_transform = muzzle.global_transform
-							var shotgunDirection = muzzle.global_transform.basis.z
+						if ammo >= shotgunPellets:
+							for x in shotgunPellets:
+								var new_bullet : RigidBody3D = bullet_prefab.instantiate()
+								new_bullet.global_transform = muzzle.global_transform
+								var shotgunDirection = muzzle.global_transform.basis.z
 
-							shotgunDirection += muzzle.global_transform.basis.x * randf_range(-shotgunSpread, shotgunSpread)
-							shotgunDirection += muzzle.global_transform.basis.y * randf_range(-shotgunSpread, shotgunSpread)
-							shotgunDirection = shotgunDirection.normalized()
+								shotgunDirection += muzzle.global_transform.basis.x * randf_range(-shotgunSpread, shotgunSpread)
+								shotgunDirection += muzzle.global_transform.basis.y * randf_range(-shotgunSpread, shotgunSpread)
+								shotgunDirection = shotgunDirection.normalized()
 
-							new_bullet.apply_impulse(shotgunDirection * bullet_velocity)
-							
-							new_bullet.add_collision_exception_with($".")
-							new_bullet.add_collision_exception_with(new_bullet)
-							new_bullet.weaponDamage = bulletDamage
-							ammo += -1
-							get_parent().add_child(new_bullet)
+								new_bullet.apply_impulse(shotgunDirection * bullet_velocity)
+								
+								new_bullet.add_collision_exception_with($".")
+								new_bullet.add_collision_exception_with(new_bullet)
+								new_bullet.weaponDamage = bulletDamage
+								ammo += -1
+								get_parent().add_child(new_bullet)
+						else:
+							for x in ammo:
+								var new_bullet : RigidBody3D = bullet_prefab.instantiate()
+								new_bullet.global_transform = muzzle.global_transform
+								var shotgunDirection = muzzle.global_transform.basis.z
+
+								shotgunDirection += muzzle.global_transform.basis.x * randf_range(-shotgunSpread, shotgunSpread)
+								shotgunDirection += muzzle.global_transform.basis.y * randf_range(-shotgunSpread, shotgunSpread)
+								shotgunDirection = shotgunDirection.normalized()
+
+								new_bullet.apply_impulse(shotgunDirection * bullet_velocity)
+								
+								new_bullet.add_collision_exception_with($".")
+								new_bullet.add_collision_exception_with(new_bullet)
+								new_bullet.weaponDamage = bulletDamage
+								ammo += -1
+								get_parent().add_child(new_bullet)
 					
 					
 					# creating bullet for Washer
@@ -607,14 +629,14 @@ func upgrade_washer():
 	if washerLevel < 4:
 		
 		if washerLevel == 0:
-			washerFireRate = 0.01
+			washerFireRate = 0.02
 			firerate = washerFireRate
 			
 		if washerLevel == 1:
 			washerBulletVelocity = 80.0
 			
 		if washerLevel == 2:
-			washerMaxAmmo = 200
+			washerMaxAmmo = 100
 			max_ammo = washerMaxAmmo
 			
 		if washerLevel == 3:
@@ -631,18 +653,26 @@ func refill_water():
 	$HUD/Control/TextureProgressBar.value = total_water
 
 func reload():
-	# reload
-	reloading = true
-	sprinting = false
 	
-	if weapon == 2:
-		$AnimationPlayer.play("RESET")
-		await $AnimationPlayer.animation_finished
-		$AnimationPlayer.play("shotgunReload")
-	elif weapon == 3:
-		$AnimationPlayer.play("RESET")
-		await $AnimationPlayer.animation_finished
-		$AnimationPlayer.play("reloadWasher")
-	else:
-		$AnimationPlayer.play("reload")
-	$ReloadTimer.start()
+	if reloading == false:
+		# reload
+		reloading = true
+		sprinting = false
+		
+		if weapon == 0:
+			$AnimationPlayer.play("RESET")
+			await $AnimationPlayer.animation_finished
+			$AnimationPlayer.play("reloadPistol")
+		elif weapon == 1:
+			$AnimationPlayer.play("RESET")
+			await $AnimationPlayer.animation_finished
+			$AnimationPlayer.play("reloadRifle")
+		elif weapon == 2:
+			$AnimationPlayer.play("RESET")
+			await $AnimationPlayer.animation_finished
+			$AnimationPlayer.play("shotgunReload")
+		elif weapon == 3:
+			$AnimationPlayer.play("RESET")
+			await $AnimationPlayer.animation_finished
+			$AnimationPlayer.play("reloadWasher")
+		$ReloadTimer.start()

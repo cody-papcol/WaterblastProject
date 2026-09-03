@@ -812,6 +812,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1, 35)
 
 [node name="WaveResetTimer" type="Timer" parent="."]
 wait_time = 5.0
+one_shot = true
 
 [node name="AlienSpawnLocations" type="Node3D" parent="."]
 

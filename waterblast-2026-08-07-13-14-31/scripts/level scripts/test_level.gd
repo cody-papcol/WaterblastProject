@@ -29,7 +29,6 @@ func enemy_death():
 	
 	if enemyNum == 0 and spawnedEnemies == targetEnemyNum:
 		print('wave ended')
-		print(enemyNum)
 		waveResetTimer.start()
 	
 func _spawn_enemy():
