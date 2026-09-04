@@ -585,6 +585,206 @@ tracks/1/keys = {
 "values": [Vector3(-1.19209e-07, 0.422832, -0.0507639), Vector3(0.4, 0.422833, -0.0507644), Vector3(-1.19209e-07, 0.422832, -0.0507639)]
 }
 
+[sub_resource type="Animation" id="Animation_f2e50"]
+resource_name = "reloadPistol"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/blockbench_export/PistolArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.396667, 0.533333, 0.766667, 2.5, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0252345, 0.324512, -0.353022), Vector3(-0.0283244, 0.328985, -0.222543), Vector3(-0.0283242, 0.235102, -0.164386), Vector3(-0.0283242, 0.196513, -0.147229), Vector3(-0.149675, 0.234489, -0.233645), Vector3(-0.149675, 0.234489, -0.233645), Vector3(-0.0283242, 0.235102, -0.164386), Vector3(-0.0252345, 0.324512, -0.353022)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/blockbench_export/PistolMesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.396667, 0.533333, 0.766667, 2.5, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.0181159, 0.497877, 0.131883), Vector3(-0.139905, 0.493404, 0.252594), Vector3(-0.139905, 0.587287, 0.194438), Vector3(-0.139905, 0.599263, 0.153738), Vector3(-0.206718, 0.428138, 0.240154), Vector3(-0.206718, 0.428138, 0.240154), Vector3(-0.139905, 0.587287, 0.194438), Vector3(-0.0181159, 0.497877, 0.131883)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/blockbench_export/PistolMesh/PistolMagazine:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.396667, 0.533333, 0.766667, 0.9, 1.13333, 1.4, 1.52, 1.63, 1.96667, 2.26667, 2.55, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(5.36442e-07, 0, 0.224722), Vector3(5.36442e-07, 0, 0.224722), Vector3(5.36442e-07, 0, 0.224722), Vector3(-0.00122744, 0.00600898, 0.300093), Vector3(-0.40042, 0.300598, 0.440161), Vector3(-0.859131, 0.314744, 0.590642), Vector3(-0.859131, 0.314744, 0.590642), Vector3(-0.40042, 0.300598, 0.440161), Vector3(-0.445237, 0.25123, 0.442645), Vector3(-0.312807, 0.389059, 0.449488), Vector3(-0.128793, 0.609138, 0.40866), Vector3(-0.312807, 0.389059, 0.449488), Vector3(-0.0503369, 0.0970813, 0.272966), Vector3(5.36442e-07, 0, 0.224722)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/blockbench_export/PistolReloadArm:position")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.396667, 0.533333, 0.766667, 0.9, 1.13333, 1.4, 1.52, 1.63, 2.27, 2.53333, 2.71, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.236282, 0.324512, -0.292762), Vector3(0.341596, 0.36003, -0.249132), Vector3(0.330407, 0.36003, -0.282589), Vector3(0.34298, 0.295061, -0.377409), Vector3(0.652819, 0.203393, -0.399556), Vector3(0.934525, 0.0347098, -0.429739), Vector3(0.934525, 0.0347098, -0.429739), Vector3(0.652819, 0.203393, -0.399556), Vector3(0.652819, 0.196487, -0.406996), Vector3(0.652819, 0.209469, -0.370862), Vector3(0.652819, 0.203393, -0.399556), Vector3(0.33, 0.24, -0.283), Vector3(0.377716, 0.285577, -0.30816), Vector3(0.236282, 0.324512, -0.292762)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Head/Camera3D/blockbench_export/PistolArm:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.396667, 0.533333, 0.766667, 2.5, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-6.84385e-07, -0.344475, -0.284122), Vector3(-0.415224, -0.378002, -0.125283), Vector3(-0.556567, -0.409043, -0.058999), Vector3(-0.13698, -0.3663, -0.694619), Vector3(-0.13698, -0.3663, -0.694619), Vector3(-0.415224, -0.378002, -0.125283), Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Head/Camera3D/blockbench_export/PistolMesh:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.396667, 0.533333, 0.766667, 2.5, 2.7, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -3.14159, 0), Vector3(0, -3.49066, 0.284489), Vector3(0.413643, -3.52557, 0.123918), Vector3(0.555015, -3.56047, 0.0558505), Vector3(0.141372, -3.51509, 0.696386), Vector3(0.141372, -3.51509, 0.696386), Vector3(0.413643, -3.52557, 0.123918), Vector3(0, -3.14159, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Head/Camera3D/blockbench_export/PistolMesh/PistolMagazine:rotation")
+tracks/6/interp = 2
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.396667, 0.533333, 0.766667, 0.9, 1.13333, 1.4, 1.52, 1.63, 1.96667, 2.26667, 2.4, 2.55, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.84217e-13, 0), Vector3(0, 2.84217e-13, 0), Vector3(0, 2.84217e-13, 0), Vector3(0, -9.31323e-08, -2.32831e-08), Vector3(0.120597, 0.398515, 0.13393), Vector3(0.0408204, 0.741864, 0.134438), Vector3(0.0408204, 0.741864, 0.134438), Vector3(0.120597, 0.398515, 0.13393), Vector3(0.013713, 0.487283, 0.138712), Vector3(0.342277, 0.201222, 0.0907751), Vector3(6.28319, -6.28319, 0.0907571), Vector3(0.342085, -12.1824, 0.0907571), Vector3(0.120428, -12.1824, 0.13439), Vector3(-0.193732, -12.4093, 0.148353), Vector3(0, -12.5664, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Head/Camera3D/blockbench_export/PistolReloadArm:rotation")
+tracks/7/interp = 2
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.396667, 0.533333, 0.766667, 0.9, 1.13333, 1.4, 1.52, 1.63, 2.27, 2.53333, 2.71, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.525135, 0), Vector3(-0.140893, -0.56742, -0.216869), Vector3(-0.342939, -0.73596, -0.0372327), Vector3(-0.342939, -0.73596, -0.0372327), Vector3(-0.286856, -0.373391, -0.230104), Vector3(-0.00916074, -0.153623, -0.274377), Vector3(-0.00916074, -0.153623, -0.274377), Vector3(-0.286856, -0.373391, -0.230104), Vector3(-0.157318, -0.362105, -0.281221), Vector3(-0.557193, -0.42489, -0.105655), Vector3(-0.286856, -0.373391, -0.230104), Vector3(-0.342939, -0.73596, -0.0372327), Vector3(-0.368785, -0.775133, -0.12072), Vector3(0, -0.525135, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_q2wkl"]
+resource_name = "reloadRifle"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/blockbench_export/RifleStableArm:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.39, 0.61, 0.86, 1.13, 1.34, 1.62333, 1.83333, 2.1, 2.26333, 2.3, 2.56667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.327128, 0.297865, -0.22126), Vector3(0.440242, 0.108901, 0.0187962), Vector3(0.487646, 0.317385, -0.0349677), Vector3(0.487646, 0.345332, -0.0606417), Vector3(0.83016, 0.258046, -0.196148), Vector3(1.23981, -0.331794, -0.243797), Vector3(0.83016, 0.258046, -0.196148), Vector3(0.487646, 0.317385, -0.0349677), Vector3(0.440242, 0.108901, 0.0187962), Vector3(0.389426, 0.47012, -0.0927796), Vector3(0.389426, 0.427854, -0.0927796), Vector3(0.440242, 0.108901, 0.0187962), Vector3(0.327128, 0.297865, -0.22126)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/blockbench_export/RifleMesh:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.39, 0.62, 0.86, 1.13, 1.34, 1.62333, 1.84333, 2.1, 2.26333, 2.3, 2.56667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.93715e-05, 0.428413, 0.0820498), Vector3(-0.08538, 0.23617, 0.480593), Vector3(-0.08538, 0.23617, 0.480593), Vector3(-0.08538, 0.213503, 0.495598), Vector3(-0.08538, 0.213503, 0.495598), Vector3(-0.08538, 0.213503, 0.495598), Vector3(-0.08538, 0.213503, 0.495598), Vector3(-0.08538, 0.23617, 0.480593), Vector3(-0.08538, 0.23617, 0.480593), Vector3(-0.08538, 0.23617, 0.480593), Vector3(-0.0810589, 0.154706, 0.480593), Vector3(-0.08538, 0.23617, 0.480593), Vector3(-1.93715e-05, 0.428413, 0.0820498)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/blockbench_export/RifleTriggerArm:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.39, 0.62, 0.86, 1.13, 1.34, 1.62333, 1.84333, 2.1, 2.26333, 2.3, 2.56667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0112146, 0.324512, -0.579874), Vector3(-0.0553812, 0.247807, -0.188757), Vector3(-0.0553812, 0.247807, -0.188757), Vector3(-0.0553812, 0.22514, -0.173752), Vector3(-0.0553812, 0.22514, -0.173752), Vector3(-0.0553812, 0.22514, -0.173752), Vector3(-0.0553812, 0.22514, -0.173752), Vector3(-0.0553812, 0.247807, -0.188757), Vector3(-0.0553812, 0.247807, -0.188757), Vector3(-0.0553812, 0.247807, -0.188757), Vector3(-0.0510601, 0.166343, -0.188757), Vector3(-0.0553812, 0.247807, -0.188757), Vector3(0.0112146, 0.324512, -0.579874)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/blockbench_export/RifleMesh/RifleMagazine:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.39, 0.62, 0.86, 1.13, 1.34, 1.62333, 1.84333, 2.1, 2.26333, 2.3, 2.56667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(0.024003, 0.233518, 0.382706), Vector3(-0.434057, 0.345271, 0.386762), Vector3(-1.19193, 0.0542508, 0.295197), Vector3(-0.434057, 0.345271, 0.386762), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Head/Camera3D/blockbench_export/RifleStableArm:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.39, 0.61, 0.86, 1.13, 1.34, 1.62333, 1.83333, 2.1, 2.26333, 2.3, 2.56667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -0.691011, 0), Vector3(-0.259847, -0.647872, -0.327267), Vector3(-0.259847, -0.930388, -0.327267), Vector3(-0.259847, -0.930388, -0.327267), Vector3(-0.202357, -0.557497, -0.623414), Vector3(-0.202357, -0.205709, -0.623414), Vector3(-0.202357, -0.557497, -0.623414), Vector3(-0.259847, -0.930388, -0.327267), Vector3(-0.259847, -0.647872, -0.327267), Vector3(-0.259847, -0.670683, -0.327267), Vector3(-0.164904, -0.695848, -0.208147), Vector3(-0.259847, -0.647872, -0.327267), Vector3(0, -0.691011, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Head/Camera3D/blockbench_export/RifleMesh:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.39, 0.62, 0.86, 1.13, 1.34, 1.62333, 1.84333, 2.1, 2.26333, 2.3, 2.56667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 3.14159, 0), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(0, 3.14159, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Head/Camera3D/blockbench_export/RifleTriggerArm:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.39, 0.62, 0.86, 1.13, 1.34, 1.62333, 1.84333, 2.1, 2.26333, 2.3, 2.56667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Head/Camera3D/blockbench_export/RifleMesh/RifleMagazine:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.39, 0.62, 0.86, 1.13, 1.34, 1.62333, 1.84333, 2.1, 2.26333, 2.3, 2.56667, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.60025e-06, 0), Vector3(-1.31335, -1.75131, 2.08714), Vector3(-1.22682, -1.00728, 1.63947), Vector3(-1.31335, -1.75131, 2.08714), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_lulei"]
 resource_name = "reloadWasher"
 length = 3.0
@@ -825,206 +1025,6 @@ tracks/0/keys = {
 "values": [Vector3(0, 3.14159, 0), Vector3(0, 3.66519, -0.380482)]
 }
 
-[sub_resource type="Animation" id="Animation_q2wkl"]
-resource_name = "reloadRifle"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Camera3D/blockbench_export/RifleStableArm:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.39, 0.61, 0.86, 1.13, 1.34, 1.62333, 1.83333, 2.1, 2.26333, 2.3, 2.56667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.327128, 0.297865, -0.22126), Vector3(0.440242, 0.108901, 0.0187962), Vector3(0.487646, 0.317385, -0.0349677), Vector3(0.487646, 0.345332, -0.0606417), Vector3(0.83016, 0.258046, -0.196148), Vector3(1.23981, -0.331794, -0.243797), Vector3(0.83016, 0.258046, -0.196148), Vector3(0.487646, 0.317385, -0.0349677), Vector3(0.440242, 0.108901, 0.0187962), Vector3(0.389426, 0.47012, -0.0927796), Vector3(0.389426, 0.427854, -0.0927796), Vector3(0.440242, 0.108901, 0.0187962), Vector3(0.327128, 0.297865, -0.22126)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Camera3D/blockbench_export/RifleMesh:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.39, 0.62, 0.86, 1.13, 1.34, 1.62333, 1.84333, 2.1, 2.26333, 2.3, 2.56667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.93715e-05, 0.428413, 0.0820498), Vector3(-0.08538, 0.23617, 0.480593), Vector3(-0.08538, 0.23617, 0.480593), Vector3(-0.08538, 0.213503, 0.495598), Vector3(-0.08538, 0.213503, 0.495598), Vector3(-0.08538, 0.213503, 0.495598), Vector3(-0.08538, 0.213503, 0.495598), Vector3(-0.08538, 0.23617, 0.480593), Vector3(-0.08538, 0.23617, 0.480593), Vector3(-0.08538, 0.23617, 0.480593), Vector3(-0.0810589, 0.154706, 0.480593), Vector3(-0.08538, 0.23617, 0.480593), Vector3(-1.93715e-05, 0.428413, 0.0820498)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Head/Camera3D/blockbench_export/RifleTriggerArm:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.39, 0.62, 0.86, 1.13, 1.34, 1.62333, 1.84333, 2.1, 2.26333, 2.3, 2.56667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.0112146, 0.324512, -0.579874), Vector3(-0.0553812, 0.247807, -0.188757), Vector3(-0.0553812, 0.247807, -0.188757), Vector3(-0.0553812, 0.22514, -0.173752), Vector3(-0.0553812, 0.22514, -0.173752), Vector3(-0.0553812, 0.22514, -0.173752), Vector3(-0.0553812, 0.22514, -0.173752), Vector3(-0.0553812, 0.247807, -0.188757), Vector3(-0.0553812, 0.247807, -0.188757), Vector3(-0.0553812, 0.247807, -0.188757), Vector3(-0.0510601, 0.166343, -0.188757), Vector3(-0.0553812, 0.247807, -0.188757), Vector3(0.0112146, 0.324512, -0.579874)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Head/Camera3D/blockbench_export/RifleMesh/RifleMagazine:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.39, 0.62, 0.86, 1.13, 1.34, 1.62333, 1.84333, 2.1, 2.26333, 2.3, 2.56667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(0.024003, 0.233518, 0.382706), Vector3(-0.434057, 0.345271, 0.386762), Vector3(-1.19193, 0.0542508, 0.295197), Vector3(-0.434057, 0.345271, 0.386762), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444), Vector3(9.23872e-07, 0.182816, 0.368444)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Head/Camera3D/blockbench_export/RifleStableArm:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.39, 0.61, 0.86, 1.13, 1.34, 1.62333, 1.83333, 2.1, 2.26333, 2.3, 2.56667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -0.691011, 0), Vector3(-0.259847, -0.647872, -0.327267), Vector3(-0.259847, -0.930388, -0.327267), Vector3(-0.259847, -0.930388, -0.327267), Vector3(-0.202357, -0.557497, -0.623414), Vector3(-0.202357, -0.205709, -0.623414), Vector3(-0.202357, -0.557497, -0.623414), Vector3(-0.259847, -0.930388, -0.327267), Vector3(-0.259847, -0.647872, -0.327267), Vector3(-0.259847, -0.670683, -0.327267), Vector3(-0.164904, -0.695848, -0.208147), Vector3(-0.259847, -0.647872, -0.327267), Vector3(0, -0.691011, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Head/Camera3D/blockbench_export/RifleMesh:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.39, 0.62, 0.86, 1.13, 1.34, 1.62333, 1.84333, 2.1, 2.26333, 2.3, 2.56667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 3.14159, 0), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(-0.165841, 3.04679, 0.433985), Vector3(0, 3.14159, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Head/Camera3D/blockbench_export/RifleTriggerArm:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.39, 0.62, 0.86, 1.13, 1.34, 1.62333, 1.84333, 2.1, 2.26333, 2.3, 2.56667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0.165841, -0.0948025, -0.433985), Vector3(0, 0, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Head/Camera3D/blockbench_export/RifleMesh/RifleMagazine:rotation")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.39, 0.62, 0.86, 1.13, 1.34, 1.62333, 1.84333, 2.1, 2.26333, 2.3, 2.56667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.60025e-06, 0), Vector3(-1.31335, -1.75131, 2.08714), Vector3(-1.22682, -1.00728, 1.63947), Vector3(-1.31335, -1.75131, 2.08714), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0), Vector3(-1.5708, 2.6226e-06, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_f2e50"]
-resource_name = "reloadPistol"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Camera3D/blockbench_export/PistolArm:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.47, 2.66667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.0252345, 0.324512, -0.353022), Vector3(-0.0177756, 0.322006, -0.352106), Vector3(-0.0177756, 0.322006, -0.352106), Vector3(-0.0252345, 0.324512, -0.353022)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Camera3D/blockbench_export/PistolMesh:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.47, 2.66667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(-0.0181159, 0.497877, 0.131883), Vector3(-0.0255749, 0.500383, 0.130967), Vector3(-0.0255749, 0.500383, 0.130967), Vector3(-0.0181159, 0.497877, 0.131883)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Head/Camera3D/blockbench_export/PistolMesh/PistolMagazine:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.47, 0.99, 1.55, 2.05, 2.36667, 2.67, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(5.36442e-07, 0, 0.224722), Vector3(5.36442e-07, 0, 0.224722), Vector3(-0.537901, 0.105324, 0.344519), Vector3(-0.913144, -0.129821, 0.378347), Vector3(-0.537901, 0.105324, 0.344519), Vector3(-0.00121355, -0.0186085, 0.344401), Vector3(5.36442e-07, 0, 0.224722), Vector3(5.36442e-07, 0, 0.224722)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Head/Camera3D/blockbench_export/PistolReloadArm:position")
-tracks/3/interp = 2
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.47, 0.99, 1.55, 2.05, 2.36667, 2.67, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0.236282, 0.324512, -0.292762), Vector3(0.334402, 0.324512, -0.414742), Vector3(0.784174, 0.145251, -0.477661), Vector3(1.04932, -0.0428368, -0.504537), Vector3(0.784174, 0.145251, -0.477661), Vector3(0.378682, 0.296381, -0.497411), Vector3(0.334402, 0.324512, -0.414742), Vector3(0.236282, 0.324512, -0.292762)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Head/Camera3D/blockbench_export/PistolArm:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.47, 2.66667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.0449867, -0.170852, -0.402418), Vector3(-0.0449867, -0.170852, -0.402418), Vector3(0, 0, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Head/Camera3D/blockbench_export/PistolMesh:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.47, 2.66667, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -3.14159, 0), Vector3(0.0453786, -3.31613, 0.403171), Vector3(0.0453786, -3.31613, 0.403171), Vector3(0, -3.14159, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Head/Camera3D/blockbench_export/PistolMesh/PistolMagazine:rotation")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.47, 0.99, 1.55, 2.05, 2.36667, 2.67, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 2.84217e-13, 0), Vector3(0, 2.84217e-13, 0), Vector3(0.1026, 0.154937, 0.191744), Vector3(-0.272176, 0.313836, 0.115864), Vector3(0.1026, 0.154937, 0.191744), Vector3(0.0670927, 0.0724156, -0.0310343), Vector3(0, 2.84217e-13, 0), Vector3(0, 2.84217e-13, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Head/Camera3D/blockbench_export/PistolReloadArm:rotation")
-tracks/7/interp = 2
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.47, 0.99, 1.55, 2.05, 2.36667, 2.67, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -0.525135, 0), Vector3(-0.257328, -0.579729, -0.47147), Vector3(-0.361345, -0.354974, -0.647938), Vector3(0.0408331, -0.353275, -0.734141), Vector3(-0.361345, -0.354974, -0.647938), Vector3(-0.276732, -0.676271, -0.431495), Vector3(-0.257328, -0.579729, -0.47147), Vector3(0, -0.525135, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1txc5"]
 _data = {
 &"RESET": SubResource("Animation_r66lb"),
@@ -1121,23 +1121,23 @@ mesh = SubResource("BoxMesh_4dohe")
 surface_material_override/0 = SubResource("StandardMaterial3D_r66lb")
 
 [node name="PistolMesh" type="MeshInstance3D" parent="Head/Camera3D/blockbench_export"]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.0181159, 0.497877, 0.131883)
+transform = Transform3D(-1, 0, -2.53518e-06, 0, 1, 0, 2.53518e-06, 0, -1, -0.0181159, 0.497877, 0.131883)
 mesh = SubResource("ArrayMesh_m2qjg")
 skeleton = NodePath("")
 
 [node name="PistolMagazine" type="MeshInstance3D" parent="Head/Camera3D/blockbench_export/PistolMesh"]
-transform = Transform3D(0.08, 0, 5.68434e-14, 0, 0.08, 0, -2.27374e-14, 0, 0.2, 5.36442e-07, 0, 0.224722)
+transform = Transform3D(0.0800001, 0, 5.68435e-14, 0, 0.0800002, 0, -2.27374e-14, 0, 0.2, 5.36442e-07, 0, 0.224722)
 mesh = SubResource("BoxMesh_edtk3")
 surface_material_override/0 = SubResource("StandardMaterial3D_edtk3")
 
 [node name="RifleMesh" type="MeshInstance3D" parent="Head/Camera3D/blockbench_export"]
-transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -1.93715e-05, 0.428413, 0.0820498)
+transform = Transform3D(-1, 0, 2.53518e-06, 0, 1, 0, -2.53518e-06, 0, -1, -1.93715e-05, 0.428413, 0.0820498)
 visible = false
 mesh = SubResource("ArrayMesh_llb5v")
 skeleton = NodePath("")
 
 [node name="RifleMagazine" type="MeshInstance3D" parent="Head/Camera3D/blockbench_export/RifleMesh"]
-transform = Transform3D(0.106737, -7.00855e-07, -7.27716e-15, 0, -1.16813e-08, 0.0634796, -2.79928e-07, -0.267236, -2.77478e-09, 9.23872e-07, 0.182816, 0.368444)
+transform = Transform3D(0.106737, -7.00853e-07, -6.02662e-13, 0, -9.67392e-07, 0.0634796, -2.79928e-07, -0.267236, -2.29796e-07, 9.23872e-07, 0.182816, 0.368444)
 mesh = SubResource("BoxMesh_lulei")
 surface_material_override/0 = SubResource("StandardMaterial3D_edtk3")
 
@@ -1148,12 +1148,12 @@ mesh = SubResource("ArrayMesh_x0bak")
 skeleton = NodePath("")
 
 [node name="ShotgunMagazine12" type="MeshInstance3D" parent="Head/Camera3D/blockbench_export/ShotgunMesh"]
-transform = Transform3D(-4.66561e-09, 1.16813e-08, -0.0634796, 0.106737, -7.12536e-07, -2.77479e-09, -2.84594e-07, -0.267236, -2.77478e-09, 0.0756271, 0.0608944, 0.166538)
+transform = Transform3D(-4.66424e-09, 9.67392e-07, -0.0634796, 0.106737, -9.67392e-07, -2.77479e-09, -3.86387e-07, -0.267236, -2.29796e-07, 0.0756271, 0.0608944, 0.166538)
 mesh = SubResource("BoxMesh_lulei")
 surface_material_override/0 = SubResource("StandardMaterial3D_edtk3")
 
 [node name="ShotgunMagazine13" type="MeshInstance3D" parent="Head/Camera3D/blockbench_export/ShotgunMesh"]
-transform = Transform3D(-4.66561e-09, 1.16813e-08, -0.0634796, 0.106737, -7.12536e-07, -2.77479e-09, -2.84594e-07, -0.267236, -2.77478e-09, -0.0762864, 0.0608944, 0.166538)
+transform = Transform3D(-4.66424e-09, 9.67392e-07, -0.0634796, 0.106737, -9.67392e-07, -2.77479e-09, -3.86387e-07, -0.267236, -2.29796e-07, -0.0762864, 0.0608944, 0.166538)
 mesh = SubResource("BoxMesh_lulei")
 surface_material_override/0 = SubResource("StandardMaterial3D_edtk3")
 

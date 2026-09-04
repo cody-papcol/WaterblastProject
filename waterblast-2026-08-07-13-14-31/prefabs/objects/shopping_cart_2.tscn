@@ -11,7 +11,7 @@ size = Vector3(0.4, 1, 0.4)
 [node name="shopping-cart2" instance=ExtResource("1_8825r")]
 
 [node name="BulletCollision" type="StaticBody3D" parent="." index="1"]
-collision_layer = 2
+collision_layer = 6
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BulletCollision" index="0"]
 shape = SubResource("ConvexPolygonShape3D_j3hph")
