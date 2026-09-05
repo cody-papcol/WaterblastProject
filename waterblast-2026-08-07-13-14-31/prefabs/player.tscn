@@ -1126,7 +1126,7 @@ mesh = SubResource("ArrayMesh_m2qjg")
 skeleton = NodePath("")
 
 [node name="PistolMagazine" type="MeshInstance3D" parent="Head/Camera3D/blockbench_export/PistolMesh"]
-transform = Transform3D(0.0800001, 0, 5.68435e-14, 0, 0.0800002, 0, -2.27374e-14, 0, 0.2, 5.36442e-07, 0, 0.224722)
+transform = Transform3D(0.0800001, 0, 5.68434e-14, 0, 0.0800002, 0, -2.27374e-14, 0, 0.2, 5.36442e-07, 0, 0.224722)
 mesh = SubResource("BoxMesh_edtk3")
 surface_material_override/0 = SubResource("StandardMaterial3D_edtk3")
 
