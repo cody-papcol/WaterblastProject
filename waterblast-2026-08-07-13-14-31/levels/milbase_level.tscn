@@ -1,0 +1,57 @@
+[gd_scene load_steps=10 format=3 uid="uid://di76a7glgovri"]
+
+[ext_resource type="Texture2D" uid="uid://bxyww00gkpmji" path="res://textures/grasstexture.png" id="1_mvtj8"]
+[ext_resource type="PackedScene" uid="uid://blu33aniy8w0f" path="res://prefabs/player.tscn" id="2_1gul6"]
+[ext_resource type="PackedScene" uid="uid://clpw2ani8xp42" path="res://prefabs/objects/tower_0032.tscn" id="3_1gul6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mvtj8"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_1gul6"]
+sky_material = SubResource("ProceduralSkyMaterial_mvtj8")
+
+[sub_resource type="Environment" id="Environment_3gba5"]
+background_mode = 2
+sky = SubResource("Sky_1gul6")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_3gba5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pecrl"]
+albedo_texture = ExtResource("1_mvtj8")
+uv1_scale = Vector3(-0.405, -0.405, -0.405)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_mvtj8"]
+points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5)
+
+[node name="milbase_level" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3gba5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00921273, 2.38419e-07, 0.00578976)
+collision_layer = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(71.2319, 0, 0, 0, 0.22415, 0, 0, 0, 75.0332, 0, 0, 0)
+mesh = SubResource("BoxMesh_3gba5")
+surface_material_override/0 = SubResource("StandardMaterial3D_pecrl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(71.2319, 0, 0, 0, 0.22415, 0, 0, 0, 75.0332, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_mvtj8")
+
+[node name="Player" parent="." instance=ExtResource("2_1gul6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96809, 2.36676, -3.61879)
+
+[node name="Tower_0032" parent="." instance=ExtResource("3_1gul6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.08609, 0.112075, -9.96164)
