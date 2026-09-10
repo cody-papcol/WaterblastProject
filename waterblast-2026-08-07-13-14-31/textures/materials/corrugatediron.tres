@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d23l0nvssx84p"]
+
+[ext_resource type="Texture2D" uid="uid://bqrmtf3gj63f0" path="res://textures/metal_0024_ao_1k.jpg" id="1_2tkjp"]
+
+[resource]
+albedo_color = Color(0.254703, 0.334176, 0, 1)
+albedo_texture = ExtResource("1_2tkjp")
+uv1_triplanar = true
+uv1_world_triplanar = true

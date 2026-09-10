@@ -11,19 +11,24 @@ var spawnLocation: int = 0
 var playerCoins = 0
 
 var waveNum = 0
-var targetEnemyNum = 0
-var spawnedEnemies = 0
+var targetEnemyNum = 4.0
+var spawnedEnemies = 4.0
 
-var totalWaveNum = 2
+var totalWaveNum = 5
 
-var enemyNum = 4
+var enemyNum = 4.0
 
 
 func _ready():
 	
 	player.level = 1
 	player.unlockedWeapons = 1
-	
+
+func _process(delta: float) -> void:
+	if targetEnemyNum:
+		player.WaveProgress.value = enemyNum/targetEnemyNum
+		
+
 func enemy_death():
 	enemyNum += -1
 	

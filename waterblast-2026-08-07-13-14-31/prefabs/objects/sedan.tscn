@@ -17,7 +17,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, -0.025)
 shape = SubResource("BoxShape3D_16blp")
 
 [node name="BulletCollision" type="StaticBody3D" parent="." index="6"]
-collision_layer = 2
+collision_layer = 3
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="BulletCollision" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, -0.025)

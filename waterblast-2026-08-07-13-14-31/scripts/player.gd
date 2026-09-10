@@ -97,6 +97,7 @@ const FOV_CHANGE = 1.5
 @onready var muzzle = $Head/Camera3D/blockbench_export/Muzzle
 @onready var CoinLabel = $HUD/Control/CoinLabel
 @onready var blocking = $Head/Camera3D/blockbench_export/Muzzle/Blocking
+@onready var WaveProgress = $HUD/Control/WaveProgressBar
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

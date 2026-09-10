@@ -34,6 +34,7 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	
+	
 	if isAlive:
 	
 		nav_agent.set_target_position(player.global_position)
@@ -63,6 +64,8 @@ func _physics_process(_delta: float) -> void:
 			var next_position: Vector3 = nav_agent.get_next_path_position()
 			velocity = global_position.direction_to(next_position) * MoveSpeed
 			running = true
+			
+				
 		else:
 			velocity = Vector3(0, 0, 0)
 			running = false
