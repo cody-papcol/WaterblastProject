@@ -10,7 +10,7 @@ const JUMP_VELOCITY = 3.5
 const SENSITIVITY = 0.003
 
 # water total
-var max_total_water = 100
+@export var max_total_water = 500
 var total_water = max_total_water
 
 
@@ -116,6 +116,8 @@ func _ready() -> void:
 	
 	AudioServer.set_bus_volume_db(0, linear_to_db(0.5))
 		
+	# adding collision exception of player to blocking volume
+	blocking.add_exception($".")
 	
 	for x in get_tree().get_nodes_in_group("enemies"):
 		blocking.add_exception(x)
