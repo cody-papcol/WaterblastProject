@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://vcu8ssbd4yrh"]
+
+[ext_resource type="Script" uid="uid://7pq6b1fbeur3" path="res://scripts/pause_controller.gd" id="1_wdq5c"]
+
+[node name="PauseController" type="Node3D"]
+process_mode = 3
+script = ExtResource("1_wdq5c")

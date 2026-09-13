@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://blu33aniy8w0f"]
+[gd_scene load_steps=55 format=4 uid="uid://blu33aniy8w0f"]
 
 [ext_resource type="Script" uid="uid://cbbixouox3gx2" path="res://scripts/player.gd" id="1_4dohe"]
 [ext_resource type="PackedScene" uid="uid://ppgrpdptbss1" path="res://prefabs/basicpistol.tscn" id="2_r66lb"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://dtcma18n2c2mm" path="res://sounds/freesound_community-land2-43790.wav" id="9_rgeog"]
 [ext_resource type="PackedScene" uid="uid://vj18yqocsb7v" path="res://Components/health_component.tscn" id="10_opo22"]
 [ext_resource type="PackedScene" uid="uid://d4j2udlakrhwr" path="res://prefabs/shop.tscn" id="13_m2qjg"]
+[ext_resource type="PackedScene" uid="uid://vcu8ssbd4yrh" path="res://prefabs/pause_controller.tscn" id="17_edtk3"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_x25rp"]
 
@@ -1040,6 +1041,13 @@ _data = {
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r66lb"]
 bg_color = Color(0.733333, 0, 0, 1)
 
+[sub_resource type="Gradient" id="Gradient_edtk3"]
+offsets = PackedFloat32Array(0.551948)
+colors = PackedColorArray(0.165656, 0.165656, 0.165656, 0.67451)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q2wkl"]
+gradient = SubResource("Gradient_edtk3")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ht1c8"]
 random_pitch = 1.1
 streams_count = 1
@@ -1194,6 +1202,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="HUD" type="CanvasLayer" parent="."]
+process_mode = 3
 script = ExtResource("3_r66lb")
 
 [node name="Control" type="Control" parent="HUD"]
@@ -1236,6 +1245,7 @@ modulate = Color(1, 0, 0, 0)
 layout_mode = 0
 offset_right = 2561.0
 offset_bottom = 1442.0
+mouse_filter = 2
 texture = ExtResource("4_8rb0w")
 
 [node name="CoinLabel" type="Label" parent="HUD/Control"]
@@ -1274,12 +1284,56 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 36
 max_value = 1.0
 
+[node name="PauseBackground" type="TextureRect" parent="HUD/Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_q2wkl")
+
+[node name="ResumeButton" type="Button" parent="HUD/Control/PauseBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -149.5
+offset_top = 42.0
+offset_right = 151.5
+offset_bottom = 127.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 51
+text = "Resume"
+
+[node name="QuitButton" type="Button" parent="HUD/Control/PauseBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.0
+offset_top = 165.0
+offset_right = 167.0
+offset_bottom = 249.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 51
+text = "Quit to Menu"
+
 [node name="SubViewportContainer" type="SubViewportContainer" parent="HUD"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="HUD/SubViewportContainer"]
 transparent_bg = true
@@ -1314,7 +1368,11 @@ volume_db = -2.5
 visible = false
 player = NodePath("..")
 
+[node name="PauseController" parent="." instance=ExtResource("17_edtk3")]
+
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="pressed" from="HUD/Control/PauseBackground/ResumeButton" to="PauseController" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="HUD/Control/PauseBackground/QuitButton" to="PauseController" method="_on_quit_button_pressed"]
 [connection signal="timeout" from="FootstepTimer" to="." method="_on_footstep_timer_timeout"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 
