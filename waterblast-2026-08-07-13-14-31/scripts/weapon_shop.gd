@@ -4,7 +4,11 @@ extends StaticBody3D
 @onready var player: CharacterBody3D = $"../Player"
 
 func interact():
-	player.open_shop()
+	print(player.in_shop)
+	if player.in_shop:
+		player.close_shop()
+	else:
+		player.open_shop()
 
 func show_prompt():
 	prompt_label.visible = true

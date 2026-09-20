@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://056jnyju1juq"]
+[gd_scene load_steps=4 format=3 uid="uid://056jnyju1juq"]
 
 [ext_resource type="Script" uid="uid://b81ix2h7jb0bo" path="res://scripts/level scripts/level_select.gd" id="1_mk87e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mk87e"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_ygvyp"]
+font_size = 64
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -56,7 +62,8 @@ offset_top = 362.0
 offset_right = 1430.0
 offset_bottom = 618.0
 theme_override_font_sizes/font_size = 101
-text = "Level 3"
+text = "Level 3
+"
 
 [node name="L3 Endless" type="Button" parent="."]
 layout_mode = 0
@@ -114,6 +121,51 @@ offset_right = 501.0
 offset_bottom = 1287.0
 theme_override_font_sizes/font_size = 101
 text = "Back"
+
+[node name="UnlockEndless" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1095.0
+offset_top = 1159.0
+offset_right = 2241.0
+offset_bottom = 1247.0
+text = "To unlock endless mode, beat Level 5!"
+label_settings = SubResource("LabelSettings_mk87e")
+
+[node name="Level 2 Locked" type="Label" parent="."]
+layout_mode = 0
+offset_left = 739.0
+offset_top = 267.0
+offset_right = 958.0
+offset_bottom = 355.0
+text = "Locked"
+label_settings = SubResource("LabelSettings_ygvyp")
+
+[node name="Level 3 Locked" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1147.0
+offset_top = 267.0
+offset_right = 1366.0
+offset_bottom = 355.0
+text = "Locked"
+label_settings = SubResource("LabelSettings_ygvyp")
+
+[node name="Level 4 Locked" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1547.0
+offset_top = 267.0
+offset_right = 1766.0
+offset_bottom = 355.0
+text = "Locked"
+label_settings = SubResource("LabelSettings_ygvyp")
+
+[node name="Level 5 Locked" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1963.0
+offset_top = 267.0
+offset_right = 2182.0
+offset_bottom = 355.0
+text = "Locked"
+label_settings = SubResource("LabelSettings_ygvyp")
 
 [connection signal="pressed" from="Level 1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="Level 2" to="." method="_on_level_2_pressed"]

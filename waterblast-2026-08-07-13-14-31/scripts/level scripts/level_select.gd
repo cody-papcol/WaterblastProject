@@ -1,5 +1,18 @@
 extends Control
 
+func _ready():
+	if SaveManager.highest_level_unlocked > 1:
+		$"Level 2 Locked".visible = false
+		
+	if SaveManager.highest_level_unlocked > 2:
+		$"Level 3 Locked".visible = false
+		
+	if SaveManager.highest_level_unlocked > 3:
+		$"Level 4 Locked".visible = false
+		
+	if SaveManager.highest_level_unlocked > 4:
+		$"Level 5 Locked".visible = false
+		
 
 func _on_back_pressed():
 	get_tree().change_scene_to_file("res://levels/main_menu.tscn")

@@ -237,12 +237,6 @@ func change_weapon(num):
 
 func _unhandled_input(event: InputEvent) -> void:
 	
-		
-	# escape button to pause
-	if Input.is_action_just_pressed("interact"):
-		if in_shop:
-			close_shop()
-			in_shop = false
 			
 			
 	# input only works when gameplay is not paused

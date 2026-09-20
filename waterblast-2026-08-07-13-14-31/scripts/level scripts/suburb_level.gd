@@ -13,6 +13,8 @@ var waveNum = 0
 var targetEnemyNum = 4.0
 var spawnedEnemies = 4.0
 
+var totalWaveNum = 2
+
 var enemyNum = 4.0
 
 
@@ -54,7 +56,7 @@ func _start_wave(num):
 	num += 1
 	waveNum = num
 	spawnedEnemies = 0
-	targetEnemyNum = num * 5
+	targetEnemyNum = num * 8
 	
 	# enemy spawning
 	for x in targetEnemyNum:
@@ -65,4 +67,9 @@ func _start_wave(num):
 
 
 func _on_wave_reset_timer_timeout():
-	_start_wave(waveNum)
+	if waveNum + 1 <= totalWaveNum:
+		_start_wave(waveNum)
+	else:
+		SaveManager.highest_level_unlocked += 1
+		SaveManager.save_progress()
+		get_tree().change_scene_to_file("res://levels/supermarket_level.tscn")
