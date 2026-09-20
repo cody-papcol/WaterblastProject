@@ -15,9 +15,13 @@ warnings/check_invalid_track_paths=false
 [application]
 
 config/name="Waterblast GitHub"
-run/main_scene="uid://di76a7glgovri"
+run/main_scene="uid://bkxlq4xfamc4t"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+SaveManager="*res://GlobalScripts/save_manager.gd"
 
 [display]
 

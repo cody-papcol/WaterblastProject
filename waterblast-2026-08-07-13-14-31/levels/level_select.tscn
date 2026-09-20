@@ -1,0 +1,123 @@
+[gd_scene load_steps=2 format=3 uid="uid://056jnyju1juq"]
+
+[ext_resource type="Script" uid="uid://b81ix2h7jb0bo" path="res://scripts/level scripts/level_select.gd" id="1_mk87e"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mk87e")
+
+[node name="Level 1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 362.0
+offset_right = 615.0
+offset_bottom = 618.0
+theme_override_font_sizes/font_size = 101
+text = "Level 1"
+
+[node name="L1 Endless" type="Button" parent="."]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 643.0
+offset_right = 615.0
+offset_bottom = 789.0
+theme_override_font_sizes/font_size = 80
+text = "Endless
+"
+
+[node name="Level 2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 678.0
+offset_top = 362.0
+offset_right = 1023.0
+offset_bottom = 618.0
+theme_override_font_sizes/font_size = 101
+text = "Level 2"
+
+[node name="L2 Endless" type="Button" parent="."]
+layout_mode = 0
+offset_left = 678.0
+offset_top = 643.0
+offset_right = 1023.0
+offset_bottom = 789.0
+theme_override_font_sizes/font_size = 80
+text = "Endless
+"
+
+[node name="Level 3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1085.0
+offset_top = 362.0
+offset_right = 1430.0
+offset_bottom = 618.0
+theme_override_font_sizes/font_size = 101
+text = "Level 3"
+
+[node name="L3 Endless" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1086.0
+offset_top = 643.0
+offset_right = 1431.0
+offset_bottom = 789.0
+theme_override_font_sizes/font_size = 80
+text = "Endless
+"
+
+[node name="Level 4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1493.0
+offset_top = 362.0
+offset_right = 1838.0
+offset_bottom = 618.0
+theme_override_font_sizes/font_size = 101
+text = "Level 4"
+
+[node name="L4 Endless" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1494.0
+offset_top = 643.0
+offset_right = 1839.0
+offset_bottom = 789.0
+theme_override_font_sizes/font_size = 80
+text = "Endless
+"
+
+[node name="Level 5" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1901.0
+offset_top = 362.0
+offset_right = 2246.0
+offset_bottom = 618.0
+theme_override_font_sizes/font_size = 101
+text = "Level 5"
+
+[node name="L5 Endless" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1902.0
+offset_top = 643.0
+offset_right = 2247.0
+offset_bottom = 789.0
+theme_override_font_sizes/font_size = 80
+text = "Endless
+"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 164.0
+offset_top = 1141.0
+offset_right = 501.0
+offset_bottom = 1287.0
+theme_override_font_sizes/font_size = 101
+text = "Back"
+
+[connection signal="pressed" from="Level 1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="Level 2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="Level 3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Level 4" to="." method="_on_level_4_pressed"]
+[connection signal="pressed" from="Level 5" to="." method="_on_level_5_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
