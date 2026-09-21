@@ -13,12 +13,15 @@ var waveNum = 0
 var targetEnemyNum = 5.0
 var spawnedEnemies = 5.0
 
+var totalWaveNum = 5
+
 var enemyNum = 5.0
 
 
 func _ready():
 	player.level = 3
 	player.unlockedWeapons = 3
+	CurrentLevelManager.current_level = 3
 	
 func _process(delta: float) -> void:
 	if targetEnemyNum:
@@ -65,4 +68,9 @@ func _start_wave(num):
 
 
 func _on_wave_reset_timer_timeout():
-	_start_wave(waveNum)
+	if waveNum + 1 <= totalWaveNum:
+		_start_wave(waveNum)
+	else:
+		SaveManager.highest_level_unlocked += 1
+		SaveManager.save_progress()
+		get_tree().change_scene_to_file("res://levels/milbase_level.tscn")

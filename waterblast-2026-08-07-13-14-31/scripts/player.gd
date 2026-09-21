@@ -259,14 +259,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			sprinting = true
 			$FootstepTimer.wait_time = sprinting_wait_time
 			
-		if Input.is_action_just_pressed("interact"):
-			activate()
+		
 		
 		#handling reload
 		if Input.is_action_just_pressed("reload") and ammo != max_ammo and total_water != 0:
 			
 			reload()
-	
+			
+	if Input.is_action_just_pressed("interact"):
+			activate()
 	
 	
 func _physics_process(delta: float) -> void:
@@ -407,21 +408,27 @@ func _physics_process(delta: float) -> void:
 		var input_dir := Input.get_vector("left", "right", "forward", "back")
 		var direction: Vector3 = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		
-		if is_on_floor():
-			if direction:
-				moving = true
-				velocity.x = direction.x * speed
-				velocity.z = direction.z * speed
+		# ensures player cannot move in shop
+		if not in_shop:
+			if is_on_floor():
+				if direction:
+					moving = true
+					velocity.x = direction.x * speed
+					velocity.z = direction.z * speed
+						
+				else:
+					moving = false
+					velocity.x = lerp(velocity.x, direction.x * speed, delta * 12.0)
+					velocity.z = lerp(velocity.z, direction.z * speed, delta * 12.0)
 					
 			else:
 				moving = false
-				velocity.x = lerp(velocity.x, direction.x * speed, delta * 12.0)
-				velocity.z = lerp(velocity.z, direction.z * speed, delta * 12.0)
-				
+				velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
+				velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
 		else:
-			moving = false
-			velocity.x = lerp(velocity.x, direction.x * speed, delta * 3.0)
-			velocity.z = lerp(velocity.z, direction.z * speed, delta * 3.0)
+				moving = false
+				velocity.x = 0
+				velocity.z = 0
 			
 		# head bob
 		t_bob += delta * velocity.length() * float(is_on_floor())
@@ -533,9 +540,9 @@ func hide_current_prompt():
 
 func activate():
 	var hit = raycast.get_collider()
-	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
-		if hit and hit.has_method("interact"):
-			hit.interact()
+	if hit and hit.has_method("interact"):
+		print(in_shop)
+		hit.interact()
 
 func on_damage(attack):
 	health = $HealthComponent.health
@@ -544,9 +551,10 @@ func on_damage(attack):
 
 # shop logic
 func open_shop():
-	$Shop.visible = true
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	in_shop = true
+	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+		$Shop.visible = true
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		in_shop = true
 	
 func close_shop():
 	$Shop.visible = false

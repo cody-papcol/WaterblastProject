@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SaveManager="*res://GlobalScripts/save_manager.gd"
+CurrentLevelManager="*res://GlobalScripts/current_level_manager.gd"
 
 [display]
 

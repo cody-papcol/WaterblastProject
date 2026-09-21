@@ -13,12 +13,15 @@ var waveNum = 0
 var targetEnemyNum = 2.0
 var spawnedEnemies = 2.0
 
+var totalWaveNum = 4
+
 var enemyNum = 2.0
 
 
 func _ready():
 	player.level = 4
 	player.unlockedWeapons = 4
+	CurrentLevelManager.current_level = 4
 	
 func _process(delta: float) -> void:
 	if targetEnemyNum:
@@ -68,4 +71,9 @@ func _start_wave(num):
 
 
 func _on_wave_reset_timer_timeout():
-	_start_wave(waveNum)
+	if waveNum + 1 <= totalWaveNum:
+		_start_wave(waveNum)
+	else:
+		SaveManager.highest_level_unlocked += 1
+		SaveManager.save_progress()
+		get_tree().change_scene_to_file("res://levels/main_menu.tscn")

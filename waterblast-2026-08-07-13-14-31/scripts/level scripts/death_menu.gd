@@ -8,7 +8,14 @@ func _ready() -> void:
 
 
 func _on_play_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://levels/test_level.tscn")
+	if CurrentLevelManager.current_level == 1:
+		get_tree().change_scene_to_file("res://levels/test_level.tscn")
+	elif CurrentLevelManager.current_level == 2:
+		get_tree().change_scene_to_file("res://levels/suburb_level.tscn")
+	elif CurrentLevelManager.current_level == 3:
+		get_tree().change_scene_to_file("res://levels/supermarket_level.tscn")
+	elif CurrentLevelManager.current_level == 4:
+		get_tree().change_scene_to_file("res://levels/milbase_level.tscn")
 	
 
 

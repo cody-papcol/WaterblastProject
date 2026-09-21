@@ -23,6 +23,7 @@ func _ready():
 	
 	player.level = 1
 	player.unlockedWeapons = 1
+	CurrentLevelManager.current_level = 1
 
 func _process(delta: float) -> void:
 	if targetEnemyNum:

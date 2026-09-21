@@ -22,7 +22,8 @@ func _ready():
 	
 	player.level = 2
 	player.unlockedWeapons = 2
-
+	CurrentLevelManager.current_level = 2
+	
 func _process(delta: float) -> void:
 	if targetEnemyNum:
 		player.WaveProgress.value = enemyNum/targetEnemyNum
