@@ -74,6 +74,9 @@ func _on_wave_reset_timer_timeout() -> void:
 	if waveNum + 1 <= totalWaveNum:
 		_start_wave(waveNum)
 	else:
-		SaveManager.highest_level_unlocked += 1
-		SaveManager.save_progress()
-		get_tree().change_scene_to_file("res://levels/suburb_level.tscn")
+		if SaveManager.highest_level_unlocked == 1:
+			SaveManager.highest_level_unlocked += 1
+			SaveManager.save_progress()
+			get_tree().change_scene_to_file("res://levels/level_select.tscn")
+		else:
+			get_tree().change_scene_to_file("res://levels/level_select.tscn")

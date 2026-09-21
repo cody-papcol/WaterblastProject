@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://rlhwjtyhnvp0"]
+
+[ext_resource type="Texture2D" uid="uid://bqrmtf3gj63f0" path="res://textures/metal_0024_ao_1k.jpg" id="1_48dgf"]
+[ext_resource type="PackedScene" uid="uid://dh4e70w7o8bmf" path="res://models/asset packs/ITHappy Military Pack/Military_Free_glb/Separate_Assets_glb/Hedgehog_001.glb" id="2_cfb24"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_mpors"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_18hgs"]
+albedo_color = Color(0.402144, 0.238684, 0.166355, 1)
+albedo_texture = ExtResource("1_48dgf")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_18hgs"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Wall1" type="StaticBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 5, 0, 0, 0, 4, 0, 0, 0)
+collision_layer = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_mpors")
+surface_material_override/0 = SubResource("StandardMaterial3D_18hgs")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_18hgs")
+
+[node name="Hedgehog_0012" parent="." instance=ExtResource("2_cfb24")]
+transform = Transform3D(1.18, 0, 0, 0, 0.19, 0, 0, 0, 0.165, 0, 0.4, 0.35)
+
+[node name="Hedgehog_0013" parent="." instance=ExtResource("2_cfb24")]
+transform = Transform3D(1.18, 0, 0, 0, 0.19, 0, 0, 0, 0.165, 0, 0.4, 0.25)
+
+[node name="Hedgehog_0014" parent="." instance=ExtResource("2_cfb24")]
+transform = Transform3D(1.18, 0, 0, 0, 0.19, 0, 0, 0, 0.165, 0, 0.4, 0.15)
+
+[node name="Hedgehog_0015" parent="." instance=ExtResource("2_cfb24")]
+transform = Transform3D(1.18, 0, 0, 0, 0.19, 0, 0, 0, 0.165, 0, 0.4, 0.05)
+
+[node name="Hedgehog_0016" parent="." instance=ExtResource("2_cfb24")]
+transform = Transform3D(1.18, 0, 0, 0, 0.19, 0, 0, 0, 0.165, 0, 0.4, -0.05)
+
+[node name="Hedgehog_0017" parent="." instance=ExtResource("2_cfb24")]
+transform = Transform3D(1.18, 0, 0, 0, 0.19, 0, 0, 0, 0.165, 0, 0.4, -0.15)
+
+[node name="Hedgehog_0018" parent="." instance=ExtResource("2_cfb24")]
+transform = Transform3D(1.18, 0, 0, 0, 0.19, 0, 0, 0, 0.165, 0, 0.4, -0.25)
+
+[node name="Hedgehog_0019" parent="." instance=ExtResource("2_cfb24")]
+transform = Transform3D(1.18, 0, 0, 0, 0.19, 0, 0, 0, 0.165, 0, 0.4, -0.35)
+
+[node name="Hedgehog_0020" parent="." instance=ExtResource("2_cfb24")]
+transform = Transform3D(1.18, 0, 0, 0, 0.19, 0, 0, 0, 0.165, 0, 0.4, -0.45)
+
+[node name="Hedgehog_0021" parent="." instance=ExtResource("2_cfb24")]
+transform = Transform3D(1.18, 0, 0, 0, 0.19, 0, 0, 0, 0.165, 0, 0.4, 0.45)
