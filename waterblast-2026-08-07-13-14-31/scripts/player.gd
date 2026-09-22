@@ -457,14 +457,12 @@ func _on_reload_timer_timeout() -> void:
 	
 	reloading = false
 	
-	if total_water >= max_ammo:
+	if total_water >= max_ammo - ammo:
 		
 		total_water -= max_ammo - ammo
 		ammo = max_ammo
-		
-		
 	else:
-		ammo = total_water
+		ammo += total_water
 		total_water = 0
 	
 	$HUD/Control/TextureProgressBar.value = total_water

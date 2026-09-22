@@ -13,7 +13,7 @@ var waveNum = 0
 var targetEnemyNum = 2.0
 var spawnedEnemies = 2.0
 
-var totalWaveNum = 4
+var totalWaveNum = 10
 
 var enemyNum = 2.0
 
