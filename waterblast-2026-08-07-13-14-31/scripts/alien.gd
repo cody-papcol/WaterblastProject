@@ -17,7 +17,7 @@ signal death
 @onready var mesh: Node3D = $"character-g2"
 @onready var meshAnims: AnimationPlayer = $"character-g2/AnimationPlayer"
 
-var health: int = 250
+var health: int = 200
 var player: CharacterBody3D = null
 
 var nextPosition

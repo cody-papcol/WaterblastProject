@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://di76a7glgovri"]
+[gd_scene load_steps=32 format=3 uid="uid://di76a7glgovri"]
 
 [ext_resource type="Script" uid="uid://bhxat5hmi06fo" path="res://scripts/level scripts/milbase_level.gd" id="1_cu1hk"]
 [ext_resource type="PackedScene" uid="uid://blu33aniy8w0f" path="res://prefabs/player.tscn" id="2_1gul6"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://1ya1ougjuaq6" path="res://models/asset packs/ITHappy Military Pack/Military_Free_glb/Separate_Assets_glb/Radiostation_001.glb" id="11_hbgjr"]
 [ext_resource type="Material" uid="uid://d23l0nvssx84p" path="res://textures/materials/corrugatediron.tres" id="11_mjbbx"]
 [ext_resource type="PackedScene" uid="uid://dceivh8p8acxf" path="res://prefabs/objects/adminlight.tscn" id="11_uof7u"]
-[ext_resource type="CompressedTexture3D" uid="uid://4sq2cypuoi80" path="res://BakedParticleCollisions/milbase_level.GPUParticlesCollisionSDF3D_data.exr" id="14_18xn5"]
 [ext_resource type="PackedScene" uid="uid://rlhwjtyhnvp0" path="res://prefabs/milbase_wall_1.tscn" id="15_6kvga"]
 [ext_resource type="PackedScene" uid="uid://j407ud7lwlhu" path="res://prefabs/water_refill_station.tscn" id="15_ml3p3"]
 [ext_resource type="PackedScene" uid="uid://dqqvedqhiw4g5" path="res://prefabs/weapon_shop.tscn" id="16_ajqpl"]
@@ -652,13 +651,6 @@ transform = Transform3D(6.55671e-08, 0, 4, 0, 5, 0, -0.5, 0, 5.24537e-07, -32.8,
 [node name="Tank_0062" parent="NavigationRegion3D" instance=ExtResource("18_a3f67")]
 transform = Transform3D(0.295708, 0, 0.955278, 0, 1, 0, -0.955278, 0, 0.295708, -5.1407, 0.0144373, 6.65769)
 
-[node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 5.4, -9)
-size = Vector3(104, 16, 56)
-resolution = 5
-thickness = 0.75
-texture = ExtResource("14_18xn5")
-
 [node name="WaterRefill" parent="." instance=ExtResource("15_ml3p3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.9703, 1.33446, -20.3869)
 
@@ -679,6 +671,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.8457, 0, -31.6032)
 [node name="WaveResetTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2211, -0.484314, -8.29469)
+size = Vector3(99.2888, 1.03137, 52.1931)
 
 [connection signal="death" from="InitialAliens/Alien" to="." method="enemy_death"]
 [connection signal="death" from="InitialAliens/Alien2" to="." method="enemy_death"]

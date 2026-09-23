@@ -52,3 +52,7 @@ transform = Transform3D(1.18, 0, 0, 0, 0.19, 0, 0, 0, 0.165, 0, 0.4, -0.45)
 
 [node name="Hedgehog_0021" parent="." instance=ExtResource("2_cfb24")]
 transform = Transform3D(1.18, 0, 0, 0, 0.19, 0, 0, 0, 0.165, 0, 0.4, 0.45)
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00509644, -0.00180054)
+size = Vector3(2, 1.00665, 0.997498)

@@ -55,7 +55,7 @@ func _start_wave(num):
 	num += 1
 	waveNum = num
 	spawnedEnemies = 0
-	targetEnemyNum = num * 10
+	targetEnemyNum = num * 50
 	
 	print("wave started")
 	

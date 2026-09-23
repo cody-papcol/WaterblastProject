@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://g5hb1ciebssb"]
+[gd_scene load_steps=5 format=3 uid="uid://g5hb1ciebssb"]
 
 [ext_resource type="PackedScene" uid="uid://d0qhn6jf5sbpg" path="res://models/asset packs/Kenney Building Pack/Models/GLB format/Walls/wall.glb" id="1_0fp37"]
 [ext_resource type="Material" uid="uid://d23l0nvssx84p" path="res://textures/materials/corrugatediron.tres" id="2_enk0p"]
+[ext_resource type="CompressedTexture3D" uid="uid://ewhaex02ao56" path="res://BakedParticleCollisions/wall_2.GPUParticlesCollisionSDF3D_data.exr" id="3_hgn3i"]
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_enk0p"]
 data = PackedVector3Array(-0.05, 0, 1, -0.05, 0, -1, -0.05, 2.4, -1, -0.05, 2.4, -1, -0.05, 2.4, 1, -0.05, 0, 1, 0.05, 2.4, 1, 0.05, 0, 1, -0.05, 0, 1, -0.05, 0, 1, -0.05, 2.4, 1, 0.05, 2.4, 1, -0.05, 0, -1, 0.05, 0, -1, 0.05, 2.4, -1, 0.05, 2.4, -1, -0.05, 2.4, -1, -0.05, 0, -1, -0.05, 2.4, -1, 0.05, 2.4, -1, 0.05, 2.4, 1, 0.05, 2.4, 1, -0.05, 2.4, 1, -0.05, 2.4, -1, 0.05, 2.4, 1, 0.05, 2.4, -1, 0.05, 0, -1, 0.05, 0, -1, 0.05, 0, 1, 0.05, 2.4, 1)
@@ -16,3 +17,8 @@ collision_layer = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
 shape = SubResource("ConcavePolygonShape3D_enk0p")
+
+[node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+size = Vector3(2, 4, 2)
+texture = ExtResource("3_hgn3i")

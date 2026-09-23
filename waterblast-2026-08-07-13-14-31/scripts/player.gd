@@ -42,7 +42,7 @@ var rifleLevel = 0
 
 # shotgun
 var shotgunBulletVelocity = 20.0
-var shotgunDamage = 20
+var shotgunDamage = 25
 var shotgunMaxAmmo = 30
 var shotgunFireRate = 0.5
 @export var shotgunSpread = 0.15
