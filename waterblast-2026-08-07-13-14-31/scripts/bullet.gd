@@ -16,15 +16,20 @@ func _process(_delta: float) -> void:
 				if not spawnedExplosion:
 					x.damage(weaponDamage)
 		
-		spawnedExplosion = true
-		var bulletexplosion : RigidBody3D = bulletexplosion_prefab.instantiate()
-		bulletexplosion.transform = transform
-		bulletexplosion.apply_impulse(linear_velocity)
-		bulletexplosion.add_collision_exception_with(get_collision_exceptions().get(0))
-		get_parent().add_child(bulletexplosion)
-			
-			
+		if not spawnedExplosion:
+			var bulletexplosion : RigidBody3D = bulletexplosion_prefab.instantiate()
+			bulletexplosion.transform = transform
+			#look_at(global_position + linear_velocity, Vector3.UP)
+			#bulletexplosion.global_rotation = global_rotation
+			bulletexplosion.apply_impulse(linear_velocity)
+			bulletexplosion.add_collision_exception_with(get_collision_exceptions().get(0))
+			get_parent().add_child(bulletexplosion)
+			spawnedExplosion = true
+		
 		queue_free()
+			
+			
+		
 
 
 func _on_timer_timeout() -> void:

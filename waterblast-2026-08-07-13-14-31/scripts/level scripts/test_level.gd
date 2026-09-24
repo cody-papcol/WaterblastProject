@@ -14,7 +14,7 @@ var waveNum = 0
 var targetEnemyNum = 4.0
 var spawnedEnemies = 4.0
 
-var totalWaveNum = 2
+var totalWaveNum = 1
 
 var enemyNum = 4.0
 
@@ -70,13 +70,15 @@ func _start_wave(num):
 
 
 func _on_wave_reset_timer_timeout() -> void:
-	
-	if waveNum + 1 <= totalWaveNum:
-		_start_wave(waveNum)
-	else:
-		if SaveManager.highest_level_unlocked == 1:
-			SaveManager.highest_level_unlocked += 1
-			SaveManager.save_progress()
-			get_tree().change_scene_to_file("res://levels/level_select.tscn")
+	if not CurrentLevelManager.endless_mode:
+		if waveNum + 1 <= totalWaveNum:
+			_start_wave(waveNum)
 		else:
-			get_tree().change_scene_to_file("res://levels/level_select.tscn")
+			if SaveManager.highest_level_unlocked == 1:
+				SaveManager.highest_level_unlocked += 1
+				SaveManager.save_progress()
+				get_tree().change_scene_to_file("res://levels/level_select.tscn")
+			else:
+				get_tree().change_scene_to_file("res://levels/level_select.tscn")
+	else:
+		_start_wave(waveNum)

@@ -1258,6 +1258,22 @@ offset_bottom = 136.0
 theme_override_font_sizes/font_size = 50
 text = "0 Coins"
 
+[node name="ScoreLabel" type="Label" parent="HUD/Control"]
+offset_left = 2274.0
+offset_top = 147.0
+offset_right = 2482.0
+offset_bottom = 230.0
+theme_override_font_sizes/font_size = 50
+text = "0"
+
+[node name="MultiLabel" type="Label" parent="HUD/Control"]
+offset_left = 2274.0
+offset_top = 240.0
+offset_right = 2482.0
+offset_bottom = 323.0
+theme_override_font_sizes/font_size = 50
+text = "1.0"
+
 [node name="TextureProgressBar" type="TextureProgressBar" parent="HUD/Control"]
 layout_mode = 0
 offset_left = 2147.0

@@ -68,6 +68,11 @@ var sprinting_wait_time = 0.3
 # Player Coins
 @export var playerCoins = 0
 
+# Score Variables
+var score = 0.0
+var scoreMulti = 1.0
+var scorePerKill = 100
+
 var in_shop = false
 
 var can_shoot = true
@@ -269,8 +274,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 			activate()
 	
+	if Input.is_action_just_pressed("testdamage"):
+		$CollisionShape3D.disabled = true
 	
 func _physics_process(delta: float) -> void:
+	
+	$HUD/Control/ScoreLabel.text = str(score)
+	$HUD/Control/MultiLabel.text = str(scoreMulti)
 	
 	# only processes if not paused
 	if playerPaused == false:
@@ -477,6 +487,9 @@ func _on_reload_timer_timeout() -> void:
 
 func _damage(value):
 	if value >= 0:
+		
+		scoreMulti = 1.0
+		
 		health -= value
 		$HealthComponent.health = health
 		$DamageSound.play()
@@ -675,3 +688,7 @@ func reload():
 			await $AnimationPlayer.animation_finished
 			$AnimationPlayer.play("reloadWasher")
 		$ReloadTimer.start()
+
+func enemy_kill():
+	score += 100 * scoreMulti
+	scoreMulti += 0.05

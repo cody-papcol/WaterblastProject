@@ -15,7 +15,7 @@ collision_layer = 7
 shape = SubResource("ConcavePolygonShape3D_28cj6")
 
 [node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="." index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00367737, 0.897949, -0.0223694)
-size = Vector3(2.85721, 1.90332, 4.41888)
-resolution = 3
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112342, 0.897949, -0.0223694)
+size = Vector3(3.08925, 1.90332, 4.41888)
+resolution = 4
 texture = ExtResource("2_28cj6")

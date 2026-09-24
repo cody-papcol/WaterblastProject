@@ -155,5 +155,6 @@ shape = SubResource("ConcavePolygonShape3D_tpqmq")
 [node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0569458, 2.12387, 0.175781)
 size = Vector3(5.57678, 6.24774, 12.3203)
-resolution = 3
+resolution = 4
+thickness = 2.0
 texture = ExtResource("2_15q6x")

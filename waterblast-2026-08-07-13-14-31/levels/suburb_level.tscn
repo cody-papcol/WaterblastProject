@@ -63,7 +63,7 @@ weapon = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 6.93393, -2.5)
 layers = 3
 size = Vector3(66, 13, 49)
-resolution = 3
+resolution = 4
 texture = ExtResource("5_wxeg5")
 
 [node name="Roads" type="Node3D" parent="."]

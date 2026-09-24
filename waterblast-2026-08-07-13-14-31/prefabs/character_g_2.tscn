@@ -4,3 +4,27 @@
 
 [node name="character-g2" instance=ExtResource("1_m6iet")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="character-g/root/leg-left" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00454712, -0.478943, 0.0226135)
+size = Vector3(0.398132, 1.04211, 0.321716)
+
+[node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="character-g/root/leg-right" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00436732, -0.478943, 0.0226135)
+size = Vector3(0.398132, 1.04211, 0.321716)
+
+[node name="GPUParticlesCollisionBox3D5" type="GPUParticlesCollisionBox3D" parent="character-g/root/torso" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0176663, 0.854399, 0.0814371)
+size = Vector3(1.0413, 1.13496, 0.438202)
+
+[node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="character-g/root/torso/arm-left" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.977854, -0.463962, 0.123194)
+size = Vector3(0.398132, 1.04211, 0.321716)
+
+[node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="character-g/root/torso/arm-right" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.945198, -0.463962, 0.123194)
+size = Vector3(0.398132, 1.04211, 0.321716)
+
+[node name="GPUParticlesCollisionBox3D6" type="GPUParticlesCollisionBox3D" parent="character-g/root/torso/head" index="0"]
+transform = Transform3D(10, 0, 1.13687e-13, 0, 10, 0, -1.13687e-13, 0, 10, 0.0286251, 4.15582, 0.0568484)
+size = Vector3(0.836838, 0.786232, 0.785019)

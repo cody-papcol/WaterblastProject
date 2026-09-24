@@ -27,18 +27,6 @@ avoidance_enabled = true
 radius = 0.75
 neighbor_distance = 10.0
 
-[node name="GPUParticlesCollisionSphere3D" type="GPUParticlesCollisionSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.435989, 0)
-radius = 0.642662
-
-[node name="GPUParticlesCollisionSphere3D2" type="GPUParticlesCollisionSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00799572, 0)
-radius = 0.642662
-
-[node name="GPUParticlesCollisionSphere3D3" type="GPUParticlesCollisionSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.426602, 0)
-radius = 0.642662
-
 [node name="DamageTimer" type="Timer" parent="."]
 one_shot = true
 

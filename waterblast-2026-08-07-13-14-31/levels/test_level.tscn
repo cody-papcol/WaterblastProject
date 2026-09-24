@@ -156,7 +156,7 @@ mesh = SubResource("BoxMesh_wndkh")
 
 [node name="Wall1" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(0.3, 0, 0, 0, 8.51, 0, 0, 0, 8.55, 13.6, 0, -6)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall1"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -171,7 +171,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall11" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(0.3, 0, 0, 0, 8.51, 0, 0, 0, 8.55, 13.6, 0, 2.5)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall11"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -186,7 +186,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall2" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-1.31134e-08, 0, 8.55, 0, 8.51, 0, -0.3, 0, -3.73732e-07, 9.6, 0, -10)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall2"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -201,7 +201,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall3" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-1.31134e-08, 0, 8.55, 0, 8.51, 0, -0.3, 0, -3.73732e-07, 1.1, 0, -10)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, -1.11022e-16, 0, 1, 0, 0, -0.00603736)
@@ -217,7 +217,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall4" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-1.31134e-08, 0, 8.55, 0, 8.51, 0, -0.3, 0, -3.73732e-07, -7.49268, 0, -10)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall4"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -232,7 +232,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall5" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-0.3, 0, -7.47465e-07, 0, 8.51, 0, 2.62268e-08, 0, -8.55, -10.9, 0, -7)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall5"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -247,7 +247,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall6" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-0.3, 0, -7.47465e-07, 0, 8.51, 0, 2.62268e-08, 0, -8.55, -10.9, 0, 1.5)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall6"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -262,7 +262,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall12" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(0.3, 0, 1.49493e-06, 0, 8.51, 0, -5.24536e-08, 0, 8.55, 4.2, 0, 9.8)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall12"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -277,7 +277,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall13" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(0.3, 0, 1.49493e-06, 0, 8.51, 0, -5.24536e-08, 0, 8.55, 4.2, 0, 18.3)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall13"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -292,7 +292,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall14" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(0.3, 0, 8.96958e-07, 0, 8.51, 0, -5.24536e-08, 0, 5.13, -4.8, 0, 8)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall14"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -307,7 +307,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall15" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(0.3, 0, 1.49493e-06, 0, 8.51, 0, -5.24536e-08, 0, 8.55, -4.8, 0, 18.5)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall15"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -322,7 +322,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall16" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(0.3, 0, 7.17566e-07, 0, 8.51, 0, -5.24536e-08, 0, 4.104, -4.8, 0, 28.5)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall16"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -337,7 +337,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall17" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-6.55671e-08, 0, 4.275, 0, 8.51, 0, -0.3, 0, -9.34331e-07, -7, 0, 17.9)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall17"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -352,7 +352,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall18" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-6.55671e-08, 0, 8.55, 0, 8.51, 0, -0.3, 0, -1.86866e-06, -15.8, 0, 17.9)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall18"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -367,7 +367,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall19" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-6.55671e-08, 0, 8.55, 0, 8.51, 0, -0.3, 0, -1.86866e-06, -14.9, 0, 5.6)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall19"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -382,7 +382,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall21" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-0.3, 0, -2.24239e-06, 0, 8.51, 0, 7.86805e-08, 0, -8.55, -18.1, 0, 9.1)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall21"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -397,7 +397,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall22" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-0.3, 0, -2.24239e-06, 0, 8.51, 0, 7.86805e-08, 0, -8.55, -18.1, 0, 17.6)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall22"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -412,7 +412,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall23" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-0.3, 0, -2.24239e-06, 0, 8.51, 0, 7.86805e-08, 0, -8.55, -18.1, 0, 26.1)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall23"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -427,7 +427,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall24" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-0.3, 0, -2.24239e-06, 0, 8.51, 0, 7.86805e-08, 0, -8.55, -18.1, 0, 34.6)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall24"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -442,7 +442,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall25" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-0.3, 0, -2.24239e-06, 0, 8.51, 0, 7.86805e-08, 0, -8.55, 4.2, 0, 26.8)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall25"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -457,7 +457,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall28" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-0.3, 0, -2.24239e-06, 0, 8.51, 0, 7.86805e-08, 0, -8.55, 4.2, 0, 35.3)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall28"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -472,7 +472,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall29" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-0.3, 0, -2.24239e-06, 0, 8.51, 0, 7.86805e-08, 0, -8.55, 4.2, 0, 43.8)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall29"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -487,7 +487,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall31" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-6.5567e-08, 0, 8.55, 0, 8.51, 0, -0.3, 0, -1.86866e-06, 0.200002, 0, 44.1)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall31"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -502,7 +502,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall32" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-6.5567e-08, 0, 8.55, 0, 8.51, 0, -0.3, 0, -1.86866e-06, -7.8, 0, 44.1)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall32"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -517,7 +517,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall33" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(-6.5567e-08, 0, 8.55, 0, 8.51, 0, -0.3, 0, -1.86866e-06, -15.8, 0, 44.1)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall33"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -532,7 +532,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall34" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(0.3, 0, 1.49493e-06, 0, 8.51, 0, -5.24536e-08, 0, 8.55, -18.1, 0, 43.1261)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall34"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -547,7 +547,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall26" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(9.17939e-08, 0, -8.55, 0, 8.51, 0, 0.3, 0, 2.61613e-06, -13.9, 0, 30.2)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall26"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -562,7 +562,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall27" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(9.17939e-08, 0, -7.7805, 0, 8.51, 0, 0.3, 0, 2.38068e-06, -5.8, 0, 30.2)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall27"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -577,7 +577,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall35" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(9.17939e-08, 0, -5.985, 0, 8.51, 0, 0.3, 0, 1.83129e-06, 4.9, 0, 30.2)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall35"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -592,7 +592,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall8" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(3.93402e-08, 0, -8.55, 0, 8.51, 0, 0.3, 0, 1.1212e-06, -6.4, 0, 5.5)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall8"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -607,7 +607,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall9" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(3.93402e-08, 0, -5.985, 0, 8.51, 0, 0.3, 0, 7.84838e-07, 4.2, 0, 5.5)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall9"]
 mesh = SubResource("BoxMesh_e7anx")
@@ -622,7 +622,7 @@ size = Vector3(2, 1, 1)
 
 [node name="Wall10" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(3.93402e-08, 0, -4.275, 0, 8.51, 0, 0.3, 0, 5.60599e-07, 12.1, 0, 5.5)
-collision_layer = 3
+collision_layer = 7
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/Wall10"]
 mesh = SubResource("BoxMesh_e7anx")

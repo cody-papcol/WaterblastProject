@@ -1,6 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyh23rcgu8p7v"]
+[gd_scene load_steps=9 format=3 uid="uid://dyh23rcgu8p7v"]
 
 [ext_resource type="Script" uid="uid://cfq1dwjmn6m17" path="res://scripts/bullet.gd" id="1_fh0yl"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fh0yl"]
+friction = 0.5
+bounce = 0.5
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lv25w"]
 radius = 1.43251
@@ -15,7 +19,7 @@ roughness = 0.23
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_lv25w"]
+[sub_resource type="CurveTexture" id="CurveTexture_fh0yl"]
 curve = SubResource("Curve_fh0yl")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fh0yl"]
@@ -24,7 +28,7 @@ spread = 81.867
 initial_velocity_max = 2.0
 scale_min = 0.1
 scale_max = 0.3
-scale_curve = SubResource("CurveTexture_lv25w")
+scale_curve = SubResource("CurveTexture_fh0yl")
 collision_mode = 1
 collision_friction = 0.0
 collision_bounce = 0.25
@@ -35,6 +39,7 @@ collision_bounce = 0.25
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 collision_layer = 0
 collision_mask = 4
+physics_material_override = SubResource("PhysicsMaterial_fh0yl")
 continuous_cd = true
 contact_monitor = true
 max_contacts_reported = 3

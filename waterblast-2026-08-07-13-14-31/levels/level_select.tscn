@@ -168,6 +168,7 @@ text = "Locked"
 label_settings = SubResource("LabelSettings_ygvyp")
 
 [connection signal="pressed" from="Level 1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="L1 Endless" to="." method="_on_l_1_endless_pressed"]
 [connection signal="pressed" from="Level 2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="Level 3" to="." method="_on_level_3_pressed"]
 [connection signal="pressed" from="Level 4" to="." method="_on_level_4_pressed"]

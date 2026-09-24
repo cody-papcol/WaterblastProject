@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bef3ocjxoaofh"]
+[gd_scene load_steps=10 format=3 uid="uid://bef3ocjxoaofh"]
 
 [ext_resource type="Script" uid="uid://dbk7uwok45b4v" path="res://scripts/bullet_explosion.gd" id="1_h1a5m"]
 [ext_resource type="AudioStream" uid="uid://b1kit4j7iskvm" path="res://sounds/splashes/dragon-studio-water-splash-effect-443133.wav" id="2_lbgpg"]
+[ext_resource type="Material" uid="uid://g43bbukpwtih" path="res://ParticleMaterials/bullet_explosion.tres" id="2_xo7bp"]
 [ext_resource type="AudioStream" uid="uid://x7viq152kxau" path="res://sounds/splashes/freesound_community-splash-6213.wav" id="3_xo7bp"]
 [ext_resource type="AudioStream" uid="uid://bqno3oapluiit" path="res://sounds/splashes/freesound_community-water-splash-46402.wav" id="4_10r58"]
 
@@ -9,24 +10,6 @@
 albedo_color = Color(0.398429, 0.790752, 0.999999, 1)
 metallic = 0.36
 roughness = 0.35
-
-[sub_resource type="Curve" id="Curve_h1a5m"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_mwmr1"]
-curve = SubResource("Curve_h1a5m")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h1a5m"]
-inherit_velocity_ratio = 1.0
-initial_velocity_min = 5.0
-initial_velocity_max = 10.0
-scale_min = 0.05
-scale_max = 0.15
-scale_curve = SubResource("CurveTexture_mwmr1")
-collision_mode = 1
-collision_friction = 0.05
-collision_bounce = 0.1
 
 [sub_resource type="SphereMesh" id="SphereMesh_mwmr1"]
 
@@ -49,10 +32,11 @@ script = ExtResource("1_h1a5m")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_1h8t1")
 cast_shadow = 0
-amount = 16
+amount = 32
 lifetime = 2.0
 explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_h1a5m")
+fixed_fps = 120
+process_material = ExtResource("2_xo7bp")
 draw_pass_1 = SubResource("SphereMesh_mwmr1")
 
 [node name="Timer" type="Timer" parent="."]

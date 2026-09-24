@@ -1,0 +1,19 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://g43bbukpwtih"]
+
+[sub_resource type="Curve" id="Curve_h1a5m"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mwmr1"]
+curve = SubResource("Curve_h1a5m")
+
+[resource]
+inherit_velocity_ratio = 1.0
+initial_velocity_min = 5.0
+initial_velocity_max = 10.0
+scale_min = 0.05
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_mwmr1")
+collision_mode = 1
+collision_friction = 0.01
+collision_bounce = 0.1

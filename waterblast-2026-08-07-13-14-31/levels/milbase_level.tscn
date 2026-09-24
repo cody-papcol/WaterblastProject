@@ -669,11 +669,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1543, 0, 13.7968)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.8457, 0, -31.6032)
 
 [node name="WaveResetTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 9999.0
 one_shot = true
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2211, -0.484314, -8.29469)
+transform = Transform3D(1, 0, 0, 0, 2.4, 0, 0, 0, 1, 15.2211, -1.23808, -8.29469)
 size = Vector3(99.2888, 1.03137, 52.1931)
 
 [connection signal="death" from="InitialAliens/Alien" to="." method="enemy_death"]
