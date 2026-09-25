@@ -1259,6 +1259,7 @@ theme_override_font_sizes/font_size = 50
 text = "0 Coins"
 
 [node name="ScoreLabel" type="Label" parent="HUD/Control"]
+layout_mode = 0
 offset_left = 2274.0
 offset_top = 147.0
 offset_right = 2482.0
@@ -1267,6 +1268,7 @@ theme_override_font_sizes/font_size = 50
 text = "0"
 
 [node name="MultiLabel" type="Label" parent="HUD/Control"]
+layout_mode = 0
 offset_left = 2274.0
 offset_top = 240.0
 offset_right = 2482.0
