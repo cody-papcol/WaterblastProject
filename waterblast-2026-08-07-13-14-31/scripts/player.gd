@@ -658,6 +658,9 @@ func upgrade_washer():
 		change_weapon(3)
 
 func on_death() -> void:
+	
+	SaveManager.add_score(score)
+	
 	get_tree().change_scene_to_file("res://levels/death_menu.tscn")
 
 func refill_water():

@@ -26,6 +26,9 @@ func _ready():
 	CurrentLevelManager.current_level = 1
 
 func _process(delta: float) -> void:
+	
+	
+	
 	if targetEnemyNum:
 		player.WaveProgress.value = enemyNum/targetEnemyNum
 		

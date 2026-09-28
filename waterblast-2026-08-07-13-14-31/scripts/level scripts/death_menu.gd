@@ -1,11 +1,16 @@
 extends Control
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-
-
+	
+	#if CurrentLevelManager.endless_mode == true:
+		#$Leaderboard.visible = true
+	#else:
+		#$Leaderboard.visible = false
+	
 
 func _on_play_button_pressed() -> void:
 	if CurrentLevelManager.current_level == 1:
@@ -21,3 +26,19 @@ func _on_play_button_pressed() -> void:
 
 func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://levels/main_menu.tscn")
+
+
+func _on_line_edit_text_submitted(new_text):
+	SaveManager.append_score(new_text)
+	display_leaderboard()
+	
+func display_leaderboard():
+	
+	var value = 1
+	
+	
+	for s in SaveManager.scores:
+		if get_node('Leaderboard/Leaderboard' + str(value)):
+			var boardLabel: Label = get_node('Leaderboard/Leaderboard' + str(value))
+			print(s)
+			value += 1

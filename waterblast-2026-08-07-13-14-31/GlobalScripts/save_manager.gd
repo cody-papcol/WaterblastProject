@@ -4,6 +4,10 @@ const SAVE_PATH = "user://save.json"
 
 var highest_level_unlocked = 1
 
+var recent_score = 0
+
+var scores: Array = []
+
 func _ready():
 	load_progress()
 
@@ -16,7 +20,8 @@ func unlock_level(level: int):
 
 func save_progress():
 	var save_data = {
-		"highest_level_unlocked": highest_level_unlocked
+		"highest_level_unlocked": highest_level_unlocked,
+		"scores": scores,
 	}
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -33,3 +38,16 @@ func load_progress():
 
 	if save_data:
 		highest_level_unlocked = save_data.get("highest_level_unlocked", 1)
+		scores = save_data.get("scores", [])
+
+func add_score(value):
+	recent_score = value
+	
+func append_score(username):
+	scores.append({"username": username, "score": recent_score})
+	
+	scores.sort_custom(func(a, b):
+		return a["score"] > b["score"]
+	)
+	
+	
