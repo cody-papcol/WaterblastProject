@@ -1,15 +1,17 @@
 extends Control
 
-
+var hasEnteredName: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
-	#if CurrentLevelManager.endless_mode == true:
-		#$Leaderboard.visible = true
-	#else:
-		#$Leaderboard.visible = false
+	display_leaderboard()
+	
+	if CurrentLevelManager.endless_mode == true:
+		$Leaderboard.visible = true
+	else:
+		$Leaderboard.visible = false
 	
 
 func _on_play_button_pressed() -> void:
@@ -30,7 +32,12 @@ func _on_main_menu_button_pressed() -> void:
 
 func _on_line_edit_text_submitted(new_text):
 	SaveManager.append_score(new_text)
-	display_leaderboard()
+	
+	print(SaveManager.scores)
+	
+	if hasEnteredName == false:
+		display_leaderboard()
+		hasEnteredName = true
 	
 func display_leaderboard():
 	
@@ -40,5 +47,7 @@ func display_leaderboard():
 	for s in SaveManager.scores:
 		if get_node('Leaderboard/Leaderboard' + str(value)):
 			var boardLabel: Label = get_node('Leaderboard/Leaderboard' + str(value))
-			print(s)
+			boardLabel.text = s["username"] + ": " + str(s["score"])
 			value += 1
+	
+	SaveManager.save_progress()

@@ -39,6 +39,7 @@ func load_progress():
 	if save_data:
 		highest_level_unlocked = save_data.get("highest_level_unlocked", 1)
 		scores = save_data.get("scores", [])
+		print(ProjectSettings.globalize_path(SAVE_PATH))
 
 func add_score(value):
 	recent_score = value
@@ -50,4 +51,14 @@ func append_score(username):
 		return a["score"] > b["score"]
 	)
 	
-	
+
+func delete_save():
+	if FileAccess.file_exists(SAVE_PATH):
+		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
+		
+		scores = []
+		highest_level_unlocked = 1
+		
+		print("Save deleted")
+	else:
+		print("No save file found")

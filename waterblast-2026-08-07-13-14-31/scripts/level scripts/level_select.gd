@@ -23,6 +23,7 @@ func _on_back_pressed():
 
 func _on_level_1_pressed():
 	if SaveManager.highest_level_unlocked > 0:
+		CurrentLevelManager.endless_mode = false
 		get_tree().change_scene_to_file("res://levels/test_level.tscn")
 
 

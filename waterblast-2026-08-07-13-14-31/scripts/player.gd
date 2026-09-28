@@ -660,6 +660,7 @@ func upgrade_washer():
 func on_death() -> void:
 	
 	SaveManager.add_score(score)
+	SaveManager.save_progress()
 	
 	get_tree().change_scene_to_file("res://levels/death_menu.tscn")
 

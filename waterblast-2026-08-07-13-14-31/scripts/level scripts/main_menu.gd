@@ -10,3 +10,7 @@ func _on_play_button_pressed() -> void:
 
 func _on_quit_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_delete_save_button_pressed():
+	SaveManager.delete_save()
