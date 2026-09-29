@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://mx82kwr275nb"]
+[gd_scene load_steps=4 format=3 uid="uid://mx82kwr275nb"]
 
 [ext_resource type="Script" uid="uid://j7jix58disw8" path="res://scripts/level scripts/death_menu.gd" id="1_u8ukk"]
+[ext_resource type="Texture2D" uid="uid://c7ix82up2mtdo" path="res://textures/Drawing-7.sketchpad (1).png" id="2_qbk2i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_u8ukk"]
 font_size = 64
@@ -152,6 +153,17 @@ offset_right = 2366.0
 offset_bottom = 1384.0
 text = "PLAYER: NA SCORE: NA"
 label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_qbk2i")
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]

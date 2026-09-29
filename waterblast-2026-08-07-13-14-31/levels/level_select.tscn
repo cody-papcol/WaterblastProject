@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://056jnyju1juq"]
+[gd_scene load_steps=5 format=3 uid="uid://056jnyju1juq"]
 
 [ext_resource type="Script" uid="uid://b81ix2h7jb0bo" path="res://scripts/level scripts/level_select.gd" id="1_mk87e"]
+[ext_resource type="Texture2D" uid="uid://c7ix82up2mtdo" path="res://textures/Drawing-7.sketchpad (1).png" id="2_ygvyp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mk87e"]
 font_size = 64
@@ -166,6 +167,17 @@ offset_right = 2182.0
 offset_bottom = 355.0
 text = "Locked"
 label_settings = SubResource("LabelSettings_ygvyp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_ygvyp")
 
 [connection signal="pressed" from="Level 1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="L1 Endless" to="." method="_on_l_1_endless_pressed"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bkxlq4xfamc4t"]
+[gd_scene load_steps=3 format=3 uid="uid://bkxlq4xfamc4t"]
 
 [ext_resource type="Script" uid="uid://de6rgaim50f4a" path="res://scripts/level scripts/main_menu.gd" id="1_0ettg"]
+[ext_resource type="Texture2D" uid="uid://c7ix82up2mtdo" path="res://textures/Drawing-7.sketchpad (1).png" id="2_duh7t"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -15,7 +16,7 @@ script = ExtResource("1_0ettg")
 layout_mode = 0
 offset_left = 219.0
 offset_top = 530.0
-offset_right = 659.0
+offset_right = 741.0
 offset_bottom = 626.0
 theme_override_font_sizes/font_size = 64
 text = "Play"
@@ -24,7 +25,7 @@ text = "Play"
 layout_mode = 0
 offset_left = 219.0
 offset_top = 682.0
-offset_right = 659.0
+offset_right = 741.0
 offset_bottom = 778.0
 theme_override_font_sizes/font_size = 64
 text = "Quit"
@@ -37,6 +38,17 @@ offset_right = 2500.0
 offset_bottom = 1375.0
 theme_override_font_sizes/font_size = 64
 text = "Delete Save File"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_duh7t")
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
