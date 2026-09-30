@@ -1,0 +1,170 @@
+[gd_scene load_steps=4 format=3 uid="uid://mx82kwr275nb"]
+
+[ext_resource type="Script" uid="uid://j7jix58disw8" path="res://scripts/level scripts/death_menu.gd" id="1_u8ukk"]
+[ext_resource type="Texture2D" uid="uid://c7ix82up2mtdo" path="res://textures/Drawing-7.sketchpad (1).png" id="2_qbk2i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_u8ukk"]
+font_size = 64
+
+[node name="DeathMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u8ukk")
+
+[node name="PlayButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 263.0
+offset_top = 457.0
+offset_right = 703.0
+offset_bottom = 553.0
+theme_override_font_sizes/font_size = 64
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 263.0
+offset_top = 602.0
+offset_right = 703.0
+offset_bottom = 698.0
+theme_override_font_sizes/font_size = 64
+text = "Main Menu"
+
+[node name="Leaderboard" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LineEdit" type="LineEdit" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 806.0
+offset_top = 272.0
+offset_right = 1271.0
+offset_bottom = 368.0
+theme_override_font_sizes/font_size = 64
+
+[node name="EnterUserLabel" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 258.0
+offset_top = 273.0
+offset_right = 777.0
+offset_bottom = 361.0
+text = "Enter Username:"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="LeaderboardTitle" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 1822.0
+offset_top = 98.0
+offset_right = 2219.0
+offset_bottom = 186.0
+text = "Leaderboard"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="Leaderboard1" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 1663.0
+offset_top = 216.0
+offset_right = 2182.0
+offset_bottom = 304.0
+text = "PLAYER: NA SCORE: NA"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="Leaderboard2" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 1663.0
+offset_top = 336.0
+offset_right = 2366.0
+offset_bottom = 424.0
+text = "PLAYER: NA SCORE: NA"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="Leaderboard3" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 1663.0
+offset_top = 456.0
+offset_right = 2366.0
+offset_bottom = 544.0
+text = "PLAYER: NA SCORE: NA"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="Leaderboard4" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 1663.0
+offset_top = 576.0
+offset_right = 2366.0
+offset_bottom = 664.0
+text = "PLAYER: NA SCORE: NA"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="Leaderboard5" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 1663.0
+offset_top = 696.0
+offset_right = 2366.0
+offset_bottom = 784.0
+text = "PLAYER: NA SCORE: NA"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="Leaderboard6" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 1663.0
+offset_top = 816.0
+offset_right = 2366.0
+offset_bottom = 904.0
+text = "PLAYER: NA SCORE: NA"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="Leaderboard7" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 1663.0
+offset_top = 936.0
+offset_right = 2366.0
+offset_bottom = 1024.0
+text = "PLAYER: NA SCORE: NA"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="Leaderboard8" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 1663.0
+offset_top = 1056.0
+offset_right = 2366.0
+offset_bottom = 1144.0
+text = "PLAYER: NA SCORE: NA"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="Leaderboard9" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 1663.0
+offset_top = 1176.0
+offset_right = 2366.0
+offset_bottom = 1264.0
+text = "PLAYER: NA SCORE: NA"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="Leaderboard10" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 1663.0
+offset_top = 1296.0
+offset_right = 2366.0
+offset_bottom = 1384.0
+text = "PLAYER: NA SCORE: NA"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_qbk2i")
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
+[connection signal="text_submitted" from="Leaderboard/LineEdit" to="." method="_on_line_edit_text_submitted"]

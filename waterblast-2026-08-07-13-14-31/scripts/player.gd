@@ -120,14 +120,22 @@ func _ready() -> void:
 	$HUD/Control/TextureProgressBar.max_value = max_total_water
 	$HUD/Control/TextureProgressBar.value = total_water
 	
-	AudioServer.set_bus_volume_db(0, linear_to_db(0.5))
-		
+	AudioServer.set_bus_volume_db(0, linear_to_db(0.4))
+	
+	if CurrentLevelManager.endless_mode == true:
+		$HUD/Control/ScoreControl.visible = true
+	else:
+		$HUD/Control/ScoreControl.visible = false
+	
 	# adding collision exception of player to blocking volume
 	blocking.add_exception($".")
 	
+	# adds exceptions for node that stops player shooting if inside a wall
 	for x in get_tree().get_nodes_in_group("enemies"):
 		blocking.add_exception(x)
 	
+	# changes weapon stats on ready depending on selected weapon
+	# pistol
 	if weapon == 0:
 		firerate = pistolFireRate
 		max_ammo = pistolMaxAmmo
@@ -171,7 +179,7 @@ func _ready() -> void:
 		$Head/Camera3D/blockbench_export/WasherMesh1.visible = true
 	
 	
-	
+	# adjusts overall shoot timer to firerate and fills magazine
 	shootTimer.wait_time = firerate
 	ammo = max_ammo
 
@@ -245,7 +253,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 			
 	# input only works when gameplay is not paused
-	
+	# player can only move mouse and move if they are not in the shop
 	if in_shop == false:
 		# mouse camera movement
 		if event is InputEventMouseMotion:
@@ -279,8 +287,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func _physics_process(delta: float) -> void:
 	
-	$HUD/Control/ScoreLabel.text = str(score)
-	$HUD/Control/MultiLabel.text = str(scoreMulti)
+	# INFINITE HEAL TEST
+	#_damage(-100)
+	
+	# updating score UI values
+	$HUD/Control/ScoreControl/ScoreLabel.text = str(score)
+	$HUD/Control/ScoreControl/MultiLabel.text = str(scoreMulti)
 	
 	# only processes if not paused
 	if playerPaused == false:
@@ -290,12 +302,13 @@ func _physics_process(delta: float) -> void:
 			# checking with delay
 			if can_shoot and not in_shop:
 				
+				# ensuring player gun is not in wall
 				if !blocking.is_colliding():
 					
 					# dealing with ammo
 					if ammo > 0:
 						
-						
+						# checks if player is using shotgun (as it has slightly different logic)
 						if weapon == 2:
 							
 							#shotgun bullet spawns
@@ -316,6 +329,8 @@ func _physics_process(delta: float) -> void:
 									new_bullet.weaponDamage = bulletDamage
 									ammo += -1
 									get_parent().add_child(new_bullet)
+							
+							# if player doesnt have enough ammo to supply all x pellets
 							else:
 								for x in ammo:
 									var new_bullet : RigidBody3D = bullet_prefab.instantiate()
@@ -397,7 +412,8 @@ func _physics_process(delta: float) -> void:
 		# Handle sprint
 		if Input.is_action_pressed("sprint") and reloading == false:
 			speed = SPRINT_SPEED
-			
+		
+		# slow player when reloading
 		elif reloading == false:
 			speed = WALK_SPEED
 			if Input.is_action_just_released("sprint"):
@@ -412,9 +428,6 @@ func _physics_process(delta: float) -> void:
 			
 	
 		# Get the input direction and handle the movement/deceleration.
-		# As good practice, you should replace UI actions with custom gameplay actions.
-		
-		
 		var input_dir := Input.get_vector("left", "right", "forward", "back")
 		var direction: Vector3 = (head.transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 		
@@ -467,6 +480,7 @@ func _on_reload_timer_timeout() -> void:
 	
 	reloading = false
 	
+	# if player has enough total water to refill mag, refill, if not, put as much as is left into mag
 	if total_water >= max_ammo - ammo:
 		
 		total_water -= max_ammo - ammo
@@ -477,6 +491,7 @@ func _on_reload_timer_timeout() -> void:
 	
 	$HUD/Control/TextureProgressBar.value = total_water
 	
+	# ensures sprint is not broken upon reload ending
 	if Input.is_action_pressed("sprint"):
 		sprinting = true
 		$FootstepTimer.wait_time = sprinting_wait_time
@@ -486,6 +501,8 @@ func _on_reload_timer_timeout() -> void:
 # player damage functionality
 
 func _damage(value):
+	
+	# if damage value is positive, deal damage, if not, heal player
 	if value >= 0:
 		
 		scoreMulti = 1.0
@@ -493,8 +510,11 @@ func _damage(value):
 		health -= value
 		$HealthComponent.health = health
 		$DamageSound.play()
+		
+		# if health is less than half, red overlay appears
 		if health < 50:
 			$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 1 - $HealthComponent.health/50)
+			
 	elif health < 100:
 		if health - value >= 100:
 			health = 100
@@ -509,12 +529,19 @@ func _damage(value):
 				$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 0)
 
 func _on_footstep_timer_timeout() -> void:
+	
+	# footstep sound plays if player is moving
 	if moving:
 		$FootstepSound.play()
 
 func await_landing():
 
-	
+	# this small function means that when the player
+	# jumps, the function continiously awaits another 
+	# physics frame until the player hits the ground.
+	# however if the player exits the game before it hits
+	# an error occurs and there is not physics frame.
+	# this if inside tree accounts for this.
 	while !is_on_floor():
 		await get_tree().physics_frame
 		if !is_inside_tree():
@@ -531,6 +558,9 @@ func _on_shoot_timer_timeout() -> void:
 	can_shoot = true
 
 func check_hover_collision():
+	
+	# if raycast is colliding with object, it has an interact method, and the player interacts,
+	# call the interact method. also show the interact UI when hovered.
 	if raycast.is_colliding():
 		var hover_collider = raycast.get_collider()
 		if hover_collider and is_instance_valid(hover_collider) and hover_collider.has_method("interact") and hover_collider.has_method("show_prompt"):

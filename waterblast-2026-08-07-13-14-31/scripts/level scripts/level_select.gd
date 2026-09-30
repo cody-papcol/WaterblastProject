@@ -51,3 +51,28 @@ func _on_l_1_endless_pressed() -> void:
 	if SaveManager.highest_level_unlocked > 0:
 		CurrentLevelManager.endless_mode = true
 		get_tree().change_scene_to_file("res://levels/test_level.tscn")
+
+
+func _on_l_2_endless_pressed():
+	if SaveManager.highest_level_unlocked >= 3:
+		CurrentLevelManager.endless_mode = true
+		get_tree().change_scene_to_file("res://levels/suburb_level.tscn")
+
+
+func _on_l_3_endless_pressed():
+	if SaveManager.highest_level_unlocked >= 4:
+		CurrentLevelManager.endless_mode = true
+		get_tree().change_scene_to_file("res://levels/supermarket_level.tscn")
+
+
+func _on_l_4_endless_pressed():
+	
+	pass
+	
+	#if SaveManager.highest_level_unlocked >= 5:
+		#CurrentLevelManager.endless_mode = true
+		#get_tree().change_scene_to_file("res://levels/test_level.tscn")
+
+
+func _on_l_5_endless_pressed():
+	pass # Replace with function body.

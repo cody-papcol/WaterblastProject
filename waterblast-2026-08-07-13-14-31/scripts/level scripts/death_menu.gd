@@ -31,20 +31,33 @@ func _on_main_menu_button_pressed() -> void:
 
 
 func _on_line_edit_text_submitted(new_text):
-	SaveManager.append_score(new_text)
 	
-	print(SaveManager.scores)
+	
 	
 	if hasEnteredName == false:
+		SaveManager.append_score(new_text, CurrentLevelManager.current_level)
 		display_leaderboard()
 		hasEnteredName = true
 	
 func display_leaderboard():
 	
 	var value = 1
+	var currentLeaderboard: Array
 	
 	
-	for s in SaveManager.scores:
+	# choosing which leaderboard to display based on current level
+	if CurrentLevelManager.current_level == 1:
+		currentLeaderboard = SaveManager.levelOneScores
+	if CurrentLevelManager.current_level == 2:
+		currentLeaderboard = SaveManager.levelTwoScores
+	if CurrentLevelManager.current_level == 3:
+		currentLeaderboard = SaveManager.levelThreeScores
+	if CurrentLevelManager.current_level == 4:
+		currentLeaderboard = SaveManager.levelFourScores
+	if CurrentLevelManager.current_level == 5:
+		currentLeaderboard = SaveManager.levelFiveScores
+	
+	for s in currentLeaderboard:
 		if get_node('Leaderboard/Leaderboard' + str(value)):
 			var boardLabel: Label = get_node('Leaderboard/Leaderboard' + str(value))
 			boardLabel.text = s["username"] + ": " + str(s["score"])

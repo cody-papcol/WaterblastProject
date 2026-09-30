@@ -9,9 +9,10 @@ extends Node3D
 var spawnLocation: int = 0
 var playerCoins = 0
 
-var waveNum = 0
+var waveNum = 30
 var targetEnemyNum = 4.0
 var spawnedEnemies = 4.0
+var spawnInterval = 1
 
 var totalWaveNum = 2
 
@@ -64,7 +65,7 @@ func _start_wave(num):
 		enemyNum += 1
 		spawnedEnemies += 1
 		_spawn_enemy()
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(spawnInterval).timeout
 
 
 func _on_wave_reset_timer_timeout():
