@@ -64,19 +64,19 @@ label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="LeaderboardTitle" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 2035.0
-offset_top = 98.0
-offset_right = 2432.0
-offset_bottom = 186.0
+offset_left = 2061.0
+offset_top = 135.0
+offset_right = 2458.0
+offset_bottom = 223.0
 text = "Leaderboard"
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="Leaderboard1" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1876.0
-offset_top = 216.0
-offset_right = 2395.0
-offset_bottom = 304.0
+offset_left = 1671.0
+offset_top = 244.0
+offset_right = 2190.0
+offset_bottom = 332.0
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="TextureRect" type="TextureRect" parent="Leaderboard/Leaderboard1"]
@@ -94,10 +94,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="Leaderboard2" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1876.0
-offset_top = 336.0
-offset_right = 2463.0
-offset_bottom = 424.0
+offset_left = 1671.0
+offset_top = 364.0
+offset_right = 2190.0
+offset_bottom = 452.0
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="TextureRect" type="TextureRect" parent="Leaderboard/Leaderboard2"]
@@ -106,8 +106,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -11.0
-offset_right = -58.0
+offset_left = -8.0
+offset_right = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -115,10 +115,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="Leaderboard3" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1876.0
-offset_top = 456.0
-offset_right = 2463.0
-offset_bottom = 544.0
+offset_left = 1671.0
+offset_top = 484.0
+offset_right = 2190.0
+offset_bottom = 572.0
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="TextureRect" type="TextureRect" parent="Leaderboard/Leaderboard3"]
@@ -127,8 +127,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -11.0
-offset_right = -58.0
+offset_left = -8.0
+offset_right = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -136,10 +136,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="Leaderboard4" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1876.0
-offset_top = 576.0
-offset_right = 2463.0
-offset_bottom = 664.0
+offset_left = 1671.0
+offset_top = 604.0
+offset_right = 2190.0
+offset_bottom = 692.0
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="TextureRect" type="TextureRect" parent="Leaderboard/Leaderboard4"]
@@ -148,8 +148,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -11.0
-offset_right = -58.0
+offset_left = -8.0
+offset_right = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -157,10 +157,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="Leaderboard5" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1876.0
-offset_top = 696.0
-offset_right = 2463.0
-offset_bottom = 784.0
+offset_left = 1671.0
+offset_top = 724.0
+offset_right = 2190.0
+offset_bottom = 812.0
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="TextureRect" type="TextureRect" parent="Leaderboard/Leaderboard5"]
@@ -169,8 +169,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -11.0
-offset_right = -58.0
+offset_left = -8.0
+offset_right = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -178,10 +178,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="Leaderboard6" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1876.0
-offset_top = 816.0
-offset_right = 2463.0
-offset_bottom = 904.0
+offset_left = 1671.0
+offset_top = 844.0
+offset_right = 2190.0
+offset_bottom = 932.0
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="TextureRect" type="TextureRect" parent="Leaderboard/Leaderboard6"]
@@ -190,8 +190,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -11.0
-offset_right = -58.0
+offset_left = -8.0
+offset_right = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -199,10 +199,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="Leaderboard7" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1876.0
-offset_top = 936.0
-offset_right = 2463.0
-offset_bottom = 1024.0
+offset_left = 1671.0
+offset_top = 964.0
+offset_right = 2190.0
+offset_bottom = 1052.0
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="TextureRect" type="TextureRect" parent="Leaderboard/Leaderboard7"]
@@ -211,8 +211,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -11.0
-offset_right = -58.0
+offset_left = -8.0
+offset_right = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -220,10 +220,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="Leaderboard8" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1876.0
-offset_top = 1056.0
-offset_right = 2463.0
-offset_bottom = 1144.0
+offset_left = 1671.0
+offset_top = 1084.0
+offset_right = 2190.0
+offset_bottom = 1172.0
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="TextureRect" type="TextureRect" parent="Leaderboard/Leaderboard8"]
@@ -232,8 +232,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -11.0
-offset_right = -58.0
+offset_left = -8.0
+offset_right = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -241,10 +241,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="Leaderboard9" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1876.0
-offset_top = 1176.0
-offset_right = 2463.0
-offset_bottom = 1264.0
+offset_left = 1671.0
+offset_top = 1204.0
+offset_right = 2190.0
+offset_bottom = 1292.0
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="TextureRect" type="TextureRect" parent="Leaderboard/Leaderboard9"]
@@ -253,8 +253,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -11.0
-offset_right = -58.0
+offset_left = -8.0
+offset_right = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -262,10 +262,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="Leaderboard10" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1876.0
-offset_top = 1296.0
-offset_right = 2463.0
-offset_bottom = 1384.0
+offset_left = 1671.0
+offset_top = 1324.0
+offset_right = 2190.0
+offset_bottom = 1412.0
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="TextureRect" type="TextureRect" parent="Leaderboard/Leaderboard10"]
@@ -274,8 +274,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -11.0
-offset_right = -58.0
+offset_left = -8.0
+offset_right = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -283,10 +283,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="LBNum1" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1766.0
-offset_top = 216.0
-offset_right = 1845.0
-offset_bottom = 304.0
+offset_left = 1561.0
+offset_top = 244.0
+offset_right = 1640.0
+offset_bottom = 332.0
 text = "1."
 label_settings = SubResource("LabelSettings_u8ukk")
 
@@ -305,10 +305,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="LBNum2" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1766.0
-offset_top = 336.0
-offset_right = 1845.0
-offset_bottom = 424.0
+offset_left = 1561.0
+offset_top = 364.0
+offset_right = 1640.0
+offset_bottom = 452.0
 text = "2."
 label_settings = SubResource("LabelSettings_u8ukk")
 
@@ -327,10 +327,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="LBNum3" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1766.0
-offset_top = 456.0
-offset_right = 1845.0
-offset_bottom = 544.0
+offset_left = 1561.0
+offset_top = 484.0
+offset_right = 1640.0
+offset_bottom = 572.0
 text = "3."
 label_settings = SubResource("LabelSettings_u8ukk")
 
@@ -349,10 +349,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="LBNum4" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1766.0
-offset_top = 576.0
-offset_right = 1845.0
-offset_bottom = 664.0
+offset_left = 1561.0
+offset_top = 604.0
+offset_right = 1640.0
+offset_bottom = 692.0
 text = "4."
 label_settings = SubResource("LabelSettings_u8ukk")
 
@@ -371,10 +371,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="LBNum5" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1766.0
-offset_top = 696.0
-offset_right = 1845.0
-offset_bottom = 784.0
+offset_left = 1561.0
+offset_top = 724.0
+offset_right = 1640.0
+offset_bottom = 812.0
 text = "5."
 label_settings = SubResource("LabelSettings_u8ukk")
 
@@ -393,10 +393,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="LBNum6" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1766.0
-offset_top = 816.0
-offset_right = 1845.0
-offset_bottom = 904.0
+offset_left = 1561.0
+offset_top = 844.0
+offset_right = 1640.0
+offset_bottom = 932.0
 text = "6."
 label_settings = SubResource("LabelSettings_u8ukk")
 
@@ -415,10 +415,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="LBNum7" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1766.0
-offset_top = 936.0
-offset_right = 1845.0
-offset_bottom = 1024.0
+offset_left = 1561.0
+offset_top = 964.0
+offset_right = 1640.0
+offset_bottom = 1052.0
 text = "7."
 label_settings = SubResource("LabelSettings_u8ukk")
 
@@ -437,10 +437,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="LBNum8" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1766.0
-offset_top = 1056.0
-offset_right = 1845.0
-offset_bottom = 1144.0
+offset_left = 1561.0
+offset_top = 1084.0
+offset_right = 1640.0
+offset_bottom = 1172.0
 text = "8."
 label_settings = SubResource("LabelSettings_u8ukk")
 
@@ -459,10 +459,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="LBNum9" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1766.0
-offset_top = 1176.0
-offset_right = 1845.0
-offset_bottom = 1264.0
+offset_left = 1561.0
+offset_top = 1204.0
+offset_right = 1640.0
+offset_bottom = 1292.0
 text = "9."
 label_settings = SubResource("LabelSettings_u8ukk")
 
@@ -481,10 +481,10 @@ texture = SubResource("GradientTexture2D_1jcmi")
 
 [node name="LBNum10" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 1766.0
-offset_top = 1296.0
-offset_right = 1845.0
-offset_bottom = 1384.0
+offset_left = 1561.0
+offset_top = 1324.0
+offset_right = 1652.0
+offset_bottom = 1412.0
 text = "10."
 label_settings = SubResource("LabelSettings_u8ukk")
 

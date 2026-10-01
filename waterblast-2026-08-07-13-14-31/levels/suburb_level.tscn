@@ -49,6 +49,7 @@ size = Vector3(1, 6, 91)
 size = Vector3(80.1388, 1, 68.4952)
 
 [node name="SuburbLevel" type="Node3D"]
+process_mode = 1
 script = ExtResource("1_x6xy7")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

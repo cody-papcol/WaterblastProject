@@ -7,6 +7,47 @@ var rifle = 0
 var shotgun = 0
 var washer = 0
 
+@onready var rifleCoin = $Control/Rifle/Coin
+@onready var rifleLock = $Control/Rifle/Lock
+
+@onready var shotgunCoin = $Control/Shotgun/Coin
+@onready var shotgunLock = $Control/Shotgun/Lock
+
+@onready var washerCoin = $Control/Washer/Coin
+@onready var washerLock = $Control/Washer/Lock
+
+
+
+func _process(delta):
+	
+	if player.availableUnlocks >= 1:
+		
+		rifleLock.visible = false
+		
+		if "rifle" in player.unlockedWeapons:
+			rifleCoin.visible = false
+		else:
+			rifleCoin.visible = true
+	
+	
+	if player.availableUnlocks >= 2:
+		
+		shotgunLock.visible = false
+		
+		if "shotgun" in player.unlockedWeapons:
+			shotgunCoin.visible = false
+		else:
+			shotgunCoin.visible = true
+	
+	
+	if player.availableUnlocks >= 3:
+		
+		washerLock.visible = false
+		
+		if "washer" in player.unlockedWeapons:
+			washerCoin.visible = false
+		else:
+			washerCoin.visible = true
 
 func _on_button_2_pressed() -> void:
 	if pistol < 4:
@@ -44,7 +85,7 @@ func _on_button_2_pressed() -> void:
 		
 
 func _on_rifle_upgrade_pressed() -> void:
-	if rifle < 4:
+	if rifle < 4 and "rifle" in player.unlockedWeapons:
 		
 		var hasUpgraded = false
 		
@@ -80,7 +121,7 @@ func _on_rifle_upgrade_pressed() -> void:
 
 
 func _on_shotgun_upgrade_pressed() -> void:
-	if shotgun < 4:
+	if shotgun < 4 and "shotgun" in player.unlockedWeapons:
 		
 		var hasUpgraded = false
 		
@@ -114,7 +155,7 @@ func _on_shotgun_upgrade_pressed() -> void:
 
 
 func _on_washer_upgrade_pressed() -> void:
-	if washer < 4:
+	if washer < 4 and "washer" in player.unlockedWeapons:
 		
 		var hasUpgraded = false
 		
@@ -148,20 +189,25 @@ func _on_washer_upgrade_pressed() -> void:
 
 
 func _on_pistol_button_pressed() -> void:
-	if player.unlockedWeapons > 0:
-		player.change_weapon(0)
+	player.change_weapon(0)
 
 
 func _on_rifle_button_pressed() -> void:
-	if player.unlockedWeapons > 1:
+	if player.availableUnlocks >= 1 and player.playerCoins >= 60:
+		player.playerCoins += -60
+		player.unlockedWeapons.append("rifle")
 		player.change_weapon(1)
 
 
 func _on_shotgun_button_pressed() -> void:
-	if player.unlockedWeapons > 2:
+	if player.availableUnlocks >= 2 and player.playerCoins >= 100:
+		player.playerCoins += -100
+		player.unlockedWeapons.append("shotgun")
 		player.change_weapon(2)
 
 
 func _on_washer_button_pressed() -> void:
-	if player.unlockedWeapons > 3:
+	if player.availableUnlocks >= 3 and player.playerCoins >= 250:
+		player.playerCoins += -250
+		player.unlockedWeapons.append("washer")
 		player.change_weapon(3)

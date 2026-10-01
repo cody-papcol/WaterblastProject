@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4j2udlakrhwr"]
+[gd_scene load_steps=8 format=3 uid="uid://d4j2udlakrhwr"]
 
 [ext_resource type="Script" uid="uid://1610eaden1xk" path="res://scripts/shop.gd" id="1_eu8to"]
 [ext_resource type="Texture2D" uid="uid://b5wm6yjoaul46" path="res://textures/gunicons/Screenshot 2026-08-20 101102.png" id="2_wamvd"]
 [ext_resource type="Texture2D" uid="uid://c0kkll7qa11lv" path="res://textures/gunicons/Screenshot 2026-08-20 120012.png" id="3_wamvd"]
 [ext_resource type="Texture2D" uid="uid://wspentpj5g3c" path="res://textures/gunicons/Screenshot 2026-08-20 120030.png" id="4_hxg2x"]
+[ext_resource type="Texture2D" uid="uid://bhwjvfpy8n7a5" path="res://textures/coin.png" id="4_qpdnj"]
+[ext_resource type="Texture2D" uid="uid://c8he5deqgntit" path="res://textures/lock.png" id="5_k1wnk"]
 [ext_resource type="Texture2D" uid="uid://burqko3wvjt8g" path="res://textures/gunicons/Screenshot 2026-08-20 120155.png" id="5_pba2h"]
 
 [node name="Shop" type="CanvasLayer"]
@@ -62,6 +64,25 @@ text = "Upgrade (0)"
 icon_alignment = 1
 expand_icon = true
 
+[node name="Coin" type="TextureRect" parent="Control/Rifle"]
+visible = false
+offset_left = 205.0
+offset_top = 144.0
+offset_right = 2342.0
+offset_bottom = 1344.0
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+texture = ExtResource("4_qpdnj")
+
+[node name="Lock" type="TextureRect" parent="Control/Rifle"]
+offset_left = 90.0
+offset_top = 83.0
+offset_right = 2227.0
+offset_bottom = 1283.0
+scale = Vector2(0.385, 0.385)
+mouse_filter = 2
+texture = ExtResource("5_k1wnk")
+
 [node name="Shotgun" type="Node2D" parent="Control"]
 position = Vector2(1025, 163)
 
@@ -84,6 +105,25 @@ text = "Upgrade (0)"
 icon_alignment = 1
 expand_icon = true
 
+[node name="Coin" type="TextureRect" parent="Control/Shotgun"]
+visible = false
+offset_left = 205.0
+offset_top = 144.0
+offset_right = 2342.0
+offset_bottom = 1344.0
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+texture = ExtResource("4_qpdnj")
+
+[node name="Lock" type="TextureRect" parent="Control/Shotgun"]
+offset_left = 90.0
+offset_top = 83.0
+offset_right = 2227.0
+offset_bottom = 1283.0
+scale = Vector2(0.385, 0.385)
+mouse_filter = 2
+texture = ExtResource("5_k1wnk")
+
 [node name="Washer" type="Node2D" parent="Control"]
 position = Vector2(1457, 163)
 
@@ -105,6 +145,25 @@ theme_override_font_sizes/font_size = 36
 text = "Upgrade (0)"
 icon_alignment = 1
 expand_icon = true
+
+[node name="Coin" type="TextureRect" parent="Control/Washer"]
+visible = false
+offset_left = 205.0
+offset_top = 144.0
+offset_right = 2342.0
+offset_bottom = 1344.0
+scale = Vector2(0.25, 0.25)
+mouse_filter = 2
+texture = ExtResource("4_qpdnj")
+
+[node name="Lock" type="TextureRect" parent="Control/Washer"]
+offset_left = 90.0
+offset_top = 83.0
+offset_right = 2227.0
+offset_bottom = 1283.0
+scale = Vector2(0.385, 0.385)
+mouse_filter = 2
+texture = ExtResource("5_k1wnk")
 
 [connection signal="pressed" from="Control/Pistol/pistolButton" to="." method="_on_pistol_button_pressed"]
 [connection signal="pressed" from="Control/Pistol/pistolUpgrade" to="." method="_on_button_2_pressed"]

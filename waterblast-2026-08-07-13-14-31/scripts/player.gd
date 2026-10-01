@@ -21,7 +21,8 @@ var bullet_velocity = 20.0
 var bulletDamage = 0
 @export var firerate = 0.05
 
-var unlockedWeapons = 0
+var availableUnlocks = 0
+var unlockedWeapons: Array = []
 var level = 0
 var playerPaused = false
 
@@ -32,6 +33,7 @@ var pistolDamage = 30.0
 var pistolMaxAmmo = 20
 var pistolFireRate = 0.15
 var pistolLevel = 0
+var pistolAmmo = 20
 
 # rifle
 var rifleBulletVelocity = 35.0
@@ -39,6 +41,7 @@ var rifleDamage = 40
 var rifleMaxAmmo = 30
 var rifleFireRate = 0.1
 var rifleLevel = 0
+var rifleAmmo = 30
 
 # shotgun
 var shotgunBulletVelocity = 20.0
@@ -48,6 +51,7 @@ var shotgunFireRate = 0.5
 @export var shotgunSpread = 0.15
 @export var shotgunPellets = 5
 var shotgunLevel = 0
+var shotgunAmmo = 30
 
 # washer
 var washerBulletVelocity = 30.0
@@ -56,6 +60,7 @@ var washerMaxAmmo = 60
 var washerFireRate = 0.03
 @export var washerSpread = 0.1
 var washerLevel = 0
+var washerAmmo = 60
 
 # vars
 var sprinting = false
@@ -182,7 +187,8 @@ func _ready() -> void:
 	# adjusts overall shoot timer to firerate and fills magazine
 	shootTimer.wait_time = firerate
 	ammo = max_ammo
-
+	
+	
 func change_weapon(num):
 	
 	$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = false
@@ -200,6 +206,7 @@ func change_weapon(num):
 		max_ammo = pistolMaxAmmo
 		bulletDamage = pistolDamage
 		bullet_velocity = pistolBulletVelocity
+		ammo = pistolAmmo
 		weapon = 0
 		
 		# visibility of models
@@ -213,6 +220,7 @@ func change_weapon(num):
 		max_ammo = rifleMaxAmmo
 		bulletDamage = rifleDamage
 		bullet_velocity = rifleBulletVelocity
+		ammo = rifleAmmo
 		weapon = 1
 		
 		$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = true
@@ -225,6 +233,7 @@ func change_weapon(num):
 		max_ammo = shotgunMaxAmmo
 		bulletDamage = shotgunDamage
 		bullet_velocity = shotgunBulletVelocity
+		ammo = shotgunAmmo
 		weapon = 2
 		
 		$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = true
@@ -237,6 +246,7 @@ func change_weapon(num):
 		max_ammo = washerMaxAmmo
 		bulletDamage = washerDamage
 		bullet_velocity = washerBulletVelocity
+		ammo = washerAmmo
 		weapon = 3
 		
 		$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = true
@@ -246,12 +256,21 @@ func change_weapon(num):
 	
 	
 	shootTimer.wait_time = firerate
-	ammo = 0
+	
 
 func _unhandled_input(event: InputEvent) -> void:
 	
-			
-			
+	if reloading == false:
+		if Input.is_action_just_pressed("WeaponSlot1"):
+			change_weapon(0)
+		if Input.is_action_just_pressed("WeaponSlot2") and "rifle" in unlockedWeapons:
+			change_weapon(1)
+		if Input.is_action_just_pressed("WeaponSlot3") and "shotgun" in unlockedWeapons:
+			change_weapon(2)
+		if Input.is_action_just_pressed("WeaponSlot4") and "washer" in unlockedWeapons:
+			change_weapon(3)
+	
+	
 	# input only works when gameplay is not paused
 	# player can only move mouse and move if they are not in the shop
 	if in_shop == false:
@@ -291,8 +310,8 @@ func _physics_process(delta: float) -> void:
 	#_damage(-100)
 	
 	# updating score UI values
-	$HUD/Control/ScoreControl/ScoreLabel.text = str(score)
-	$HUD/Control/ScoreControl/MultiLabel.text = str(scoreMulti)
+	$HUD/Control/ScoreControl/ScoreLabel.text = str(int(score))
+	$HUD/Control/ScoreControl/MultiLabel.text = "x" + str(scoreMulti)
 	
 	# only processes if not paused
 	if playerPaused == false:
@@ -328,6 +347,7 @@ func _physics_process(delta: float) -> void:
 									new_bullet.add_collision_exception_with(new_bullet)
 									new_bullet.weaponDamage = bulletDamage
 									ammo += -1
+									shotgunAmmo += -1
 									get_parent().add_child(new_bullet)
 							
 							# if player doesnt have enough ammo to supply all x pellets
@@ -347,6 +367,7 @@ func _physics_process(delta: float) -> void:
 									new_bullet.add_collision_exception_with(new_bullet)
 									new_bullet.weaponDamage = bulletDamage
 									ammo += -1
+									shotgunAmmo += -1
 									get_parent().add_child(new_bullet)
 						
 						
@@ -366,6 +387,7 @@ func _physics_process(delta: float) -> void:
 							new_bullet.add_collision_exception_with(new_bullet)
 							new_bullet.weaponDamage = bulletDamage
 							ammo += -1
+							washerAmmo += -1
 							get_parent().add_child(new_bullet)
 						
 						# other bullets
@@ -377,6 +399,12 @@ func _physics_process(delta: float) -> void:
 							new_bullet.add_collision_exception_with(new_bullet)
 							new_bullet.weaponDamage = bulletDamage
 							ammo += -1
+							
+							if weapon == 0:
+								pistolAmmo += -1
+							elif weapon == 1:
+								rifleAmmo += -1
+							
 							get_parent().add_child(new_bullet)
 						
 						
@@ -465,7 +493,7 @@ func _physics_process(delta: float) -> void:
 		
 		move_and_slide()
 		
-		CoinLabel.text = str(playerCoins) + " Coins"
+		CoinLabel.text = str(playerCoins)
 
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
@@ -485,9 +513,19 @@ func _on_reload_timer_timeout() -> void:
 		
 		total_water -= max_ammo - ammo
 		ammo = max_ammo
+		
 	else:
 		ammo += total_water
 		total_water = 0
+	
+	if weapon == 0:
+		pistolAmmo = ammo
+	if weapon == 1:
+		rifleAmmo = ammo
+	if weapon == 2:
+		shotgunAmmo = ammo
+	if weapon == 3:
+		washerAmmo = ammo
 	
 	$HUD/Control/TextureProgressBar.value = total_water
 	
@@ -724,5 +762,8 @@ func reload():
 		$ReloadTimer.start()
 
 func enemy_kill():
+	
 	score += 100 * scoreMulti
-	scoreMulti += 0.05
+	
+	if scoreMulti < 5.0:
+		scoreMulti += 0.05

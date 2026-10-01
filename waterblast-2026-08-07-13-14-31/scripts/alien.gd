@@ -95,7 +95,7 @@ func damage(amount):
 		
 		player.enemy_kill()
 		
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1, false).timeout
 		
 		
 		

@@ -12,6 +12,7 @@ var playerCoins = 0
 var waveNum = 0
 var targetEnemyNum = 2.0
 var spawnedEnemies = 2.0
+var spawnInterval = 1.0
 
 var totalWaveNum = 10
 
@@ -20,7 +21,10 @@ var enemyNum = 2.0
 
 func _ready():
 	player.level = 4
-	player.unlockedWeapons = 4
+	if CurrentLevelManager.endless_mode:
+		player.availableUnlocks = 4
+	else:
+		player.availableUnlocks = 3
 	CurrentLevelManager.current_level = 4
 	
 func _process(delta: float) -> void:
@@ -64,7 +68,7 @@ func _start_wave(num):
 		enemyNum += 1
 		spawnedEnemies += 1
 		_spawn_enemy()
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(spawnInterval, false).timeout
 	
 	if spawnedEnemies == targetEnemyNum:
 		print('wave ready')
