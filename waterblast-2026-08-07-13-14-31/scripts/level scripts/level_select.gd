@@ -71,11 +71,9 @@ func _on_l_3_endless_pressed():
 
 func _on_l_4_endless_pressed():
 	
-	pass
-	
-	#if SaveManager.highest_level_unlocked >= 5:
-		#CurrentLevelManager.endless_mode = true
-		#get_tree().change_scene_to_file("res://levels/test_level.tscn")
+	if SaveManager.highest_level_unlocked >= 5:
+		CurrentLevelManager.endless_mode = true
+		get_tree().change_scene_to_file("res://levels/milbase_level.tscn")
 
 
 func _on_l_5_endless_pressed():

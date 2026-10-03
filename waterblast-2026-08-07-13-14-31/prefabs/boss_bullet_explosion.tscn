@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://c8oqm5aopjs1"]
+
+[ext_resource type="Script" uid="uid://dbk7uwok45b4v" path="res://scripts/bullet_explosion.gd" id="1_hoh4e"]
+[ext_resource type="Material" uid="uid://g43bbukpwtih" path="res://ParticleMaterials/boss_bullet_explosion.tres" id="2_hoh4e"]
+[ext_resource type="AudioStream" uid="uid://b1kit4j7iskvm" path="res://sounds/splashes/dragon-studio-water-splash-effect-443133.wav" id="3_pgd8l"]
+[ext_resource type="AudioStream" uid="uid://x7viq152kxau" path="res://sounds/splashes/freesound_community-splash-6213.wav" id="4_c3rwh"]
+[ext_resource type="AudioStream" uid="uid://bqno3oapluiit" path="res://sounds/splashes/freesound_community-water-splash-46402.wav" id="5_bjc1b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1h8t1"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.333333, 0, 1)
+roughness = 0.4
+
+[sub_resource type="SphereMesh" id="SphereMesh_mwmr1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_h1a5m"]
+radius = 0.1
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yh48v"]
+playback_mode = 1
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("3_pgd8l")
+stream_0/weight = 0.0
+stream_1/stream = ExtResource("4_c3rwh")
+stream_2/stream = ExtResource("5_bjc1b")
+
+[node name="BulletExplosion" type="RigidBody3D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_hoh4e")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_1h8t1")
+cast_shadow = 0
+amount = 48
+explosiveness = 1.0
+fixed_fps = 120
+process_material = ExtResource("2_hoh4e")
+draw_pass_1 = SubResource("SphereMesh_mwmr1")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.9
+autostart = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_h1a5m")
+
+[node name="SplashAudioPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_yh48v")
+volume_db = -5.0
+attenuation_filter_db = -15.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

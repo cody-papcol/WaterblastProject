@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://di76a7glgovri"]
+[gd_scene load_steps=33 format=3 uid="uid://di76a7glgovri"]
 
 [ext_resource type="Script" uid="uid://bhxat5hmi06fo" path="res://scripts/level scripts/milbase_level.gd" id="1_cu1hk"]
 [ext_resource type="PackedScene" uid="uid://blu33aniy8w0f" path="res://prefabs/player.tscn" id="2_1gul6"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://j407ud7lwlhu" path="res://prefabs/water_refill_station.tscn" id="15_ml3p3"]
 [ext_resource type="PackedScene" uid="uid://dqqvedqhiw4g5" path="res://prefabs/weapon_shop.tscn" id="16_ajqpl"]
 [ext_resource type="PackedScene" uid="uid://c2s6vv4kbta71" path="res://prefabs/objects/tank_0062.tscn" id="18_a3f67"]
+[ext_resource type="PackedScene" uid="uid://bftn36moivbe7" path="res://prefabs/alien_boss.tscn" id="19_6kvga"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mvtj8"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -79,7 +80,8 @@ transform = Transform3D(-0.745007, -0.647027, 0.162234, 0.353555, -0.176777, 0.9
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_1gul6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.0319, 2.36676, 1.88121)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+weapon = 0
 
 [node name="Don\'t Enter" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.9, 47, 0.5, -27.85)
@@ -675,6 +677,9 @@ one_shot = true
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2.4, 0, 0, 0, 1, 15.2211, -1.23808, -8.29469)
 size = Vector3(99.2888, 1.03137, 52.1931)
+
+[node name="Alien" parent="." instance=ExtResource("19_6kvga")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.83261, 2.04418, 4.26423)
 
 [connection signal="death" from="InitialAliens/Alien" to="." method="enemy_death"]
 [connection signal="death" from="InitialAliens/Alien2" to="." method="enemy_death"]

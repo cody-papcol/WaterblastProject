@@ -14,7 +14,7 @@ func _process(_delta: float) -> void:
 		
 		
 		for x in get_colliding_bodies():
-			if x is enemy:
+			if x is enemy or x is boss:
 				if not spawnedExplosion:
 					x.damage(weaponDamage)
 		
@@ -44,5 +44,4 @@ func _on_timer_timeout() -> void:
 
 
 func _on_delete_timer_timeout() -> void:
-	print('death')
 	queue_free()

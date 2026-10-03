@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d4j2udlakrhwr"]
+[gd_scene load_steps=10 format=3 uid="uid://d4j2udlakrhwr"]
 
 [ext_resource type="Script" uid="uid://1610eaden1xk" path="res://scripts/shop.gd" id="1_eu8to"]
 [ext_resource type="Texture2D" uid="uid://b5wm6yjoaul46" path="res://textures/gunicons/Screenshot 2026-08-20 101102.png" id="2_wamvd"]
@@ -7,6 +7,12 @@
 [ext_resource type="Texture2D" uid="uid://bhwjvfpy8n7a5" path="res://textures/coin.png" id="4_qpdnj"]
 [ext_resource type="Texture2D" uid="uid://c8he5deqgntit" path="res://textures/lock.png" id="5_k1wnk"]
 [ext_resource type="Texture2D" uid="uid://burqko3wvjt8g" path="res://textures/gunicons/Screenshot 2026-08-20 120155.png" id="5_pba2h"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qpdnj"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_k1wnk"]
+font_size = 40
 
 [node name="Shop" type="CanvasLayer"]
 script = ExtResource("1_eu8to")
@@ -42,6 +48,22 @@ text = "Upgrade (0)"
 icon_alignment = 1
 expand_icon = true
 
+[node name="PistolCostLabel" type="Label" parent="Control/Pistol/pistolUpgrade"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 65.0
+offset_right = 20.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cost: 10"
+label_settings = SubResource("LabelSettings_qpdnj")
+
 [node name="Rifle" type="Node2D" parent="Control"]
 position = Vector2(585, 163)
 
@@ -55,6 +77,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="rifleUpgrade" type="Button" parent="Control/Rifle"]
+visible = false
 offset_left = 245.0
 offset_top = 412.0
 offset_right = 627.0
@@ -63,6 +86,22 @@ theme_override_font_sizes/font_size = 36
 text = "Upgrade (0)"
 icon_alignment = 1
 expand_icon = true
+
+[node name="RifleCostLabel" type="Label" parent="Control/Rifle/rifleUpgrade"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = 6.0
+offset_right = 61.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Cost: 50"
+label_settings = SubResource("LabelSettings_qpdnj")
 
 [node name="Coin" type="TextureRect" parent="Control/Rifle"]
 visible = false
@@ -73,6 +112,23 @@ offset_bottom = 1344.0
 scale = Vector2(0.25, 0.25)
 mouse_filter = 2
 texture = ExtResource("4_qpdnj")
+
+[node name="PriceLabel" type="Label" parent="Control/Rifle/Coin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -504.5
+offset_top = -924.0
+offset_right = -329.5
+offset_bottom = -869.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.365, 4.365)
+text = "Cost: 60"
+label_settings = SubResource("LabelSettings_k1wnk")
 
 [node name="Lock" type="TextureRect" parent="Control/Rifle"]
 offset_left = 90.0
@@ -96,6 +152,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="shotgunUpgrade" type="Button" parent="Control/Shotgun"]
+visible = false
 offset_left = 245.0
 offset_top = 412.0
 offset_right = 627.0
@@ -104,6 +161,22 @@ theme_override_font_sizes/font_size = 36
 text = "Upgrade (0)"
 icon_alignment = 1
 expand_icon = true
+
+[node name="ShotgunCostLabel" type="Label" parent="Control/Shotgun/shotgunUpgrade"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = 6.0
+offset_right = 61.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Cost: 10"
+label_settings = SubResource("LabelSettings_qpdnj")
 
 [node name="Coin" type="TextureRect" parent="Control/Shotgun"]
 visible = false
@@ -114,6 +187,23 @@ offset_bottom = 1344.0
 scale = Vector2(0.25, 0.25)
 mouse_filter = 2
 texture = ExtResource("4_qpdnj")
+
+[node name="PriceLabel" type="Label" parent="Control/Shotgun/Coin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -504.5
+offset_top = -924.0
+offset_right = -329.5
+offset_bottom = -869.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.365, 4.365)
+text = "Cost: 100"
+label_settings = SubResource("LabelSettings_k1wnk")
 
 [node name="Lock" type="TextureRect" parent="Control/Shotgun"]
 offset_left = 90.0
@@ -137,6 +227,7 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="washerUpgrade" type="Button" parent="Control/Washer"]
+visible = false
 offset_left = 245.0
 offset_top = 412.0
 offset_right = 627.0
@@ -145,6 +236,22 @@ theme_override_font_sizes/font_size = 36
 text = "Upgrade (0)"
 icon_alignment = 1
 expand_icon = true
+
+[node name="WasherCostLabel" type="Label" parent="Control/Washer/washerUpgrade"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = 6.0
+offset_right = 61.0
+offset_bottom = 51.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Cost: 50"
+label_settings = SubResource("LabelSettings_qpdnj")
 
 [node name="Coin" type="TextureRect" parent="Control/Washer"]
 visible = false
@@ -155,6 +262,23 @@ offset_bottom = 1344.0
 scale = Vector2(0.25, 0.25)
 mouse_filter = 2
 texture = ExtResource("4_qpdnj")
+
+[node name="PriceLabel" type="Label" parent="Control/Washer/Coin"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -504.5
+offset_top = -924.0
+offset_right = -329.5
+offset_bottom = -869.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.365, 4.365)
+text = "Cost: 250"
+label_settings = SubResource("LabelSettings_k1wnk")
 
 [node name="Lock" type="TextureRect" parent="Control/Washer"]
 offset_left = 90.0

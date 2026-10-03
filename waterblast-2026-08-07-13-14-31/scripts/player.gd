@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+class_name player
+
 # prefabs
 @onready var bullet_prefab = preload("res://prefabs/bullet.tscn")
 
@@ -65,6 +67,7 @@ var washerAmmo = 60
 # vars
 var sprinting = false
 var moving = false
+var can_move = true
 var reloading = false
 var health = 100
 var walking_wait_time = 0.6
@@ -109,6 +112,7 @@ const FOV_CHANGE = 1.5
 @onready var CoinLabel = $HUD/Control/CoinLabel
 @onready var blocking = $Head/Camera3D/blockbench_export/Muzzle/Blocking
 @onready var WaveProgress = $HUD/Control/WaveProgressBar
+@onready var animPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -260,46 +264,49 @@ func change_weapon(num):
 
 func _unhandled_input(event: InputEvent) -> void:
 	
-	if reloading == false:
-		if Input.is_action_just_pressed("WeaponSlot1"):
-			change_weapon(0)
-		if Input.is_action_just_pressed("WeaponSlot2") and "rifle" in unlockedWeapons:
-			change_weapon(1)
-		if Input.is_action_just_pressed("WeaponSlot3") and "shotgun" in unlockedWeapons:
-			change_weapon(2)
-		if Input.is_action_just_pressed("WeaponSlot4") and "washer" in unlockedWeapons:
-			change_weapon(3)
-	
-	
-	# input only works when gameplay is not paused
-	# player can only move mouse and move if they are not in the shop
-	if in_shop == false:
-		# mouse camera movement
-		if event is InputEventMouseMotion:
-			head.rotate_y(-event.relative.x * SENSITIVITY)
-			camera.rotate_x(-event.relative.y * SENSITIVITY)
-			camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-85), deg_to_rad(85))
+	# can move only is false when player is dead
+	if can_move:
 		
-		# initial footstep sounds
-		if Input.is_action_just_pressed("forward") or Input.is_action_just_pressed("back") or Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
-			if $FootstepTimer.is_stopped():
-				$FootstepTimer.start()
+		if reloading == false:
+			if Input.is_action_just_pressed("WeaponSlot1"):
+				change_weapon(0)
+			if Input.is_action_just_pressed("WeaponSlot2") and "rifle" in unlockedWeapons:
+				change_weapon(1)
+			if Input.is_action_just_pressed("WeaponSlot3") and "shotgun" in unlockedWeapons:
+				change_weapon(2)
+			if Input.is_action_just_pressed("WeaponSlot4") and "washer" in unlockedWeapons:
+				change_weapon(3)
 		
-		# sprint animation
-		if Input.is_action_just_pressed("sprint") and reloading == false:
-			$AnimationPlayer.play("sprint")
-			sprinting = true
-			$FootstepTimer.wait_time = sprinting_wait_time
+		
+		# input only works when gameplay is not paused
+		# player can only move mouse and move if they are not in the shop
+		if in_shop == false:
+			# mouse camera movement
+			if event is InputEventMouseMotion:
+				head.rotate_y(-event.relative.x * SENSITIVITY)
+				camera.rotate_x(-event.relative.y * SENSITIVITY)
+				camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-85), deg_to_rad(85))
 			
-		
-		
-		#handling reload
-		if Input.is_action_just_pressed("reload") and ammo != max_ammo and total_water != 0:
+			# initial footstep sounds
+			if Input.is_action_just_pressed("forward") or Input.is_action_just_pressed("back") or Input.is_action_just_pressed("left") or Input.is_action_just_pressed("right"):
+				if $FootstepTimer.is_stopped():
+					$FootstepTimer.start()
 			
-			reload()
+			# sprint animation
+			if Input.is_action_just_pressed("sprint") and reloading == false:
+				$AnimationPlayer.play("sprint")
+				sprinting = true
+				$FootstepTimer.wait_time = sprinting_wait_time
+				
 			
-	if Input.is_action_just_pressed("interact"):
-			activate()
+			
+			#handling reload
+			if Input.is_action_just_pressed("reload") and ammo != max_ammo and total_water != 0:
+				
+				reload()
+				
+		if Input.is_action_just_pressed("interact"):
+				activate()
 	
 	if Input.is_action_just_pressed("testdamage"):
 		$CollisionShape3D.disabled = true
@@ -314,7 +321,7 @@ func _physics_process(delta: float) -> void:
 	$HUD/Control/ScoreControl/MultiLabel.text = "x" + str(scoreMulti)
 	
 	# only processes if not paused
-	if playerPaused == false:
+	if playerPaused == false and can_move:
 		# shooting mechanics
 		if Input.is_action_pressed("shoot") and reloading == false and sprinting == false:
 			
@@ -415,13 +422,6 @@ func _physics_process(delta: float) -> void:
 						# shoot sound
 						$SpraySound.play()
 						
-						if ammo == 0 and total_water != 0:
-							
-							reload()
-						
-					elif reloading == false and total_water != 0:
-						
-						reload()
 				
 		
 		#check for interaction collisions
@@ -551,7 +551,12 @@ func _damage(value):
 		
 		# if health is less than half, red overlay appears
 		if health < 50:
-			$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 1 - $HealthComponent.health/50)
+			if (1 - $HealthComponent.health/50) > 0:
+				$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 1 - $HealthComponent.health/50)
+			else:
+				$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 1)
+		if health <= 0:
+			on_death()
 			
 	elif health < 100:
 		if health - value >= 100:
@@ -727,10 +732,21 @@ func upgrade_washer():
 
 func on_death() -> void:
 	
+	can_move = false
+	
+	death_animation()
+	
+	var tree = get_tree()
+	await get_tree().create_timer(1).timeout
+	
 	SaveManager.add_score(score)
 	SaveManager.save_progress()
 	
-	get_tree().change_scene_to_file("res://levels/death_menu.tscn")
+	tree.change_scene_to_file("res://levels/death_menu.tscn")
+
+func death_animation():
+	$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 6)
+
 
 func refill_water():
 	total_water = max_total_water
