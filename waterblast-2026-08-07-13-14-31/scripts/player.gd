@@ -745,8 +745,8 @@ func on_death() -> void:
 	tree.change_scene_to_file("res://levels/death_menu.tscn")
 
 func death_animation():
-	$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 6)
-
+	#$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 200)
+	$AnimationPlayer.play("death")
 
 func refill_water():
 	total_water = max_total_water

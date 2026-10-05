@@ -47,19 +47,20 @@ offset_bottom = 40.0
 
 [node name="LineEdit" type="LineEdit" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 806.0
+offset_left = 860.0
 offset_top = 272.0
-offset_right = 1271.0
+offset_right = 1325.0
 offset_bottom = 368.0
 theme_override_font_sizes/font_size = 64
 
 [node name="EnterUserLabel" type="Label" parent="Leaderboard"]
 layout_mode = 0
-offset_left = 258.0
-offset_top = 273.0
-offset_right = 777.0
-offset_bottom = 361.0
-text = "Enter Username:"
+offset_left = 299.0
+offset_top = 223.0
+offset_right = 818.0
+offset_bottom = 402.0
+text = "Enter username
+to save score:"
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="LeaderboardTitle" type="Label" parent="Leaderboard"]

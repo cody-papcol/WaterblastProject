@@ -25,7 +25,7 @@ var player: CharacterBody3D = null
 var nextPosition
 
 var canDamage = true
-var bulletVelocity = 60.0
+var bulletVelocity = 30.0
 
 var running = false
 
@@ -39,7 +39,6 @@ func _process(_delta: float) -> void:
 	
 	look_at(Vector3(player.position.x, global_position.y, player.position.z))
 	head.look_at(Vector3(player.position.x, player.global_position.y, player.position.z))
-	
 	if isAlive:
 		
 		

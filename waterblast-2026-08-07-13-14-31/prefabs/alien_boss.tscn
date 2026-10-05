@@ -1,9 +1,8 @@
-[gd_scene load_steps=48 format=4 uid="uid://bftn36moivbe7"]
+[gd_scene load_steps=52 format=4 uid="uid://bftn36moivbe7"]
 
 [ext_resource type="Script" uid="uid://dg3vq3l2rnmiq" path="res://scripts/alien_boss.gd" id="1_d6qnv"]
 [ext_resource type="AudioStream" uid="uid://dggii7gbb4i0y" path="res://sounds/zaps/zap1.wav" id="2_d6qnv"]
 [ext_resource type="Texture2D" uid="uid://bfks7gutgjqdc" path="res://models/asset packs/Kenney Character Pack/Models/GLB format/Textures/texture-g.png" id="3_d6qnv"]
-[ext_resource type="Material" uid="uid://d23l0nvssx84p" path="res://textures/materials/corrugatediron.tres" id="4_sq0bp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fahsj"]
 radius = 0.4
@@ -13,9 +12,10 @@ random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("2_d6qnv")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cwv07"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87gu5"]
 resource_name = "texture-g"
 shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
 albedo_texture = ExtResource("3_d6qnv")
 texture_filter = 1
 
@@ -41,7 +41,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
-"material": SubResource("StandardMaterial3D_cwv07"),
+"material": SubResource("StandardMaterial3D_87gu5"),
 "name": "texture-g",
 "primitive": 3,
 "uv_scale": Vector4(0.494616, 3.98619, 0, 0),
@@ -50,6 +50,13 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2tr4y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d6qnv"]
+resource_name = "texture-g"
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("3_d6qnv")
+texture_filter = 1
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nr4hy"]
 _surfaces = [{
@@ -73,7 +80,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
-"material": SubResource("StandardMaterial3D_cwv07"),
+"material": SubResource("StandardMaterial3D_d6qnv"),
 "name": "texture-g",
 "primitive": 3,
 "uv_scale": Vector4(1.05697, 3.98623, 0, 0),
@@ -82,6 +89,13 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_nr4hy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sq0bp"]
+resource_name = "texture-g"
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("3_d6qnv")
+texture_filter = 1
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bay83"]
 _surfaces = [{
@@ -105,7 +119,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
-"material": SubResource("StandardMaterial3D_cwv07"),
+"material": SubResource("StandardMaterial3D_sq0bp"),
 "name": "texture-g",
 "primitive": 3,
 "uv_scale": Vector4(0.86474, 3.99385, 0, 0),
@@ -114,6 +128,13 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_bay83")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aedun"]
+resource_name = "texture-g"
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("3_d6qnv")
+texture_filter = 1
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_e2kj6"]
 _surfaces = [{
@@ -137,7 +158,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
-"material": SubResource("StandardMaterial3D_cwv07"),
+"material": SubResource("StandardMaterial3D_aedun"),
 "name": "texture-g",
 "primitive": 3,
 "uv_scale": Vector4(1.99526, 3.49138, 0, 0),
@@ -146,6 +167,13 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_e2kj6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylvyn"]
+resource_name = "texture-g"
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("3_d6qnv")
+texture_filter = 1
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_4yyf8"]
 _surfaces = [{
@@ -169,7 +197,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQA"),
-"material": SubResource("StandardMaterial3D_cwv07"),
+"material": SubResource("StandardMaterial3D_ylvyn"),
 "name": "texture-g",
 "primitive": 3,
 "uv_scale": Vector4(1.43322, 3.49127, 0, 0),
@@ -178,6 +206,13 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_4yyf8")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t2q2y"]
+resource_name = "texture-g"
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("3_d6qnv")
+texture_filter = 1
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_efqea"]
 _surfaces = [{
@@ -201,7 +236,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAALAA0ADQAOAAwADwAQABEAEQASAA8AEwAUABUAFQAWABMA"),
-"material": SubResource("StandardMaterial3D_cwv07"),
+"material": SubResource("StandardMaterial3D_t2q2y"),
 "name": "texture-g",
 "primitive": 3,
 "uv_scale": Vector4(0.988605, 2.73117, 0, 0),
@@ -1893,7 +1928,6 @@ transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1, 2.03489e-14)
 mesh = SubResource("ArrayMesh_wtgib")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_sq0bp")
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="character-g2/character-g/root/leg-left"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00454712, -0.478943, 0.0226135)
@@ -1903,7 +1937,6 @@ size = Vector3(0.398132, 1.04211, 0.321716)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1, 2.18378e-14)
 mesh = SubResource("ArrayMesh_abc82")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_sq0bp")
 
 [node name="GPUParticlesCollisionBox3D2" type="GPUParticlesCollisionBox3D" parent="character-g2/character-g/root/leg-right"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00436732, -0.478943, 0.0226135)
@@ -1913,7 +1946,6 @@ size = Vector3(0.398132, 1.04211, 0.321716)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 mesh = SubResource("ArrayMesh_ouww6")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_sq0bp")
 
 [node name="GPUParticlesCollisionBox3D5" type="GPUParticlesCollisionBox3D" parent="character-g2/character-g/root/torso"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0176663, 0.854399, 0.0814371)
@@ -1923,17 +1955,15 @@ size = Vector3(1.0413, 1.13496, 0.438202)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.1, -0.0999999)
 mesh = SubResource("ArrayMesh_74d0m")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_sq0bp")
 
 [node name="GPUParticlesCollisionBox3D3" type="GPUParticlesCollisionBox3D" parent="character-g2/character-g/root/torso/arm-left"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.977854, -0.463962, 0.123194)
 size = Vector3(0.398132, 1.04211, 0.321716)
 
 [node name="arm-right" type="MeshInstance3D" parent="character-g2/character-g/root/torso"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.4, 1.1, -0.0999999)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 1.1, -0.0999999)
 mesh = SubResource("ArrayMesh_bi011")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_sq0bp")
 
 [node name="GPUParticlesCollisionBox3D4" type="GPUParticlesCollisionBox3D" parent="character-g2/character-g/root/torso/arm-right"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.945198, -0.463962, 0.123194)
@@ -1943,7 +1973,6 @@ size = Vector3(0.398132, 1.04211, 0.321716)
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.2, 0)
 mesh = SubResource("ArrayMesh_odtqh")
 skeleton = NodePath("")
-surface_material_override/0 = ExtResource("4_sq0bp")
 
 [node name="GPUParticlesCollisionBox3D6" type="GPUParticlesCollisionBox3D" parent="character-g2/character-g/root/torso/head"]
 transform = Transform3D(10, 0, 1.13687e-13, 0, 10, 0, -1.13687e-13, 0, 10, 0.0286251, 4.15582, 0.0568484)
@@ -1955,6 +1984,7 @@ libraries = {
 }
 
 [node name="ShootTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]

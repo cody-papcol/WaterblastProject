@@ -68,7 +68,8 @@ func _start_wave(num):
 		enemyNum += 1
 		spawnedEnemies += 1
 		_spawn_enemy()
-		await get_tree().create_timer(spawnInterval, false).timeout
+		if is_inside_tree():
+			await get_tree().create_timer(spawnInterval, false).timeout
 
 
 func _on_wave_reset_timer_timeout():
