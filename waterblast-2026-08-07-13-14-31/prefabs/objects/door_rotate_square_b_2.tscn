@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtuf6g0boqyl7"]
+
+[ext_resource type="PackedScene" uid="uid://bwvnj2rvlqbu1" path="res://models/asset packs/Kenney Building Pack/Models/GLB format/Doors/door-rotate-square-b.glb" id="1_tstpl"]
+[ext_resource type="Texture2D" uid="uid://bqrmtf3gj63f0" path="res://textures/metal_0024_ao_1k.jpg" id="2_gk4cs"]
+[ext_resource type="CompressedTexture3D" uid="uid://c4j36o6aiuk78" path="res://BakedParticleCollisions/door_rotate_square_b_2.GPUParticlesCollisionSDF3D_data.exr" id="3_gk4cs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m4c5r"]
+albedo_color = Color(0.592314, 0.352773, 0.262924, 1)
+albedo_texture = ExtResource("2_gk4cs")
+uv2_triplanar = true
+
+[node name="door-rotate-square-b2" instance=ExtResource("1_tstpl")]
+
+[node name="door" parent="door-rotate-square-b" index="0"]
+transform = Transform3D(1, 0, -3.87541e-16, 0, 1, 0, 3.87541e-16, 0, 1, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_m4c5r")
+
+[node name="handle" parent="door-rotate-square-b/door" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.16262e-16, 0, -1.16262e-16, 1, 0, 0.9, 0.75)
+
+[node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.050293, 1.03819, 0.449403)
+size = Vector3(0.22168, 2.20874, 1.11023)
+texture = ExtResource("3_gk4cs")

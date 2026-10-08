@@ -17,7 +17,8 @@ signal death
 @onready var mesh: Node3D = $"character-g2"
 @onready var meshAnims: AnimationPlayer = $"character-g2/AnimationPlayer"
 
-var health: int = 200
+var health: int = 100
+var healthMulti = 1.0
 var player: CharacterBody3D = null
 
 var nextPosition
@@ -31,6 +32,8 @@ var isAlive = true
 
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("player")[0]
+	
+	health = health * healthMulti
 	
 func _process(_delta: float) -> void:
 	

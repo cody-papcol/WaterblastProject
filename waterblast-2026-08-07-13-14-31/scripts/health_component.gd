@@ -1,9 +1,12 @@
 extends Node
 
-@export var MaxHealth: float = 100.0
+@export var MaxHealth: float = 500.0
 
-var health: float = MaxHealth
+var health: float = 0.0
 
+func _ready():
+	MaxHealth = $"..".maxHealth
+	health = MaxHealth
 func damage(attack: Attack) -> void:
 	health -= attack.damage
 	

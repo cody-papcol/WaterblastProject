@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://j407ud7lwlhu" path="res://prefabs/water_refill_station.tscn" id="15_ml3p3"]
 [ext_resource type="PackedScene" uid="uid://dqqvedqhiw4g5" path="res://prefabs/weapon_shop.tscn" id="16_ajqpl"]
 [ext_resource type="PackedScene" uid="uid://c2s6vv4kbta71" path="res://prefabs/objects/tank_0062.tscn" id="18_a3f67"]
-[ext_resource type="PackedScene" uid="uid://bftn36moivbe7" path="res://prefabs/alien_boss.tscn" id="19_6kvga"]
+[ext_resource type="PackedScene" uid="uid://1x4eib13253g" path="res://prefabs/health_powerup_test.tscn" id="19_6kvga"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_mvtj8"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -71,6 +71,7 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 
 [node name="milbase_level" type="Node3D"]
 script = ExtResource("1_cu1hk")
+totalWaveNum = 25
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3gba5")
@@ -670,15 +671,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.1543, 0, 13.7968)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 62.8457, 0, -31.6032)
 
 [node name="WaveResetTimer" type="Timer" parent="."]
-wait_time = 9999.0
+wait_time = 10.0
 one_shot = true
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 2.4, 0, 0, 0, 1, 15.2211, -1.23808, -8.29469)
 size = Vector3(99.2888, 1.03137, 52.1931)
 
-[node name="Alien" parent="." instance=ExtResource("19_6kvga")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 9.83261, 2.04418, 4.26423)
+[node name="HealthPowerupTest" parent="." instance=ExtResource("19_6kvga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4497, 0.514416, 6.01271)
+
+[node name="HealthPowerupTest2" parent="." instance=ExtResource("19_6kvga")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.7079, 0.514416, 5.44669)
 
 [connection signal="death" from="InitialAliens/Alien" to="." method="enemy_death"]
 [connection signal="death" from="InitialAliens/Alien2" to="." method="enemy_death"]

@@ -6,8 +6,8 @@ class_name player
 @onready var bullet_prefab = preload("res://prefabs/bullet.tscn")
 
 var speed
-const WALK_SPEED = 5.0
-const SPRINT_SPEED = 10.0
+@export var WALK_SPEED = 5.0 # default 5.0
+@export var SPRINT_SPEED = 10.0 # default 10.0
 const JUMP_VELOCITY = 3.5
 const SENSITIVITY = 0.003
 
@@ -69,9 +69,16 @@ var sprinting = false
 var moving = false
 var can_move = true
 var reloading = false
-var health = 100
+var hasDied = false
+var infiniteWater = false
+@export var maxHealth: float = 200.0
+var health: float = 0.0
 var walking_wait_time = 0.6
 var sprinting_wait_time = 0.3
+@export var reloadSpeedMulti = 1.0
+var wave = 0
+var totalWaves = 0
+var leftInWave = 0
 
 # Player Coins
 @export var playerCoins = 0
@@ -135,6 +142,8 @@ func _ready() -> void:
 		$HUD/Control/ScoreControl.visible = true
 	else:
 		$HUD/Control/ScoreControl.visible = false
+	
+	health = maxHealth
 	
 	# adding collision exception of player to blocking volume
 	blocking.add_exception($".")
@@ -527,6 +536,9 @@ func _on_reload_timer_timeout() -> void:
 	if weapon == 3:
 		washerAmmo = ammo
 	
+	if infiniteWater == true:
+		total_water = max_total_water
+	
 	$HUD/Control/TextureProgressBar.value = total_water
 	
 	# ensures sprint is not broken upon reload ending
@@ -549,7 +561,7 @@ func _damage(value):
 		$HealthComponent.health = health
 		$DamageSound.play()
 		
-		# if health is less than half, red overlay appears
+		# if health is less than 50, red overlay appears
 		if health < 50:
 			if (1 - $HealthComponent.health/50) > 0:
 				$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 1 - $HealthComponent.health/50)
@@ -558,9 +570,9 @@ func _damage(value):
 		if health <= 0:
 			on_death()
 			
-	elif health < 100:
-		if health - value >= 100:
-			health = 100
+	elif health < maxHealth:
+		if health - value >= maxHealth:
+			health = maxHealth
 			$HealthComponent.health = health
 			$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 1 - $HealthComponent.health/100)
 		else:
@@ -732,17 +744,21 @@ func upgrade_washer():
 
 func on_death() -> void:
 	
-	can_move = false
-	
-	death_animation()
-	
-	var tree = get_tree()
-	await get_tree().create_timer(1).timeout
-	
-	SaveManager.add_score(score)
-	SaveManager.save_progress()
-	
-	tree.change_scene_to_file("res://levels/death_menu.tscn")
+	if hasDied == false:
+		hasDied = true
+		can_move = false
+		
+		death_animation()
+		print('death')
+		var tree = get_tree()
+		await get_tree().create_timer(1).timeout
+		
+		SaveManager.add_score(score)
+		SaveManager.save_progress()
+		
+		tree.change_scene_to_file("res://levels/death_menu.tscn")
+		
+		
 
 func death_animation():
 	#$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 200)
@@ -759,22 +775,24 @@ func reload():
 		reloading = true
 		sprinting = false
 		
+		$ReloadTimer.wait_time = 3.0/reloadSpeedMulti
+		
 		if weapon == 0:
 			$AnimationPlayer.play("RESET")
 			await $AnimationPlayer.animation_finished
-			$AnimationPlayer.play("reloadPistol")
+			$AnimationPlayer.play("reloadPistol", -1, reloadSpeedMulti)
 		elif weapon == 1:
 			$AnimationPlayer.play("RESET")
 			await $AnimationPlayer.animation_finished
-			$AnimationPlayer.play("reloadRifle")
+			$AnimationPlayer.play("reloadRifle", -1, reloadSpeedMulti)
 		elif weapon == 2:
 			$AnimationPlayer.play("RESET")
 			await $AnimationPlayer.animation_finished
-			$AnimationPlayer.play("shotgunReload")
+			$AnimationPlayer.play("shotgunReload", -1, reloadSpeedMulti)
 		elif weapon == 3:
 			$AnimationPlayer.play("RESET")
 			await $AnimationPlayer.animation_finished
-			$AnimationPlayer.play("reloadWasher")
+			$AnimationPlayer.play("reloadWasher", -1, reloadSpeedMulti)
 		$ReloadTimer.start()
 
 func enemy_kill():
@@ -783,3 +801,8 @@ func enemy_kill():
 	
 	if scoreMulti < 5.0:
 		scoreMulti += 0.05
+
+func enemy_health_increase():
+	$HUD/Control/EnemyAlertLabel.visible = true
+	await get_tree().create_timer(5.0, false).timeout
+	$HUD/Control/EnemyAlertLabel.visible = false

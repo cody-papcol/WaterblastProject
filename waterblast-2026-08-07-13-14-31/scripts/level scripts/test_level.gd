@@ -15,7 +15,8 @@ var targetEnemyNum = 4.0
 var spawnedEnemies = 4.0
 var spawnInterval = 1.0
 
-var totalWaveNum = 1
+@export var enemyMulti = 5
+@export var totalWaveNum = 1
 
 var enemyNum = 4.0
 
@@ -23,6 +24,9 @@ var enemyNum = 4.0
 func _ready():
 	
 	player.level = 1
+	player.infiniteWater = false
+	player.leftInWave = enemyNum
+	player.totalWaves = totalWaveNum
 	
 	if CurrentLevelManager.endless_mode:
 		player.availableUnlocks = 4
@@ -40,6 +44,7 @@ func _process(delta: float) -> void:
 
 func enemy_death():
 	enemyNum += -1
+	player.leftInWave = enemyNum
 	
 	if enemyNum == 0 and spawnedEnemies == targetEnemyNum:
 		print('wave ended')
@@ -52,6 +57,10 @@ func _spawn_enemy():
 	var alien: CharacterBody3D = alien_prefab.instantiate()
 	alien.transform = spawns[spawnLocation].transform
 	alien.connect("death", enemy_death)
+	
+	if waveNum >= 5:
+		alien.healthMulti = 1.5
+	
 	add_child(alien)
 	
 	
@@ -66,8 +75,14 @@ func _start_wave(num):
 	
 	num += 1
 	waveNum = num
+	player.wave = waveNum
 	spawnedEnemies = 0
-	targetEnemyNum = num * 5
+	targetEnemyNum = num * enemyMulti
+	
+	if waveNum == 5:
+		player.enemy_health_increase()
+	
+	player.leftInWave = targetEnemyNum
 	
 	# enemy spawning
 	for x in targetEnemyNum:

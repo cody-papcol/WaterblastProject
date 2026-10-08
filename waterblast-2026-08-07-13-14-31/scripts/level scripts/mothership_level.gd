@@ -5,6 +5,7 @@ extends Node3D
 @onready var initialAliens: Array = [$InitialAliens/Alien, $InitialAliens/Alien2]
 @onready var player = $Player
 @onready var waveResetTimer = $WaveResetTimer
+@onready var alienBoss = $Alien
 
 var spawnLocation: int = 0
 var playerCoins = 0
@@ -12,17 +13,22 @@ var playerCoins = 0
 var waveNum = 0
 var targetEnemyNum = 6.0
 var spawnedEnemies = 6.0
-var spawnInterval = 1.0
+var spawnInterval = 3.0
 
-var totalWaveNum = 10
+var totalWaveNum = 1
 
 var enemyNum = 6.0
 
 
 func _ready():
 	player.level = 5
+	player.infiniteWater = true
+	player.leftInWave = enemyNum
+	player.totalWaves = totalWaveNum
+	
 	if CurrentLevelManager.endless_mode:
 		player.availableUnlocks = 10
+		alienBoss.queue_free()
 	else:
 		player.availableUnlocks = 4
 	CurrentLevelManager.current_level = 5
@@ -46,6 +52,9 @@ func _spawn_enemy():
 	var alien: CharacterBody3D = alien_prefab.instantiate()
 	alien.transform = spawns[spawnLocation].transform
 	alien.connect("death", enemy_death)
+	
+	alien.healthMulti = 5.0
+	
 	add_child(alien)
 	
 	
@@ -58,10 +67,11 @@ func _start_wave(num):
 	
 	num += 1
 	waveNum = num
+	player.wave = waveNum
 	spawnedEnemies = 0
-	targetEnemyNum = num * 50
+	targetEnemyNum = num * 50000
 	
-	print("wave started")
+	player.leftInWave = targetEnemyNum
 	
 	# enemy spawning
 	for x in targetEnemyNum:
@@ -88,3 +98,8 @@ func _on_wave_reset_timer_timeout():
 				get_tree().change_scene_to_file("res://levels/level_select.tscn")
 	else:
 		_start_wave(waveNum)
+
+
+func _on_boss_alien_death():
+	await get_tree().create_timer(1, false).timeout
+	get_tree().change_scene_to_file("res://levels/level_select.tscn")

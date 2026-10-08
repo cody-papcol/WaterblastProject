@@ -61,7 +61,7 @@ offset_right = 20.0
 offset_bottom = 88.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Cost: 10"
+text = "Cost: 5"
 label_settings = SubResource("LabelSettings_qpdnj")
 
 [node name="Rifle" type="Node2D" parent="Control"]
@@ -127,7 +127,7 @@ offset_bottom = -869.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4.365, 4.365)
-text = "Cost: 60"
+text = "Cost: 30"
 label_settings = SubResource("LabelSettings_k1wnk")
 
 [node name="Lock" type="TextureRect" parent="Control/Rifle"]
@@ -202,7 +202,7 @@ offset_bottom = -869.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4.365, 4.365)
-text = "Cost: 100"
+text = "Cost: 80"
 label_settings = SubResource("LabelSettings_k1wnk")
 
 [node name="Lock" type="TextureRect" parent="Control/Shotgun"]
@@ -277,7 +277,7 @@ offset_bottom = -869.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4.365, 4.365)
-text = "Cost: 250"
+text = "Cost: 150"
 label_settings = SubResource("LabelSettings_k1wnk")
 
 [node name="Lock" type="TextureRect" parent="Control/Washer"]
@@ -289,6 +289,134 @@ scale = Vector2(0.385, 0.385)
 mouse_filter = 2
 texture = ExtResource("5_k1wnk")
 
+[node name="PlayerUpgrades" type="Node2D" parent="Control"]
+
+[node name="HealthUpgrade" type="Button" parent="Control/PlayerUpgrades"]
+offset_left = 585.0
+offset_top = 850.0
+offset_right = 967.0
+offset_bottom = 946.0
+theme_override_font_sizes/font_size = 36
+text = "+20 Max Health (0)"
+icon_alignment = 1
+expand_icon = true
+
+[node name="healthUpgradeCost" type="Label" parent="Control/PlayerUpgrades/HealthUpgrade"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 65.0
+offset_right = 20.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cost: 20"
+label_settings = SubResource("LabelSettings_qpdnj")
+
+[node name="healthUpgradeLabel" type="Label" parent="Control/PlayerUpgrades/HealthUpgrade"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -113.0
+offset_right = 122.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Health Upgrade"
+label_settings = SubResource("LabelSettings_qpdnj")
+
+[node name="SpeedUpgrade" type="Button" parent="Control/PlayerUpgrades"]
+offset_left = 1072.0
+offset_top = 850.0
+offset_right = 1454.0
+offset_bottom = 946.0
+theme_override_font_sizes/font_size = 36
+text = "+0.5 Speed (0)"
+icon_alignment = 1
+expand_icon = true
+
+[node name="SpeedUpgradeCost" type="Label" parent="Control/PlayerUpgrades/SpeedUpgrade"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 65.0
+offset_right = 20.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cost: 20"
+label_settings = SubResource("LabelSettings_qpdnj")
+
+[node name="SpeedUpgradeLabel" type="Label" parent="Control/PlayerUpgrades/SpeedUpgrade"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -113.0
+offset_right = 122.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Speed Upgrade"
+label_settings = SubResource("LabelSettings_qpdnj")
+
+[node name="ReloadUpgrade" type="Button" parent="Control/PlayerUpgrades"]
+offset_left = 1562.0
+offset_top = 850.0
+offset_right = 1944.0
+offset_bottom = 946.0
+theme_override_font_sizes/font_size = 36
+text = "+0.2x Reload Speed (0)"
+icon_alignment = 1
+expand_icon = true
+
+[node name="ReloadUpgradeCost" type="Label" parent="Control/PlayerUpgrades/ReloadUpgrade"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = 65.0
+offset_right = 20.0
+offset_bottom = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Cost: 20"
+label_settings = SubResource("LabelSettings_qpdnj")
+
+[node name="ReloadUpgradeLabel" type="Label" parent="Control/PlayerUpgrades/ReloadUpgrade"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -122.0
+offset_top = -113.0
+offset_right = 122.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Speed Upgrade"
+label_settings = SubResource("LabelSettings_qpdnj")
+
 [connection signal="pressed" from="Control/Pistol/pistolButton" to="." method="_on_pistol_button_pressed"]
 [connection signal="pressed" from="Control/Pistol/pistolUpgrade" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Control/Rifle/rifleButton" to="." method="_on_rifle_button_pressed"]
@@ -297,3 +425,6 @@ texture = ExtResource("5_k1wnk")
 [connection signal="pressed" from="Control/Shotgun/shotgunUpgrade" to="." method="_on_shotgun_upgrade_pressed"]
 [connection signal="pressed" from="Control/Washer/washerButton" to="." method="_on_washer_button_pressed"]
 [connection signal="pressed" from="Control/Washer/washerUpgrade" to="." method="_on_washer_upgrade_pressed"]
+[connection signal="pressed" from="Control/PlayerUpgrades/HealthUpgrade" to="." method="_on_health_upgrade_pressed"]
+[connection signal="pressed" from="Control/PlayerUpgrades/SpeedUpgrade" to="." method="_on_speed_upgrade_pressed"]
+[connection signal="pressed" from="Control/PlayerUpgrades/ReloadUpgrade" to="." method="_on_reload_upgrade_pressed"]

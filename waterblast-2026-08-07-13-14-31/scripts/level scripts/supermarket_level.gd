@@ -9,18 +9,23 @@ extends Node3D
 var spawnLocation: int = 0
 var playerCoins = 0
 
-var waveNum = 0
+var waveNum = 25
 var targetEnemyNum = 5.0
 var spawnedEnemies = 5.0
 var spawnInterval = 1.0
 
-var totalWaveNum = 5
+@export var enemyMulti = 10
+@export var totalWaveNum = 20
 
 var enemyNum = 5.0
 
 
 func _ready():
 	player.level = 3
+	player.infiniteWater = false
+	player.leftInWave = enemyNum
+	player.totalWaves = totalWaveNum
+	
 	if CurrentLevelManager.endless_mode:
 		player.availableUnlocks = 4
 	else:
@@ -33,6 +38,7 @@ func _process(delta: float) -> void:
 
 func enemy_death():
 	enemyNum += -1
+	player.leftInWave = enemyNum
 	
 	if enemyNum == 0 and spawnedEnemies == targetEnemyNum:
 		waveResetTimer.start()
@@ -40,14 +46,20 @@ func enemy_death():
 	
 func _spawn_enemy():
 	
-	print('enemy spawned')
-	
 	spawnLocation = randi_range(0, 2)
 	var alien: CharacterBody3D = alien_prefab.instantiate()
 	alien.transform = spawns[spawnLocation].transform
 	alien.connect("death", enemy_death)
-	add_child(alien)
 	
+	if waveNum >= 5:
+		alien.healthMulti = 1.5
+	if waveNum >= 10:
+		alien.healthMulti = 2.0
+	if waveNum >= 15:
+		alien.healthMulti = 3.0
+	
+	add_child(alien)
+	print(alien.health)
 	
 	# adding player collision exception with alien
 	player.blocking.add_exception(alien)
@@ -58,10 +70,18 @@ func _start_wave(num):
 	
 	num += 1
 	waveNum = num
+	player.wave = waveNum
 	spawnedEnemies = 0
-	targetEnemyNum = num * 5
+	targetEnemyNum = num * enemyMulti
 	
-	print("wave started")
+	if waveNum == 5:
+		player.enemy_health_increase()
+	elif waveNum == 10:
+		player.enemy_health_increase()
+	elif waveNum == 15:
+		player.enemy_health_increase()
+	
+	player.leftInWave = targetEnemyNum
 	
 	# enemy spawning
 	for x in targetEnemyNum:
@@ -74,6 +94,8 @@ func _start_wave(num):
 
 func _on_wave_reset_timer_timeout():
 	if not CurrentLevelManager.endless_mode:
+		
+		
 		if waveNum + 1 <= totalWaveNum:
 			_start_wave(waveNum)
 		else:

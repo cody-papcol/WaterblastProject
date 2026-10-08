@@ -25,7 +25,6 @@ func _process(_delta: float) -> void:
 			bulletexplosion.add_collision_exception_with(get_collision_exceptions().get(0))
 			get_parent().add_child(bulletexplosion)
 			spawnedExplosion = true
-			print(get_colliding_bodies())
 			$DeleteTimer.start()
 			$GPUParticles3D.emitting = false
 			

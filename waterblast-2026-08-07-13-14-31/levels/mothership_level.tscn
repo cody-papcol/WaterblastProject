@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bi8hn307qd5m7"]
+[gd_scene load_steps=31 format=3 uid="uid://bi8hn307qd5m7"]
 
 [ext_resource type="PackedScene" uid="uid://cyiee6fb58x3o" path="res://prefabs/objects/Kenney Alien Pack/floor_detail_2.tscn" id="1_5q76b"]
 [ext_resource type="Script" uid="uid://dlj3cxkfpsp4b" path="res://scripts/level scripts/mothership_level.gd" id="1_y3se5"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b5md7pj74o74e" path="res://prefabs/alien.tscn" id="14_ba4s7"]
 [ext_resource type="PackedScene" uid="uid://dqqvedqhiw4g5" path="res://prefabs/weapon_shop.tscn" id="15_od3rk"]
 [ext_resource type="PackedScene" uid="uid://bftn36moivbe7" path="res://prefabs/alien_boss.tscn" id="16_nveen"]
+[ext_resource type="PackedScene" uid="uid://1x4eib13253g" path="res://prefabs/health_powerup_test.tscn" id="17_w1kkq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4qfjx"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -855,6 +856,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5, 0.7, -21.4)
 
 [node name="Alien" parent="." instance=ExtResource("16_nveen")]
 transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -35.4, 1, -19.5)
+health = 20000
+
+[node name="HealthPowerupTest" parent="." instance=ExtResource("17_w1kkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1, -29)
+
+[node name="HealthPowerupTest2" parent="." instance=ExtResource("17_w1kkq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 1, -10)
 
 [connection signal="death" from="InitialAliens/Alien" to="." method="enemy_death"]
 [connection signal="death" from="InitialAliens/Alien2" to="." method="enemy_death"]
@@ -863,3 +871,4 @@ transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -35.4,
 [connection signal="death" from="InitialAliens/Alien5" to="." method="enemy_death"]
 [connection signal="death" from="InitialAliens/Alien6" to="." method="enemy_death"]
 [connection signal="timeout" from="WaveResetTimer" to="." method="_on_wave_reset_timer_timeout"]
+[connection signal="death" from="Alien" to="." method="_on_boss_alien_death"]
