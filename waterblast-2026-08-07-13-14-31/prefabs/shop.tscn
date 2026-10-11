@@ -77,7 +77,6 @@ icon_alignment = 1
 expand_icon = true
 
 [node name="rifleUpgrade" type="Button" parent="Control/Rifle"]
-visible = false
 offset_left = 245.0
 offset_top = 412.0
 offset_right = 627.0
@@ -100,7 +99,7 @@ offset_right = 61.0
 offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Cost: 50"
+text = "Cost: 20"
 label_settings = SubResource("LabelSettings_qpdnj")
 
 [node name="Coin" type="TextureRect" parent="Control/Rifle"]
@@ -202,7 +201,7 @@ offset_bottom = -869.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4.365, 4.365)
-text = "Cost: 80"
+text = "Cost: 10"
 label_settings = SubResource("LabelSettings_k1wnk")
 
 [node name="Lock" type="TextureRect" parent="Control/Shotgun"]

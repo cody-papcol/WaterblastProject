@@ -13,9 +13,11 @@ var waveNum = 0
 var targetEnemyNum = 2.0
 var spawnedEnemies = 2.0
 var spawnInterval = 1.0
+var kills = 0
 
 @export var enemyMulti = 15
 @export var totalWaveNum = 12
+@export var playerMaxReserveWater = 100
 
 var enemyNum = 2.0
 
@@ -27,10 +29,13 @@ func _ready():
 	player.totalWaves = totalWaveNum
 	
 	if CurrentLevelManager.endless_mode:
+		playerMaxReserveWater = 500
 		player.availableUnlocks = 4
 	else:
 		player.availableUnlocks = 3
 	CurrentLevelManager.current_level = 4
+	
+	player.max_total_water = playerMaxReserveWater
 	
 func _process(delta: float) -> void:
 	if targetEnemyNum:
@@ -38,7 +43,8 @@ func _process(delta: float) -> void:
 
 func enemy_death():
 	enemyNum += -1
-	player.leftInWave = enemyNum
+	kills += 1
+	player.leftInWave = targetEnemyNum - kills
 	
 	if enemyNum == 0 and spawnedEnemies == targetEnemyNum:
 		waveResetTimer.start()
@@ -76,6 +82,7 @@ func _start_wave(num):
 	waveNum = num
 	player.wave = waveNum
 	spawnedEnemies = 0
+	kills = 0
 	targetEnemyNum = num * enemyMulti
 	
 	if waveNum == 5:
@@ -107,6 +114,10 @@ func _on_wave_reset_timer_timeout():
 			_start_wave(waveNum)
 		else:
 			if SaveManager.highest_level_unlocked == 4:
+				
+				player.max_water_increase()
+				await get_tree().create_timer(5).timeout
+				
 				SaveManager.highest_level_unlocked += 1
 				SaveManager.save_progress()
 				get_tree().change_scene_to_file("res://levels/level_select.tscn")

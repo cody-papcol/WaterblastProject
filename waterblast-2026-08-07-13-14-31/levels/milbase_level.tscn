@@ -71,7 +71,8 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 
 [node name="milbase_level" type="Node3D"]
 script = ExtResource("1_cu1hk")
-totalWaveNum = 25
+totalWaveNum = 20
+playerMaxReserveWater = 400
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3gba5")
@@ -101,9 +102,11 @@ shape = SubResource("ConvexPolygonShape3D_u2ko6")
 
 [node name="Alien" parent="InitialAliens" instance=ExtResource("10_8irbs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5774, 1.19073, -17.1849)
+initialAlien = true
 
 [node name="Alien2" parent="InitialAliens" instance=ExtResource("10_8irbs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.5774, 1.19073, -13.1849)
+initialAlien = true
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_8irbs")

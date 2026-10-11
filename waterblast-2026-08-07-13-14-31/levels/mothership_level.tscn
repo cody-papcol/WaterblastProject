@@ -831,21 +831,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.3, 0.4, -3)
 
 [node name="Alien" parent="InitialAliens" instance=ExtResource("14_ba4s7")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -24, 1, -29)
+initialAlien = true
 
 [node name="Alien2" parent="InitialAliens" instance=ExtResource("14_ba4s7")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -24, 1, -26)
+initialAlien = true
 
 [node name="Alien3" parent="InitialAliens" instance=ExtResource("14_ba4s7")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -24, 1, -24)
+initialAlien = true
 
 [node name="Alien4" parent="InitialAliens" instance=ExtResource("14_ba4s7")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -24, 1, -15)
+initialAlien = true
 
 [node name="Alien5" parent="InitialAliens" instance=ExtResource("14_ba4s7")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -24, 1, -12)
+initialAlien = true
 
 [node name="Alien6" parent="InitialAliens" instance=ExtResource("14_ba4s7")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -24, 1, -9)
+initialAlien = true
 
 [node name="WaveResetTimer" type="Timer" parent="."]
 wait_time = 5.0

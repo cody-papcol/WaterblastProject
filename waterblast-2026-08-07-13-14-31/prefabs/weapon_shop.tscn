@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dqqvedqhiw4g5"]
+[gd_scene load_steps=6 format=3 uid="uid://dqqvedqhiw4g5"]
 
 [ext_resource type="Script" uid="uid://64um6b7b0k50" path="res://scripts/weapon_shop.gd" id="1_ky7eq"]
+[ext_resource type="PackedScene" uid="uid://bhjc67gv6tpe5" path="res://models/waterguns/Kenney Blasters/blaster-b.glb" id="2_1qq56"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_w7r7j"]
 
@@ -28,3 +29,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 billboard = 1
 text = "E to interact"
+
+[node name="Images" type="Node3D" parent="."]
+
+[node name="blaster-b2" parent="Images" instance=ExtResource("2_1qq56")]
+transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 0.05, 0.05, 0.5)
+
+[node name="blaster-b3" parent="Images" instance=ExtResource("2_1qq56")]
+transform = Transform3D(-6.55671e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, -6.55671e-08, -0.05, 0.05, -0.5)
+
+[node name="blaster-b4" parent="Images" instance=ExtResource("2_1qq56")]
+transform = Transform3D(-1.5, 0, -1.31134e-07, 0, 1.5, 0, 1.31134e-07, 0, -1.5, 0.5, 0.05, -0.05)
+
+[node name="blaster-b5" parent="Images" instance=ExtResource("2_1qq56")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -0.5, 0.05, 0.05)

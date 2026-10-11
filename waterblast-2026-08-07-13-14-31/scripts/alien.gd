@@ -6,6 +6,7 @@ signal death
 
 @export var MoveSpeed: float = 4.0
 @export var AttackReach: float = 1.7
+@export var initialAlien = false
 
 @onready var alienExplosionPrefab = preload("res://prefabs/alien_explosion.tscn")
 @onready var alienDamageSoundPrefab = preload("res://prefabs/alien_damage_sound.tscn")
@@ -16,6 +17,7 @@ signal death
 @onready var damageSound: AudioStreamPlayer3D = $DamageSoundPlayer
 @onready var mesh: Node3D = $"character-g2"
 @onready var meshAnims: AnimationPlayer = $"character-g2/AnimationPlayer"
+@onready var raycast: RayCast3D = $RayCast3D
 
 var health: int = 100
 var healthMulti = 1.0
@@ -24,7 +26,7 @@ var player: CharacterBody3D = null
 var nextPosition
 
 var canDamage = true
-
+var foundPlayer = false
 var running = false
 
 var isAlive = true
@@ -32,13 +34,22 @@ var isAlive = true
 
 func _ready() -> void:
 	player = get_tree().get_nodes_in_group("player")[0]
+	raycast.add_exception(player)
+	
+	if initialAlien == false:
+		foundPlayer = true
 	
 	health = health * healthMulti
 	
 func _process(_delta: float) -> void:
 	
+	raycast.target_position = raycast.to_local(player.global_position)
+	raycast.force_raycast_update()
 	
-	if isAlive:
+	if not raycast.is_colliding() and foundPlayer == false:
+		foundPlayer = true
+	
+	if isAlive and foundPlayer:
 	
 		nav_agent.set_target_position(player.global_position)
 		
@@ -60,7 +71,7 @@ func _process(_delta: float) -> void:
 		
 func _physics_process(_delta: float) -> void:
 	
-	if isAlive:
+	if isAlive and foundPlayer:
 		if nav_agent.is_navigation_finished():
 			return
 		if not global_position.distance_to(player.global_position) < AttackReach:

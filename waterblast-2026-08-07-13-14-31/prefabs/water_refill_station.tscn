@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://j407ud7lwlhu"]
+[gd_scene load_steps=6 format=3 uid="uid://j407ud7lwlhu"]
 
 [ext_resource type="Script" uid="uid://cjg7y4q1kuut7" path="res://scripts/water_refill_station.gd" id="1_uy3vf"]
 
@@ -10,6 +10,11 @@ metallic = 1.0
 roughness = 0.54
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o6mel"]
+
+[sub_resource type="TextMesh" id="TextMesh_uy3vf"]
+text = "Water
+Refill"
+font_size = 32
 
 [node name="WaterRefill" type="StaticBody3D"]
 collision_layer = 8
@@ -28,3 +33,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 visible = false
 billboard = 1
 text = "E to interact"
+
+[node name="TextMeshes" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="TextMeshes"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+mesh = SubResource("TextMesh_uy3vf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="TextMeshes"]
+transform = Transform3D(1, 0, 0, 0, 1, -8.74228e-08, 0, 8.74228e-08, 1, 0, 0, 0.5)
+mesh = SubResource("TextMesh_uy3vf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="TextMeshes"]
+transform = Transform3D(4.37114e-08, 0, 1, 0, 1, 0, 1, 0, -4.37114e-08, -0.5, 0, 2.18557e-08)
+mesh = SubResource("TextMesh_uy3vf")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="TextMeshes"]
+transform = Transform3D(-4.37114e-08, 8.74228e-08, 1, 0, 1, -8.74228e-08, -1, -3.82137e-15, -4.37114e-08, 0.5, 0, -2.18557e-08)
+mesh = SubResource("TextMesh_uy3vf")
+skeleton = NodePath("../..")

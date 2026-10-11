@@ -52,7 +52,8 @@ size = Vector3(80.1388, 1, 68.4952)
 process_mode = 1
 script = ExtResource("1_x6xy7")
 enemyMulti = 6
-totalWaveNum = 15
+totalWaveNum = 10
+playerMaxReserveWater = 200
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_q7tsx")
@@ -371,15 +372,19 @@ one_shot = true
 
 [node name="Alien" parent="." instance=ExtResource("13_ygafu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 1, -14)
+initialAlien = true
 
 [node name="Alien2" parent="." instance=ExtResource("13_ygafu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, 1, 9)
+initialAlien = true
 
 [node name="Alien3" parent="." instance=ExtResource("13_ygafu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 1, -14)
+initialAlien = true
 
 [node name="Alien4" parent="." instance=ExtResource("13_ygafu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 1, 6)
+initialAlien = true
 
 [node name="AlienSkyBlocker" type="StaticBody3D" parent="."]
 collision_layer = 3

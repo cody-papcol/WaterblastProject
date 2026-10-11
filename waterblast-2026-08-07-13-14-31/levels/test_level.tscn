@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://h0drc7yjy48w"]
+[gd_scene load_steps=31 format=3 uid="uid://h0drc7yjy48w"]
 
 [ext_resource type="PackedScene" uid="uid://blu33aniy8w0f" path="res://prefabs/player.tscn" id="1_46lwt"]
 [ext_resource type="Script" uid="uid://de8xo7gyu2q04" path="res://scripts/level scripts/test_level.gd" id="1_w7r7j"]
@@ -33,12 +33,6 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(4, 3, 5), PackedInt32Arr
 cell_height = 0.1
 agent_radius = 0.7
 agent_max_climb = 0.1
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_46lwt"]
-albedo_color = Color(0.650128, 0.650128, 0.650128, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w7r7j"]
-albedo_color = Color(0.65098, 0.65098, 0.65098, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ur00s"]
 size = Vector3(0.956055, 1, 0.925293)
@@ -75,7 +69,7 @@ size = Vector3(3.37537, 3.97852, 1)
 [node name="TestLevel" type="Node3D"]
 script = ExtResource("1_w7r7j")
 enemyMulti = 3
-totalWaveNum = 10
+totalWaveNum = 6
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gmgay")
@@ -87,31 +81,6 @@ weapon = 0
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_46lwt")
-
-[node name="BasicMap" type="CSGCombiner3D" parent="NavigationRegion3D"]
-use_collision = true
-collision_layer = 3
-collision_mask = 3
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/BasicMap"]
-transform = Transform3D(40.014, 0, 0, 0, 4.93, 0, 0, 0, 1, 0, 2, -18)
-material_override = SubResource("StandardMaterial3D_46lwt")
-use_collision = true
-
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/BasicMap/CSGBox3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.700001)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/BasicMap"]
-transform = Transform3D(5.2472e-06, 0, -1, 0, 4.93, 0, 40.014, 0, 1.31134e-07, 18, 2, 1)
-material_override = SubResource("StandardMaterial3D_w7r7j")
-use_collision = true
-
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/BasicMap/CSGBox3D5"]
-transform = Transform3D(1, 0, -2.22045e-16, 0, 1, 0, 4.54747e-13, 0, 1, 1.86265e-09, 0, -0.6)
-
-[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="NavigationRegion3D/BasicMap"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8, -1, 18.8)
-size = Vector3(41, 2, 73)
 
 [node name="DiningTable" type="StaticBody3D" parent="NavigationRegion3D"]
 transform = Transform3D(2.55, 0, 0, 0, 2.1, 0, 0, 0, 4.05, 8.2, 0.3, -4)
@@ -805,21 +774,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.70957, 3.95, 37.1415)
 
 [node name="Alien" parent="." instance=ExtResource("2_x25rp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1, -6)
+initialAlien = true
 
 [node name="Alien2" parent="." instance=ExtResource("2_x25rp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 1, 12)
+initialAlien = true
 
 [node name="Alien3" parent="." instance=ExtResource("2_x25rp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 1, 23)
+initialAlien = true
 
 [node name="Alien4" parent="." instance=ExtResource("2_x25rp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 1, 32)
+initialAlien = true
 
 [node name="WaterRefill" parent="." instance=ExtResource("12_axl34")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1, 40)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 42)
 
 [node name="WeaponShop" parent="." instance=ExtResource("13_8hjdj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 1, 35)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 42)
 
 [node name="WaveResetTimer" type="Timer" parent="."]
 wait_time = 10.0

@@ -124,6 +124,8 @@ const FOV_CHANGE = 1.5
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
+	total_water = max_total_water
+	
 	$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = false
 	$Head/Camera3D/blockbench_export/RifleStableArm.visible = false
 	$Head/Camera3D/blockbench_export/ShotgunMesh.visible = false
@@ -803,6 +805,19 @@ func enemy_kill():
 		scoreMulti += 0.05
 
 func enemy_health_increase():
+	$HUD/Control/EnemyAlertLabel.text = "Enemy Health Increased!"
+	$HUD/Control/EnemyAlertLabel.visible = true
+	await get_tree().create_timer(5.0, false).timeout
+	$HUD/Control/EnemyAlertLabel.visible = false
+	
+func max_water_increase():
+	$HUD/Control/EnemyAlertLabel.text = "Max Water Increased!"
+	$HUD/Control/EnemyAlertLabel.visible = true
+	await get_tree().create_timer(5.0, false).timeout
+	$HUD/Control/EnemyAlertLabel.visible = false
+	
+func beat_game():
+	$HUD/Control/EnemyAlertLabel.text = "You Beat the Game!"
 	$HUD/Control/EnemyAlertLabel.visible = true
 	await get_tree().create_timer(5.0, false).timeout
 	$HUD/Control/EnemyAlertLabel.visible = false

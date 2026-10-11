@@ -1139,6 +1139,7 @@ stream_0/stream = ExtResource("9_rgeog")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_4dohe")
+max_total_water = 100
 max_ammo = 60
 firerate = 0.15
 maxHealth = 100.0
@@ -1455,11 +1456,15 @@ texture = ExtResource("9_q2wkl")
 
 [node name="EnemyAlertLabel" type="Label" parent="HUD/Control"]
 visible = false
-layout_mode = 0
-offset_left = 51.0
-offset_top = 51.0
-offset_right = 818.0
-offset_bottom = 139.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -383.5
+offset_top = 165.0
+offset_right = 383.5
+offset_bottom = 253.0
+grow_horizontal = 2
 text = "Enemy Health Increased!"
 label_settings = SubResource("LabelSettings_f2e50")
 

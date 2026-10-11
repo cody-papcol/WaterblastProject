@@ -14,6 +14,7 @@ var waveNum = 0
 var targetEnemyNum = 6.0
 var spawnedEnemies = 6.0
 var spawnInterval = 3.0
+var kills = 0
 
 var totalWaveNum = 1
 
@@ -39,6 +40,8 @@ func _process(delta: float) -> void:
 
 func enemy_death():
 	enemyNum += -1
+	kills += 1
+	player.leftInWave = targetEnemyNum - kills
 	
 	if enemyNum == 0 and spawnedEnemies == targetEnemyNum:
 		waveResetTimer.start()
@@ -69,6 +72,7 @@ func _start_wave(num):
 	waveNum = num
 	player.wave = waveNum
 	spawnedEnemies = 0
+	kills = 0
 	targetEnemyNum = num * 50000
 	
 	player.leftInWave = targetEnemyNum
@@ -101,5 +105,6 @@ func _on_wave_reset_timer_timeout():
 
 
 func _on_boss_alien_death():
-	await get_tree().create_timer(1, false).timeout
+	player.beat_game()
+	await get_tree().create_timer(5, false).timeout
 	get_tree().change_scene_to_file("res://levels/level_select.tscn")

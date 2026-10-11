@@ -39,4 +39,7 @@ panning_strength = 0.5
 [node name="character-g2" parent="." instance=ExtResource("3_navgn")]
 transform = Transform3D(-0.7, 0, -6.11959e-08, 0, 0.7, 0, 6.11959e-08, 0, -0.7, 0, -0.993717, 0)
 
+[node name="RayCast3D" type="RayCast3D" parent="."]
+collision_mask = 7
+
 [connection signal="timeout" from="DamageTimer" to="." method="_on_damage_timer_timeout"]
