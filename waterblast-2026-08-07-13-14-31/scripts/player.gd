@@ -135,8 +135,7 @@ func _ready() -> void:
 	$Head/Camera3D/blockbench_export/RifleMesh.visible = false
 	$Head/Camera3D/blockbench_export/WasherMesh1.visible = false
 	
-	$HUD/Control/TextureProgressBar.max_value = max_total_water
-	$HUD/Control/TextureProgressBar.value = total_water
+	$HUD/Control/TextureProgressBar.value = float(total_water)/float(max_total_water) * 100
 	
 	AudioServer.set_bus_volume_db(0, linear_to_db(0.4))
 	
@@ -324,13 +323,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 func _physics_process(delta: float) -> void:
 	
-	# INFINITE HEAL TEST
-	#_damage(-100)
+	
 	
 	# updating score UI values
 	$HUD/Control/ScoreControl/ScoreLabel.text = str(int(score))
 	$HUD/Control/ScoreControl/MultiLabel.text = "x" + str(scoreMulti)
-	
+	$HUD/Control/TextureProgressBar.value = float(total_water)/float(max_total_water) * 100
 	# only processes if not paused
 	if playerPaused == false and can_move:
 		# shooting mechanics
@@ -540,8 +538,6 @@ func _on_reload_timer_timeout() -> void:
 	
 	if infiniteWater == true:
 		total_water = max_total_water
-	
-	$HUD/Control/TextureProgressBar.value = total_water
 	
 	# ensures sprint is not broken upon reload ending
 	if Input.is_action_pressed("sprint"):
@@ -768,7 +764,7 @@ func death_animation():
 
 func refill_water():
 	total_water = max_total_water
-	$HUD/Control/TextureProgressBar.value = total_water
+	$HUD/Control/TextureProgressBar.value = float(total_water)/float(max_total_water) * 100
 
 func reload():
 	

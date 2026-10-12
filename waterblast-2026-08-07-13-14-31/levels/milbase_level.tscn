@@ -82,6 +82,7 @@ transform = Transform3D(-0.745007, -0.647027, 0.162234, 0.353555, -0.176777, 0.9
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_1gul6")]
+max_total_water = 400
 weapon = 0
 
 [node name="Don\'t Enter" type="StaticBody3D" parent="."]

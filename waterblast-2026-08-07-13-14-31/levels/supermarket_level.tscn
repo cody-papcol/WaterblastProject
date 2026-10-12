@@ -59,6 +59,7 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 
 [node name="SupermarketLevel" type="Node3D"]
 script = ExtResource("1_c3nkb")
+enemyMulti = 10
 totalWaveNum = 15
 playerMaxReserveWater = 300
 
@@ -70,6 +71,7 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_04r6o")]
+max_total_water = 300
 weapon = 0
 blocking_nodes = [null, null, null, null, null]
 

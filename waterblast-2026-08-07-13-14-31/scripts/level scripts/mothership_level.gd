@@ -14,6 +14,8 @@ var waveNum = 0
 var targetEnemyNum = 6.0
 var spawnedEnemies = 6.0
 var spawnInterval = 3.0
+var leftToIncrease = 5
+var enemyHealthMulti = 0
 var kills = 0
 
 var totalWaveNum = 1

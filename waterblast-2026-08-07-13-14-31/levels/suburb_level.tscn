@@ -64,6 +64,7 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("1_6nicb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60603, 2.36653, 6.14504)
+max_total_water = 200
 weapon = 0
 
 [node name="GPUParticlesCollisionSDF3D" type="GPUParticlesCollisionSDF3D" parent="."]

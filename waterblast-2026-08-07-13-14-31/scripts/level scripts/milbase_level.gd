@@ -13,6 +13,8 @@ var waveNum = 0
 var targetEnemyNum = 2.0
 var spawnedEnemies = 2.0
 var spawnInterval = 1.0
+var leftToIncrease = 5
+var enemyHealthMulti = 1
 var kills = 0
 
 @export var enemyMulti = 15
@@ -36,6 +38,7 @@ func _ready():
 	CurrentLevelManager.current_level = 4
 	
 	player.max_total_water = playerMaxReserveWater
+	player.refill_water()
 	
 func _process(delta: float) -> void:
 	if targetEnemyNum:
@@ -59,14 +62,17 @@ func _spawn_enemy():
 	alien.transform = spawns[spawnLocation].transform
 	alien.connect("death", enemy_death)
 	
-	if waveNum >= 5:
-		alien.healthMulti = 1.5
-	elif waveNum >= 10:
-		alien.healthMulti = 2.0
-	elif waveNum >= 15:
-		alien.healthMulti = 3.0
-	elif waveNum >= 20:
-		alien.healthMulti = 4.0
+	if CurrentLevelManager.endless_mode:
+		alien.healthMulti = enemyHealthMulti
+	else:
+		if waveNum >= 5:
+			alien.healthMulti = 1.5
+		if waveNum >= 10:
+			alien.healthMulti = 2.0
+		if waveNum >= 15:
+			alien.healthMulti = 3.0
+		if waveNum >= 20:
+			alien.healthMulti = 4.0
 	
 	add_child(alien)
 	
@@ -85,15 +91,16 @@ func _start_wave(num):
 	kills = 0
 	targetEnemyNum = num * enemyMulti
 	
-	if waveNum == 5:
-		player.enemy_health_increase()
-	if waveNum == 10:
-		player.enemy_health_increase()
-	if waveNum == 15:
-		player.enemy_health_increase()
-	if waveNum == 20:
-		player.enemy_health_increase()
-	
+	if not CurrentLevelManager.endless_mode:
+		if waveNum == 5:
+			player.enemy_health_increase()
+		if waveNum == 10:
+			player.enemy_health_increase()
+		if waveNum == 15:
+			player.enemy_health_increase()
+		if waveNum == 20:
+			player.enemy_health_increase()
+		
 	player.leftInWave = targetEnemyNum
 	
 	# enemy spawning
@@ -124,4 +131,10 @@ func _on_wave_reset_timer_timeout():
 			else:
 				get_tree().change_scene_to_file("res://levels/level_select.tscn")
 	else:
+		if leftToIncrease > 0:
+			leftToIncrease += -1
+		else:
+			player.enemy_health_increase()
+			enemyHealthMulti += 0.5
+			leftToIncrease = 4
 		_start_wave(waveNum)
