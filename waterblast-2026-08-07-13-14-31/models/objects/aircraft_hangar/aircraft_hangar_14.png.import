@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cr8qyjl25xwa1"
 path.s3tc="res://.godot/imported/aircraft_hangar_14.png-0a2fd2dc65685cd13afbd1c064805c00.s3tc.ctex"
+path.etc2="res://.godot/imported/aircraft_hangar_14.png-0a2fd2dc65685cd13afbd1c064805c00.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/objects/aircraft_hangar/aircraft_hangar_14.png"
-dest_files=["res://.godot/imported/aircraft_hangar_14.png-0a2fd2dc65685cd13afbd1c064805c00.s3tc.ctex"]
+dest_files=["res://.godot/imported/aircraft_hangar_14.png-0a2fd2dc65685cd13afbd1c064805c00.s3tc.ctex", "res://.godot/imported/aircraft_hangar_14.png-0a2fd2dc65685cd13afbd1c064805c00.etc2.ctex"]
 
 [params]
 

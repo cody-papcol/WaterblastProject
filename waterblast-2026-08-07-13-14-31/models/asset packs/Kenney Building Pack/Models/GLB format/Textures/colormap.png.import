@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://1q5af8bltxuk"
 path.s3tc="res://.godot/imported/colormap.png-0161e91a45876e521ce724f7acec22fc.s3tc.ctex"
+path.etc2="res://.godot/imported/colormap.png-0161e91a45876e521ce724f7acec22fc.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/asset packs/Kenney Building Pack/Models/GLB format/Textures/colormap.png"
-dest_files=["res://.godot/imported/colormap.png-0161e91a45876e521ce724f7acec22fc.s3tc.ctex"]
+dest_files=["res://.godot/imported/colormap.png-0161e91a45876e521ce724f7acec22fc.s3tc.ctex", "res://.godot/imported/colormap.png-0161e91a45876e521ce724f7acec22fc.etc2.ctex"]
 
 [params]
 

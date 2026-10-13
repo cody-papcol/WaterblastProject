@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://0tkwt4o6s5yl"
 path.s3tc="res://.godot/imported/Hedgehog_001_Textures1.png-468d870748c8696d1570dd18639a12ba.s3tc.ctex"
+path.etc2="res://.godot/imported/Hedgehog_001_Textures1.png-468d870748c8696d1570dd18639a12ba.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/asset packs/ITHappy Military Pack/Military_Free_glb/Separate_Assets_glb/Hedgehog_001_Textures1.png"
-dest_files=["res://.godot/imported/Hedgehog_001_Textures1.png-468d870748c8696d1570dd18639a12ba.s3tc.ctex"]
+dest_files=["res://.godot/imported/Hedgehog_001_Textures1.png-468d870748c8696d1570dd18639a12ba.s3tc.ctex", "res://.godot/imported/Hedgehog_001_Textures1.png-468d870748c8696d1570dd18639a12ba.etc2.ctex"]
 
 [params]
 

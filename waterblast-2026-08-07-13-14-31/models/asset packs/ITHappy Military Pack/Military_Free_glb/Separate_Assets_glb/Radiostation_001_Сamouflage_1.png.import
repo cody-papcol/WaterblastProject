@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ck312udurt0a0"
 path.s3tc="res://.godot/imported/Radiostation_001_Сamouflage_1.png-a19a52e4bd5cc4e674d4f221f0947583.s3tc.ctex"
+path.etc2="res://.godot/imported/Radiostation_001_Сamouflage_1.png-a19a52e4bd5cc4e674d4f221f0947583.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/asset packs/ITHappy Military Pack/Military_Free_glb/Separate_Assets_glb/Radiostation_001_Сamouflage_1.png"
-dest_files=["res://.godot/imported/Radiostation_001_Сamouflage_1.png-a19a52e4bd5cc4e674d4f221f0947583.s3tc.ctex"]
+dest_files=["res://.godot/imported/Radiostation_001_Сamouflage_1.png-a19a52e4bd5cc4e674d4f221f0947583.s3tc.ctex", "res://.godot/imported/Radiostation_001_Сamouflage_1.png-a19a52e4bd5cc4e674d4f221f0947583.etc2.ctex"]
 
 [params]
 

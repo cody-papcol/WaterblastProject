@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d1pc0ffip2xt"
 path.s3tc="res://.godot/imported/Target_002_Textures1.png-f05aea74b5946de63c7ab3ba285de15d.s3tc.ctex"
+path.etc2="res://.godot/imported/Target_002_Textures1.png-f05aea74b5946de63c7ab3ba285de15d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/asset packs/ITHappy Military Pack/Military_Free_glb/Separate_Assets_glb/Target_002_Textures1.png"
-dest_files=["res://.godot/imported/Target_002_Textures1.png-f05aea74b5946de63c7ab3ba285de15d.s3tc.ctex"]
+dest_files=["res://.godot/imported/Target_002_Textures1.png-f05aea74b5946de63c7ab3ba285de15d.s3tc.ctex", "res://.godot/imported/Target_002_Textures1.png-f05aea74b5946de63c7ab3ba285de15d.etc2.ctex"]
 
 [params]
 

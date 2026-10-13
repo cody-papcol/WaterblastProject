@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b1pb6cmvofmaa"
 path.s3tc="res://.godot/imported/water-removebg-preview.png-dcecc1b969c3d6cdd77fce52e69dac35.s3tc.ctex"
+path.etc2="res://.godot/imported/water-removebg-preview.png-dcecc1b969c3d6cdd77fce52e69dac35.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/water-removebg-preview.png"
-dest_files=["res://.godot/imported/water-removebg-preview.png-dcecc1b969c3d6cdd77fce52e69dac35.s3tc.ctex"]
+dest_files=["res://.godot/imported/water-removebg-preview.png-dcecc1b969c3d6cdd77fce52e69dac35.s3tc.ctex", "res://.godot/imported/water-removebg-preview.png-dcecc1b969c3d6cdd77fce52e69dac35.etc2.ctex"]
 
 [params]
 

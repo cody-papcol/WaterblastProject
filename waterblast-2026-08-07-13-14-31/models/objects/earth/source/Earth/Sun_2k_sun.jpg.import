@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cm1m7d3dx7dhv"
 path.s3tc="res://.godot/imported/Sun_2k_sun.jpg-822c0671a235a88dfeb71cc71b2e2a17.s3tc.ctex"
+path.etc2="res://.godot/imported/Sun_2k_sun.jpg-822c0671a235a88dfeb71cc71b2e2a17.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/objects/earth/source/Earth/Sun_2k_sun.jpg"
-dest_files=["res://.godot/imported/Sun_2k_sun.jpg-822c0671a235a88dfeb71cc71b2e2a17.s3tc.ctex"]
+dest_files=["res://.godot/imported/Sun_2k_sun.jpg-822c0671a235a88dfeb71cc71b2e2a17.s3tc.ctex", "res://.godot/imported/Sun_2k_sun.jpg-822c0671a235a88dfeb71cc71b2e2a17.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dgph272ox7qgf"
 path.s3tc="res://.godot/imported/colormap.png-0b59733714a16c08c02bfe253af359c8.s3tc.ctex"
+path.etc2="res://.godot/imported/colormap.png-0b59733714a16c08c02bfe253af359c8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/asset packs/Kenney Supermarket Pack/Models/GLB format/Textures/colormap.png"
-dest_files=["res://.godot/imported/colormap.png-0b59733714a16c08c02bfe253af359c8.s3tc.ctex"]
+dest_files=["res://.godot/imported/colormap.png-0b59733714a16c08c02bfe253af359c8.s3tc.ctex", "res://.godot/imported/colormap.png-0b59733714a16c08c02bfe253af359c8.etc2.ctex"]
 
 [params]
 

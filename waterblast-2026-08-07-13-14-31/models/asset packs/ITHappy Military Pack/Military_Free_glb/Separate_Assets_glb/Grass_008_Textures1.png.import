@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://f6gscqpgieyg"
 path.s3tc="res://.godot/imported/Grass_008_Textures1.png-d4d454fb8f851b464de9f35fb291ac7e.s3tc.ctex"
+path.etc2="res://.godot/imported/Grass_008_Textures1.png-d4d454fb8f851b464de9f35fb291ac7e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/asset packs/ITHappy Military Pack/Military_Free_glb/Separate_Assets_glb/Grass_008_Textures1.png"
-dest_files=["res://.godot/imported/Grass_008_Textures1.png-d4d454fb8f851b464de9f35fb291ac7e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Grass_008_Textures1.png-d4d454fb8f851b464de9f35fb291ac7e.s3tc.ctex", "res://.godot/imported/Grass_008_Textures1.png-d4d454fb8f851b464de9f35fb291ac7e.etc2.ctex"]
 
 [params]
 

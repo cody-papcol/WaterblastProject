@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://0vxqjfgtt2sj"
 path.s3tc="res://.godot/imported/texture-q.png-04ec13449ee17cd9dfa714ee7ca282c9.s3tc.ctex"
+path.etc2="res://.godot/imported/texture-q.png-04ec13449ee17cd9dfa714ee7ca282c9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://models/asset packs/Kenney Character Pack/Models/GLB format/Textures/texture-q.png"
-dest_files=["res://.godot/imported/texture-q.png-04ec13449ee17cd9dfa714ee7ca282c9.s3tc.ctex"]
+dest_files=["res://.godot/imported/texture-q.png-04ec13449ee17cd9dfa714ee7ca282c9.s3tc.ctex", "res://.godot/imported/texture-q.png-04ec13449ee17cd9dfa714ee7ca282c9.etc2.ctex"]
 
 [params]
 

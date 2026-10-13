@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://djgunjem3vn2g"
 path.s3tc="res://.godot/imported/Hummer_003_Textures1.png-5d1c92c4d039f0b5adc40660544320ea.s3tc.ctex"
+path.etc2="res://.godot/imported/Hummer_003_Textures1.png-5d1c92c4d039f0b5adc40660544320ea.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/asset packs/ITHappy Military Pack/Military_Free_glb/Separate_Assets_glb/Hummer_003_Textures1.png"
-dest_files=["res://.godot/imported/Hummer_003_Textures1.png-5d1c92c4d039f0b5adc40660544320ea.s3tc.ctex"]
+dest_files=["res://.godot/imported/Hummer_003_Textures1.png-5d1c92c4d039f0b5adc40660544320ea.s3tc.ctex", "res://.godot/imported/Hummer_003_Textures1.png-5d1c92c4d039f0b5adc40660544320ea.etc2.ctex"]
 
 [params]
 

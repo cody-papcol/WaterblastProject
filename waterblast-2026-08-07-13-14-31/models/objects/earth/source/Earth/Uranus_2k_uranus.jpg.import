@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dm7niyj0nqfag"
 path.s3tc="res://.godot/imported/Uranus_2k_uranus.jpg-2ec4d84f88491fcfe161364d4f04f2f1.s3tc.ctex"
+path.etc2="res://.godot/imported/Uranus_2k_uranus.jpg-2ec4d84f88491fcfe161364d4f04f2f1.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/objects/earth/source/Earth/Uranus_2k_uranus.jpg"
-dest_files=["res://.godot/imported/Uranus_2k_uranus.jpg-2ec4d84f88491fcfe161364d4f04f2f1.s3tc.ctex"]
+dest_files=["res://.godot/imported/Uranus_2k_uranus.jpg-2ec4d84f88491fcfe161364d4f04f2f1.s3tc.ctex", "res://.godot/imported/Uranus_2k_uranus.jpg-2ec4d84f88491fcfe161364d4f04f2f1.etc2.ctex"]
 
 [params]
 

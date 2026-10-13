@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxrkxockv48ij"
 path.s3tc="res://.godot/imported/Mortar_001_Textures1.png-6bdb0baf9b1104159f4675431e2dccce.s3tc.ctex"
+path.etc2="res://.godot/imported/Mortar_001_Textures1.png-6bdb0baf9b1104159f4675431e2dccce.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/asset packs/ITHappy Military Pack/Military_Free_glb/Separate_Assets_glb/Mortar_001_Textures1.png"
-dest_files=["res://.godot/imported/Mortar_001_Textures1.png-6bdb0baf9b1104159f4675431e2dccce.s3tc.ctex"]
+dest_files=["res://.godot/imported/Mortar_001_Textures1.png-6bdb0baf9b1104159f4675431e2dccce.s3tc.ctex", "res://.godot/imported/Mortar_001_Textures1.png-6bdb0baf9b1104159f4675431e2dccce.etc2.ctex"]
 
 [params]
 
