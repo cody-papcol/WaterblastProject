@@ -13,10 +13,11 @@ var playerCoins = 0
 var waveNum = 0
 var targetEnemyNum = 6.0
 var spawnedEnemies = 6.0
-var spawnInterval = 3.0
+@export var spawnInterval = 5.0
 var leftToIncrease = 5
 var enemyHealthMulti = 0
 var kills = 0
+var entered = false
 
 var totalWaveNum = 1
 
@@ -58,7 +59,7 @@ func _spawn_enemy():
 	alien.transform = spawns[spawnLocation].transform
 	alien.connect("death", enemy_death)
 	
-	alien.healthMulti = 5.0
+	alien.healthMulti = 3.5
 	
 	add_child(alien)
 	
@@ -110,3 +111,9 @@ func _on_boss_alien_death():
 	player.beat_game()
 	await get_tree().create_timer(5, false).timeout
 	get_tree().change_scene_to_file("res://levels/level_select.tscn")
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if entered == false and body is player:
+		$ExitBlocker.position.y += -2
+		entered = true

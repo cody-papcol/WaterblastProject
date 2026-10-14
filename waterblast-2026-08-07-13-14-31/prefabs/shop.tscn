@@ -201,7 +201,7 @@ offset_bottom = -869.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(4.365, 4.365)
-text = "Cost: 10"
+text = "Cost: 80"
 label_settings = SubResource("LabelSettings_k1wnk")
 
 [node name="Lock" type="TextureRect" parent="Control/Shotgun"]

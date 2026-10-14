@@ -799,6 +799,7 @@ func enemy_kill():
 	
 	if scoreMulti < 5.0:
 		scoreMulti += 0.05
+		scoreMulti = snapped(scoreMulti, 0.01)
 
 func enemy_health_increase():
 	$HUD/Control/EnemyAlertLabel.text = "Enemy Health Increased!"
