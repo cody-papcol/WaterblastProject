@@ -68,8 +68,8 @@ size = Vector3(3.37537, 3.97852, 1)
 
 [node name="TestLevel" type="Node3D"]
 script = ExtResource("1_w7r7j")
-enemyMulti = 3
-totalWaveNum = 6
+enemyMulti = 2
+totalWaveNum = 4
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gmgay")
@@ -789,10 +789,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 1, 32)
 initialAlien = true
 
 [node name="WaterRefill" parent="." instance=ExtResource("12_axl34")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 1, 42)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5, 1, 43.8)
 
 [node name="WeaponShop" parent="." instance=ExtResource("13_8hjdj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 42)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 1, 43.2)
 
 [node name="WaveResetTimer" type="Timer" parent="."]
 wait_time = 10.0

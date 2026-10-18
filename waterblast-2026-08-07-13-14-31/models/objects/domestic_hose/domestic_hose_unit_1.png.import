@@ -1,0 +1,39 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c45xmlyufqb1m"
+path.s3tc="res://.godot/imported/domestic_hose_unit_1.png-e9d575f8a965e79aecc3138a350fc2ec.s3tc.ctex"
+path.etc2="res://.godot/imported/domestic_hose_unit_1.png-e9d575f8a965e79aecc3138a350fc2ec.etc2.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "eb926896a3bfbae84a8b6b01b4248021"
+}
+
+[deps]
+
+source_file="res://models/objects/domestic_hose/domestic_hose_unit_1.png"
+dest_files=["res://.godot/imported/domestic_hose_unit_1.png-e9d575f8a965e79aecc3138a350fc2ec.s3tc.ctex", "res://.godot/imported/domestic_hose_unit_1.png-e9d575f8a965e79aecc3138a350fc2ec.etc2.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

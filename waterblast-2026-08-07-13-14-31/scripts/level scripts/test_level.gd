@@ -69,7 +69,7 @@ func _spawn_enemy():
 	
 	if CurrentLevelManager.endless_mode:
 		alien.healthMulti = enemyHealthMulti
-	elif waveNum >= 5:
+	elif waveNum >= 3:
 		alien.healthMulti = 1.5
 	
 	add_child(alien)
@@ -91,7 +91,7 @@ func _start_wave(num):
 	kills = 0
 	targetEnemyNum = num * enemyMulti
 	
-	if waveNum == 5 and CurrentLevelManager.endless_mode == false:
+	if waveNum == 3 and CurrentLevelManager.endless_mode == false:
 		player.enemy_health_increase()
 	
 	player.leftInWave = targetEnemyNum

@@ -47,7 +47,7 @@ var rifleAmmo = 30
 
 # shotgun
 var shotgunBulletVelocity = 20.0
-var shotgunDamage = 25
+var shotgunDamage = 40
 var shotgunMaxAmmo = 30
 var shotgunFireRate = 0.5
 @export var shotgunSpread = 0.15
@@ -318,8 +318,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		if Input.is_action_just_pressed("interact"):
 				activate()
 	
-	if Input.is_action_just_pressed("testdamage"):
-		$CollisionShape3D.disabled = true
 	
 func _physics_process(delta: float) -> void:
 	

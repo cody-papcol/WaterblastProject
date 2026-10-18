@@ -52,6 +52,7 @@ offset_top = 272.0
 offset_right = 1325.0
 offset_bottom = 368.0
 theme_override_font_sizes/font_size = 64
+max_length = 16
 
 [node name="EnterUserLabel" type="Label" parent="Leaderboard"]
 layout_mode = 0
@@ -61,6 +62,15 @@ offset_right = 818.0
 offset_bottom = 402.0
 text = "Enter username
 to save score:"
+label_settings = SubResource("LabelSettings_u8ukk")
+
+[node name="RulesLabel" type="Label" parent="Leaderboard"]
+layout_mode = 0
+offset_left = 740.0
+offset_top = 368.0
+offset_right = 1504.0
+offset_bottom = 547.0
+text = "No spaces, 16 characters"
 label_settings = SubResource("LabelSettings_u8ukk")
 
 [node name="LeaderboardTitle" type="Label" parent="Leaderboard"]

@@ -71,7 +71,7 @@ points = PackedVector3Array(0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 
 
 [node name="milbase_level" type="Node3D"]
 script = ExtResource("1_cu1hk")
-totalWaveNum = 20
+enemyMulti = 8
 playerMaxReserveWater = 400
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

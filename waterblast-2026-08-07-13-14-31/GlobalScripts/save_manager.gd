@@ -2,7 +2,7 @@ extends Node
 
 const SAVE_PATH = "user://save.json"
 
-var highest_level_unlocked = 1
+var highest_level_unlocked = 6
 
 var recent_score = 0
 

@@ -4,12 +4,6 @@ extends StaticBody3D
 @onready var player: CharacterBody3D = $"../Player"
 @onready var respawnTimer: Timer = $RespawnTimer
 
-func interact():
-	if visible:
-		player._damage(-50)
-		visible = false
-		respawnTimer.start()
-
 
 func show_prompt():
 	prompt_label.visible = true
@@ -20,3 +14,10 @@ func hide_prompt():
 
 func _on_respawn_timer_timeout() -> void:
 	visible = true
+
+
+func _on_area_3d_body_entered(body):
+	if visible and body is player and player.health < player.maxHealth:
+		player._damage(-50)
+		visible = false
+		respawnTimer.start()

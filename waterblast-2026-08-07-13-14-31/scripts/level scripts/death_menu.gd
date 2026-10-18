@@ -1,6 +1,7 @@
 extends Control
 
 var hasEnteredName: bool = false
+var valid_name = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,12 +35,18 @@ func _on_main_menu_button_pressed() -> void:
 
 func _on_line_edit_text_submitted(new_text):
 	
-	
+	valid_name = true
 	
 	if hasEnteredName == false:
-		SaveManager.append_score(new_text, CurrentLevelManager.current_level)
-		display_leaderboard()
-		hasEnteredName = true
+		for x in new_text:
+			if x == " ":
+				print('invalid name')
+				valid_name = false
+		
+		if valid_name:
+			SaveManager.append_score(new_text, CurrentLevelManager.current_level)
+			display_leaderboard()
+			hasEnteredName = true
 	
 func display_leaderboard():
 	
