@@ -24,7 +24,7 @@ var kills = 0
 
 var enemyNum = 4.0
 
-
+# sets all values, including player values for start of level
 func _ready():
 	
 	MusicManager.stop_music()
@@ -34,6 +34,7 @@ func _ready():
 	player.leftInWave = enemyNum
 	player.totalWaves = totalWaveNum
 	
+	# if in endless mode player gets increased total water (consistent across levels)
 	if CurrentLevelManager.endless_mode:
 		player.availableUnlocks = 4
 		playerMaxReserveWater = 500
@@ -44,14 +45,15 @@ func _ready():
 	player.max_total_water = playerMaxReserveWater
 	player.refill_water()
 	
+# called every frame, only sets the wave progress bar
 func _process(delta: float) -> void:
-	
-	
 	
 	if targetEnemyNum:
 		player.WaveProgress.value = enemyNum/targetEnemyNum
 		
 
+# called when an enemy dies, increases the kills, decreases the amount of enemies left in the wave,
+# calls the wave reset timer if it was the last enemy
 func enemy_death():
 	enemyNum += -1
 	kills += 1
@@ -61,8 +63,8 @@ func enemy_death():
 		print('wave ended')
 		waveResetTimer.start()
 	
+
 func _spawn_enemy():
-	
 	
 	spawnLocation = randi_range(0, 3)
 	var alien: CharacterBody3D = alien_prefab.instantiate()

@@ -2,6 +2,9 @@ extends CharacterBody3D
 
 class_name player
 
+# The main player script. Controls how the player moves and interacts, including
+# weapons, coins, upgrades. 
+
 # prefabs
 @onready var bullet_prefab = preload("res://prefabs/bullet.tscn")
 
@@ -23,6 +26,7 @@ var bullet_velocity = 20.0
 var bulletDamage = 0
 @export var firerate = 0.05
 
+# level vars
 var availableUnlocks = 0
 var unlockedWeapons: Array = []
 var level = 0
@@ -109,6 +113,7 @@ const FOV_CHANGE = 1.5
 
 @export var blocking_nodes: Array
 
+# node variables
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 @onready var gun = $Head/Camera3D/blockbench_export
@@ -122,10 +127,13 @@ const FOV_CHANGE = 1.5
 @onready var animPlayer = $AnimationPlayer
 
 func _ready() -> void:
+	# captures mouse
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
+	# reloads the water to be full
 	total_water = max_total_water
 	
+	# makes the models of all weapons invisible, then the selected weapon becomes visible
 	$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = false
 	$Head/Camera3D/blockbench_export/RifleStableArm.visible = false
 	$Head/Camera3D/blockbench_export/ShotgunMesh.visible = false
@@ -135,15 +143,19 @@ func _ready() -> void:
 	$Head/Camera3D/blockbench_export/RifleMesh.visible = false
 	$Head/Camera3D/blockbench_export/WasherMesh1.visible = false
 	
+	# setting the texture of the total water to be full
 	$HUD/Control/TextureProgressBar.value = float(total_water)/float(max_total_water) * 100
 	
+	# setting volume
 	AudioServer.set_bus_volume_db(0, linear_to_db(0.4))
 	
+	# making the score visible if game is in endless mode
 	if CurrentLevelManager.endless_mode == true:
 		$HUD/Control/ScoreControl.visible = true
 	else:
 		$HUD/Control/ScoreControl.visible = false
 	
+	# setting health to be full
 	health = maxHealth
 	
 	# adding collision exception of player to blocking volume
@@ -202,7 +214,10 @@ func _ready() -> void:
 	shootTimer.wait_time = firerate
 	ammo = max_ammo
 	
-	
+
+# this function changes the currently equipped weapon, 
+# changing the visibility of the meshes and updating the values
+# of the weapon - firerate, max ammo, velocity, damage
 func change_weapon(num):
 	
 	$Head/Camera3D/blockbench_export/RifleTriggerArm.visible = false
@@ -271,7 +286,8 @@ func change_weapon(num):
 	
 	shootTimer.wait_time = firerate
 	
-
+# this function takes in all unhandled input, including swapping weapon
+# and mouse movement for the camera, and interaction
 func _unhandled_input(event: InputEvent) -> void:
 	
 	# can move only is false when player is dead
@@ -319,6 +335,7 @@ func _unhandled_input(event: InputEvent) -> void:
 				activate()
 	
 	
+# function that runs every physics frame (60 FPS)
 func _physics_process(delta: float) -> void:
 	
 	
@@ -488,12 +505,12 @@ func _physics_process(delta: float) -> void:
 				velocity.x = 0
 				velocity.z = 0
 			
-		# head bob
+		# head bob with movement
 		t_bob += delta * velocity.length() * float(is_on_floor())
 		camera.transform.origin = _headbob(t_bob)
 		gun.transform.origin = _headbob(-t_bob) - Vector3(-0.3, 0.7, 0.4)
 		
-		# fov
+		# fov increase with faster movement
 		var velocity_clamped = clamp(velocity.length(), 0.5, SPRINT_SPEED * 2)
 		var target_fov = fov + FOV_CHANGE * velocity_clamped
 		camera.fov = lerp(camera.fov, target_fov, delta * 8.0)
@@ -501,16 +518,17 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		
 		CoinLabel.text = str(playerCoins)
-
+# headbob function for moving camera with the pos value
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	pos.y = sin(time * BOB_FREQ) * BOB_AMP
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	return pos
 
-# reload timer end
+# reload timer end, sets all ammo values and total water values
 func _on_reload_timer_timeout() -> void:
 	
+	# resets position of meshes
 	$AnimationPlayer.play("RESET")
 	
 	reloading = false
@@ -525,6 +543,7 @@ func _on_reload_timer_timeout() -> void:
 		ammo += total_water
 		total_water = 0
 	
+	# setting ammo depending on weapon
 	if weapon == 0:
 		pistolAmmo = ammo
 	if weapon == 1:
@@ -534,6 +553,7 @@ func _on_reload_timer_timeout() -> void:
 	if weapon == 3:
 		washerAmmo = ammo
 	
+	# only for last level, where player has infinite water
 	if infiniteWater == true:
 		total_water = max_total_water
 	
@@ -544,8 +564,7 @@ func _on_reload_timer_timeout() -> void:
 		$AnimationPlayer.play("sprint")
 		
 
-# player damage functionality
-
+# player damage functionality for taking damage from enemies
 func _damage(value):
 	
 	# if damage value is positive, deal damage, if not, heal player
@@ -565,7 +584,8 @@ func _damage(value):
 				$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 1)
 		if health <= 0:
 			on_death()
-			
+	
+	# heal player functionality
 	elif health < maxHealth:
 		if health - value >= maxHealth:
 			health = maxHealth
@@ -579,12 +599,13 @@ func _damage(value):
 			else:
 				$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 0)
 
+# footstep sounds
 func _on_footstep_timer_timeout() -> void:
 	
 	# footstep sound plays if player is moving
 	if moving:
 		$FootstepSound.play()
-
+# await landing sound function
 func await_landing():
 
 	# this small function means that when the player
@@ -604,10 +625,13 @@ func await_landing():
 	
 	
 
-
+# firerate control, player can shoot when this calls
 func _on_shoot_timer_timeout() -> void:
 	can_shoot = true
 
+# interaction with raycast function, if the raycast is
+# hovering over an interactable object, the interact
+# label shows
 func check_hover_collision():
 	
 	# if raycast is colliding with object, it has an interact method, and the player interacts,
@@ -625,33 +649,41 @@ func check_hover_collision():
 	else:
 		hide_current_prompt()
 
+# hide interact label
 func hide_current_prompt():
 	if current_interactable:
 		current_interactable.hide_prompt()
 		current_interactable = null
 
+# interact with object
 func activate():
 	var hit = raycast.get_collider()
 	if hit and hit.has_method("interact"):
 		print(in_shop)
 		hit.interact()
 
+# calls to tell player it has been attacked and call the _damage() function
 func on_damage(attack):
 	health = $HealthComponent.health
 	_damage(0)
-	#overlay_fade()
 
-# shop logic
+
+# shop logic for opening, showing mouse cursor
 func open_shop():
 	if Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		$Shop.visible = true
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		in_shop = true
 	
+# shop logic for closing, hiding mouse cursor
 func close_shop():
 	$Shop.visible = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	in_shop = false
+
+# Upgrade Functionality
+# first is firerate, then velocity, then ammo, then damage
+# (for shotgun, it is increasing pellet count instead of damage)
 
 # Pistol Upgrades
 
@@ -738,6 +770,7 @@ func upgrade_washer():
 		washerLevel += 1
 		change_weapon(3)
 
+# the death animation and code, stops player from moving, taking damage, shooting etc
 func on_death() -> void:
 	
 	if hasDied == false:
@@ -755,15 +788,16 @@ func on_death() -> void:
 		tree.change_scene_to_file("res://levels/death_menu.tscn")
 		
 		
-
+# red overlay for death
 func death_animation():
-	#$HUD/Control/TextureRect.modulate = Color(1, 0, 0, 200)
 	$AnimationPlayer.play("death")
 
+# refills total water when interacting with water tap
 func refill_water():
 	total_water = max_total_water
 	$HUD/Control/TextureProgressBar.value = float(total_water)/float(max_total_water) * 100
 
+# called when player presses R, begins the reload animation and timer depending on weapon and upgrades
 func reload():
 	
 	if reloading == false:
@@ -791,6 +825,8 @@ func reload():
 			$AnimationPlayer.play("reloadWasher", -1, reloadSpeedMulti)
 		$ReloadTimer.start()
 
+# increases score with kill and score multiplier, can change the accumulation
+# of the scoreMulti by changing the 0.05
 func enemy_kill():
 	
 	score += 100 * scoreMulti
@@ -799,18 +835,21 @@ func enemy_kill():
 		scoreMulti += 0.05
 		scoreMulti = snapped(scoreMulti, 0.01)
 
+# shows the player the warning that enemies have leveled up
 func enemy_health_increase():
 	$HUD/Control/EnemyAlertLabel.text = "Enemy Health Increased!"
 	$HUD/Control/EnemyAlertLabel.visible = true
 	await get_tree().create_timer(5.0, false).timeout
 	$HUD/Control/EnemyAlertLabel.visible = false
 	
+# shows the player that their max water has increased
 func max_water_increase():
 	$HUD/Control/EnemyAlertLabel.text = "Max Water Increased!"
 	$HUD/Control/EnemyAlertLabel.visible = true
 	await get_tree().create_timer(5.0, false).timeout
 	$HUD/Control/EnemyAlertLabel.visible = false
 	
+# shows the player that they beat the game
 func beat_game():
 	$HUD/Control/EnemyAlertLabel.text = "You Beat the Game!"
 	$HUD/Control/EnemyAlertLabel.visible = true
