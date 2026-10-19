@@ -3,7 +3,7 @@ extends Control
 var hasEnteredName: bool = false
 var valid_name = false
 
-# Called when the node enters the scene tree for the first time.
+# starts the music, sets the mouse cursor visible
 func _ready() -> void:
 	MusicManager.play_music()
 	
@@ -16,7 +16,7 @@ func _ready() -> void:
 	else:
 		$Leaderboard.visible = false
 	
-
+# restarts the most recent level
 func _on_play_button_pressed() -> void:
 	if CurrentLevelManager.current_level == 1:
 		get_tree().change_scene_to_file("res://levels/test_level.tscn")
@@ -30,11 +30,11 @@ func _on_play_button_pressed() -> void:
 		get_tree().change_scene_to_file("res://levels/mothership_level.tscn")
 	
 
-
+# goes to main menu
 func _on_main_menu_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://levels/main_menu.tscn")
 
-
+# takes input for username, doesn't work in name includes a space
 func _on_line_edit_text_submitted(new_text):
 	
 	valid_name = true
@@ -50,6 +50,7 @@ func _on_line_edit_text_submitted(new_text):
 			display_leaderboard()
 			hasEnteredName = true
 	
+# iterates through the list of scores and names and adds them to the list
 func display_leaderboard():
 	
 	var value = 1
@@ -68,6 +69,7 @@ func display_leaderboard():
 	if CurrentLevelManager.current_level == 5:
 		currentLeaderboard = SaveManager.levelFiveScores
 	
+	# the actual printing of the leaderboard
 	for s in currentLeaderboard:
 		if get_node('Leaderboard/Leaderboard' + str(value)):
 			var boardLabel: Label = get_node('Leaderboard/Leaderboard' + str(value))

@@ -9,6 +9,7 @@ extends CanvasLayer
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# this function just calls every frame and updates all of the values on the player hud
 func _process(_delta: float) -> void:
 	ammoLabel.text = str(player.ammo) + "/" + str(player.max_ammo)
 	healthBar.value = (player.health/player.maxHealth) * 100

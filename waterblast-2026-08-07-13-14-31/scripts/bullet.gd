@@ -8,6 +8,7 @@ var weaponDamage = 0
 var spawnedExplosion = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
+# if bullet collides, it activates the explosion
 func _physics_process(delta: float) -> void:
 	if get_colliding_bodies():
 		
@@ -32,7 +33,7 @@ func _physics_process(delta: float) -> void:
 			
 		
 
-
+# if the bullet takes too long to hit anything it explodes and deletes itself
 func _on_timer_timeout() -> void:
 	var bulletexplosion : RigidBody3D = bulletexplosion_prefab.instantiate()
 	bulletexplosion.transform = transform
