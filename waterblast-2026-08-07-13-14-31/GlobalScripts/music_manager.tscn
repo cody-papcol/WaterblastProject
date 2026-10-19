@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsou0nqrjd5na"]
+
+[ext_resource type="Script" uid="uid://bi1vcn8qr3b6v" path="res://scripts/music_manager.gd" id="1_hxh8s"]
+[ext_resource type="AudioStream" uid="uid://olha77o0sq48" path="res://sounds/music/alexgrohl-synthwave-393606.wav" id="2_fyqr0"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_hxh8s")
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_fyqr0")
+volume_db = -10.0
+
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]

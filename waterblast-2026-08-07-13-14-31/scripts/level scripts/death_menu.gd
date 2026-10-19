@@ -5,6 +5,8 @@ var valid_name = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	MusicManager.play_music()
+	
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 	display_leaderboard()

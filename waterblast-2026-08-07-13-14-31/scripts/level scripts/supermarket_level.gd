@@ -26,6 +26,9 @@ var enemyNum = 5.0
 
 
 func _ready():
+	
+	MusicManager.stop_music()
+	
 	player.level = 3
 	player.infiniteWater = false
 	player.leftInWave = enemyNum

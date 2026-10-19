@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	
+	MusicManager.play_music()
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
 	if SaveManager.highest_level_unlocked > 1:

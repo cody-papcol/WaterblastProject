@@ -1414,6 +1414,7 @@ offset_top = 464.0
 offset_right = 966.0
 offset_bottom = 1007.0
 text = "Movement: WASD
+Sprint: Left Shift
 Jump: SPACE
 Swap Weapon: 1, 2, 3, 4
 Shoot: Left Mouse
