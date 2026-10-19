@@ -2,7 +2,7 @@ extends Node
 
 const SAVE_PATH = "user://save.json"
 
-var highest_level_unlocked = 6
+var highest_level_unlocked = 1
 
 var recent_score = 0
 
@@ -14,6 +14,7 @@ var levelFiveScores: Array = []
 
 func _ready():
 	load_progress()
+	print(ProjectSettings.globalize_path(SAVE_PATH))
 
 
 func unlock_level(level: int):
