@@ -63,14 +63,16 @@ func enemy_death():
 		print('wave ended')
 		waveResetTimer.start()
 	
-
+# controls the spawning of the enemies
 func _spawn_enemy():
 	
+	# selects the spawn locations and spawns an enemy
 	spawnLocation = randi_range(0, 3)
 	var alien: CharacterBody3D = alien_prefab.instantiate()
 	alien.transform = spawns[spawnLocation].transform
 	alien.connect("death", enemy_death)
 	
+	# sets the alien health depending on if endless mode or not
 	if CurrentLevelManager.endless_mode:
 		alien.healthMulti = enemyHealthMulti
 	elif waveNum >= 3:
@@ -95,6 +97,7 @@ func _start_wave(num):
 	kills = 0
 	targetEnemyNum = num * enemyMulti
 	
+	# warns player of increased health of enemies
 	if waveNum == 3 and CurrentLevelManager.endless_mode == false:
 		player.enemy_health_increase()
 	
@@ -108,7 +111,8 @@ func _start_wave(num):
 		if is_inside_tree():
 			await get_tree().create_timer(spawnInterval, false).timeout
 
-
+# this function activates the next wave or, if there are no waves left, tells player
+# that their max total water has increased and updates the level
 func _on_wave_reset_timer_timeout() -> void:
 	if not CurrentLevelManager.endless_mode:
 		if waveNum + 1 <= totalWaveNum:
@@ -124,6 +128,8 @@ func _on_wave_reset_timer_timeout() -> void:
 				get_tree().change_scene_to_file("res://levels/level_select.tscn")
 			else:
 				get_tree().change_scene_to_file("res://levels/level_select.tscn")
+	
+	# if not endless mode, updates the wave number
 	else:
 		if leftToIncrease > 0:
 			leftToIncrease += -1

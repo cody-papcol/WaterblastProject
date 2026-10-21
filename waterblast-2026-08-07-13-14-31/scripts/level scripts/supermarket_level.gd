@@ -24,7 +24,7 @@ var kills = 0
 
 var enemyNum = 5.0
 
-
+# sets all values, including player values for start of level
 func _ready():
 	
 	MusicManager.stop_music()
@@ -34,6 +34,7 @@ func _ready():
 	player.leftInWave = enemyNum
 	player.totalWaves = totalWaveNum
 	
+	# if in endless mode player gets increased total water (consistent across levels)
 	if CurrentLevelManager.endless_mode:
 		playerMaxReserveWater = 500
 		player.availableUnlocks = 4
@@ -44,11 +45,13 @@ func _ready():
 	player.max_total_water = playerMaxReserveWater
 	player.refill_water()
 	
-	
+# called every frame, only sets the wave progress bar
 func _process(delta: float) -> void:
 	if targetEnemyNum:
 		player.WaveProgress.value = enemyNum/targetEnemyNum
 
+# called when an enemy dies, increases the kills, decreases the amount of enemies left in the wave,
+# calls the wave reset timer if it was the last enemy
 func enemy_death():
 	enemyNum += -1
 	kills += 1
@@ -58,6 +61,7 @@ func enemy_death():
 		waveResetTimer.start()
 		print("start timer")
 	
+# controls the spawning of the enemies
 func _spawn_enemy():
 	
 	spawnLocation = randi_range(0, 2)
@@ -92,6 +96,7 @@ func _start_wave(num):
 	kills = 0
 	targetEnemyNum = num * enemyMulti
 	
+	# warns player of increased health of enemies
 	if not CurrentLevelManager.endless_mode:
 		if waveNum == 3:
 			player.enemy_health_increase()
@@ -110,7 +115,8 @@ func _start_wave(num):
 		if is_inside_tree():
 			await get_tree().create_timer(spawnInterval, false).timeout
 
-
+# this function activates the next wave or, if there are no waves left, tells player
+# that their max total water has increased and updates the level
 func _on_wave_reset_timer_timeout():
 	if not CurrentLevelManager.endless_mode:
 		
@@ -128,6 +134,8 @@ func _on_wave_reset_timer_timeout():
 				get_tree().change_scene_to_file("res://levels/level_select.tscn")
 			else:
 				get_tree().change_scene_to_file("res://levels/level_select.tscn")
+	
+	# if not endless mode, updates the wave number
 	else:
 		if leftToIncrease > 0:
 			leftToIncrease += -1

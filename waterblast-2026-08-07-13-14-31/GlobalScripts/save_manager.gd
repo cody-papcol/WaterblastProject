@@ -12,17 +12,18 @@ var levelThreeScores: Array = []
 var levelFourScores: Array = []
 var levelFiveScores: Array = []
 
+# loads the save
 func _ready():
 	load_progress()
 	print(ProjectSettings.globalize_path(SAVE_PATH))
 
-
+# unlocks the next level if player has beaten previous level
 func unlock_level(level: int):
 	if level > highest_level_unlocked:
 		highest_level_unlocked = level
 		save_progress()
 
-
+# saves the player progress as arrays of dictionaries.
 func save_progress():
 	var save_data = {
 		"highest_level_unlocked": highest_level_unlocked,
@@ -36,7 +37,7 @@ func save_progress():
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(save_data))
 
-
+# loads the player progress if there is a file present, and sets the score and unlocked levels
 func load_progress():
 	if not FileAccess.file_exists(SAVE_PATH):
 		print('no save present')
@@ -56,9 +57,11 @@ func load_progress():
 		
 		print(highest_level_unlocked)
 
+# makes the recent score value the most recent score by the player
 func add_score(value):
 	recent_score = value
 	
+# adds the most recent score to the appropriate scores array depending on the current level
 func append_score(username, level):
 	
 	# saves scores for each level individually so each level has its own leaderboard
@@ -91,7 +94,7 @@ func append_score(username, level):
 	
 	
 	
-
+# removes the save file
 func delete_save():
 	if FileAccess.file_exists(SAVE_PATH):
 		DirAccess.remove_absolute(ProjectSettings.globalize_path(SAVE_PATH))
