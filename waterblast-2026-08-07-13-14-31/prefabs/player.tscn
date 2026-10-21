@@ -1145,7 +1145,9 @@ script = ExtResource("1_4dohe")
 max_total_water = 100
 max_ammo = 60
 firerate = 0.15
+infiniteWater = true
 maxHealth = 100.0
+playerCoins = 9999
 weapon = 1
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
