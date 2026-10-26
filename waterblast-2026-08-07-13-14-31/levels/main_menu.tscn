@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c7ix82up2mtdo" path="res://textures/Drawing-7.sketchpad (1).png" id="2_duh7t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_duh7t"]
-font_size = 64
+font_size = 48
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -53,14 +53,30 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_duh7t")
 
-[node name="Label" type="Label" parent="."]
+[node name="PauseGameLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = 112.0
-offset_top = 314.0
-offset_right = 860.0
-offset_bottom = 402.0
+offset_left = 189.0
+offset_top = 402.0
+offset_right = 937.0
+offset_bottom = 490.0
 text = "Pause game for controls"
 label_settings = SubResource("LabelSettings_duh7t")
+
+[node name="CreditTitleLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 814.0
+offset_top = 419.0
+offset_right = 2658.0
+offset_bottom = 1053.0
+text = "Credits
+Footsteps: Diego Nasc from Pixabay
+Spray: Homemade_SDF from Pixabay
+Miscellaneous sounds: Freesound_community from Pixabay
+Majority of assets: Kenney.nl
+Earth model: SketchFabKingTrainer on Sketchfab
+Military pack: ithappy on Fab"
+label_settings = SubResource("LabelSettings_duh7t")
+horizontal_alignment = 1
 
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

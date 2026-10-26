@@ -52,8 +52,8 @@ var rifleAmmo = 30
 # shotgun
 var shotgunBulletVelocity = 20.0
 var shotgunDamage = 40
-var shotgunMaxAmmo = 500 # default 30
-var shotgunFireRate = 0.1 # default 0.5
+var shotgunMaxAmmo = 30 # default 30
+var shotgunFireRate = 0.5 # default 0.5
 @export var shotgunSpread = 0.15
 @export var shotgunPellets = 5
 var shotgunLevel = 0
