@@ -28,7 +28,7 @@ var bulletDamage = 0
 
 # level vars
 var availableUnlocks = 0
-var unlockedWeapons: Array = []
+var unlockedWeapons: Array = ["pistol"]
 var level = 0
 var playerPaused = false
 
@@ -41,6 +41,9 @@ var pistolFireRate = 0.15
 var pistolLevel = 0
 var pistolAmmo = 20
 
+# upgraded values, in the form [firerate, velocity, ammo, damage]
+var pistolUpgradeValues = [0.1, 40.0, 35, 40]
+
 # rifle
 var rifleBulletVelocity = 35.0
 var rifleDamage = 40
@@ -48,6 +51,9 @@ var rifleMaxAmmo = 30
 var rifleFireRate = 0.1
 var rifleLevel = 0
 var rifleAmmo = 30
+
+# upgraded values, in the form [firerate, velocity, ammo, damage]
+var rifleUpgradeValues = [0.07, 50.0, 75, 50]
 
 # shotgun
 var shotgunBulletVelocity = 20.0
@@ -59,6 +65,9 @@ var shotgunFireRate = 0.5 # default 0.5
 var shotgunLevel = 0
 var shotgunAmmo = 30
 
+# upgraded values, in the form [firerate, velocity, ammo, PELLETS]
+var shotgunUpgradeValues = [0.3, 35.0, 80, 8]
+
 # washer
 var washerBulletVelocity = 30.0
 var washerDamage = 20.0
@@ -67,6 +76,9 @@ var washerFireRate = 0.03
 @export var washerSpread = 0.1
 var washerLevel = 0
 var washerAmmo = 60
+
+# upgraded values, in the form [firerate, velocity, ammo, SPREAD]
+var washerUpgradeValues = [0.02, 80.0, 100, 0.02]
 
 # vars
 var sprinting = false
@@ -691,19 +703,19 @@ func upgrade_pistol():
 	if pistolLevel < 4:
 		
 		if pistolLevel == 0:
-			pistolFireRate = 0.1
+			pistolFireRate = pistolUpgradeValues[0]
 			firerate = pistolFireRate
 			
 		if pistolLevel == 1:
-			pistolBulletVelocity = 40.0
+			pistolBulletVelocity = pistolUpgradeValues[1]
 			bullet_velocity = pistolBulletVelocity
 			
 		if pistolLevel == 2:
-			pistolMaxAmmo = 35
+			pistolMaxAmmo = pistolUpgradeValues[2]
 			max_ammo = pistolMaxAmmo
 			
 		if pistolLevel == 3:
-			pistolDamage = 40
+			pistolDamage = pistolUpgradeValues[3]
 			bulletDamage = pistolDamage
 			
 		pistolLevel += 1
@@ -713,18 +725,18 @@ func upgrade_rifle():
 	if rifleLevel < 4:
 		
 		if rifleLevel == 0:
-			rifleFireRate = 0.07
+			rifleFireRate = rifleUpgradeValues[0]
 			firerate = rifleFireRate
 			
 		if rifleLevel == 1:
-			rifleBulletVelocity = 50.0
+			rifleBulletVelocity = rifleUpgradeValues[1]
 			
 		if rifleLevel == 2:
-			rifleMaxAmmo = 75
+			rifleMaxAmmo = rifleUpgradeValues[2]
 			max_ammo = rifleMaxAmmo
 			
 		if rifleLevel == 3:
-			rifleDamage = 50
+			rifleDamage = rifleUpgradeValues[3]
 			bulletDamage = rifleDamage
 			
 		rifleLevel += 1
@@ -734,18 +746,18 @@ func upgrade_shotgun():
 	if shotgunLevel < 4:
 		
 		if shotgunLevel == 0:
-			shotgunFireRate = 0.3
+			shotgunFireRate = shotgunUpgradeValues[0]
 			firerate = shotgunFireRate
 			
 		if shotgunLevel == 1:
-			shotgunBulletVelocity = 35.0
+			shotgunBulletVelocity = shotgunUpgradeValues[1]
 			
 		if shotgunLevel == 2:
-			shotgunMaxAmmo = 80
+			shotgunMaxAmmo = shotgunUpgradeValues[2]
 			max_ammo = shotgunMaxAmmo
 			
 		if shotgunLevel == 3:
-			shotgunPellets = 8
+			shotgunPellets = shotgunUpgradeValues[3]
 			
 		shotgunLevel += 1
 		change_weapon(2)
@@ -754,18 +766,18 @@ func upgrade_washer():
 	if washerLevel < 4:
 		
 		if washerLevel == 0:
-			washerFireRate = 0.02
+			washerFireRate = washerUpgradeValues[0]
 			firerate = washerFireRate
 			
 		if washerLevel == 1:
-			washerBulletVelocity = 80.0
+			washerBulletVelocity = washerUpgradeValues[1]
 			
 		if washerLevel == 2:
-			washerMaxAmmo = 100
+			washerMaxAmmo = washerUpgradeValues[2]
 			max_ammo = washerMaxAmmo
 			
 		if washerLevel == 3:
-			washerSpread = 0.02
+			washerSpread = washerUpgradeValues[3]
 			
 		washerLevel += 1
 		change_weapon(3)

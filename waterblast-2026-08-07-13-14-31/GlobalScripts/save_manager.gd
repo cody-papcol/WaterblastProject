@@ -2,7 +2,7 @@ extends Node
 
 const SAVE_PATH = "user://save.json"
 
-var highest_level_unlocked = 1
+var highest_level_unlocked = 5
 
 var recent_score = 0
 
@@ -36,6 +36,9 @@ func save_progress():
 
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(save_data))
+	
+	if FileAccess.file_exists(SAVE_PATH):
+		print('save successful')
 
 # loads the player progress if there is a file present, and sets the score and unlocked levels
 func load_progress():
@@ -70,26 +73,36 @@ func append_score(username, level):
 		levelOneScores.sort_custom(func(a, b):
 			return a["score"] > b["score"]
 		)
+		if levelOneScores.size() > 10:
+			levelOneScores = levelOneScores.slice(0, 10)
 	elif level == 2:
 		levelTwoScores.append({"username": username, "score": recent_score})
 		levelTwoScores.sort_custom(func(a, b):
 			return a["score"] > b["score"]
 		)
+		if levelTwoScores.size() > 10:
+			levelTwoScores = levelTwoScores.slice(0, 10)
 	elif level == 3:
 		levelThreeScores.append({"username": username, "score": recent_score})
 		levelThreeScores.sort_custom(func(a, b):
 			return a["score"] > b["score"]
 		)
+		if levelThreeScores.size() > 10:
+			levelThreeScores = levelThreeScores.slice(0, 10)
 	elif level == 4:
 		levelFourScores.append({"username": username, "score": recent_score})
 		levelFourScores.sort_custom(func(a, b):
 			return a["score"] > b["score"]
 		)
+		if levelFourScores.size() > 10:
+			levelFourScores = levelFourScores.slice(0, 10)
 	elif level == 5:
 		levelFiveScores.append({"username": username, "score": recent_score})
 		levelFiveScores.sort_custom(func(a, b):
 			return a["score"] > b["score"]
 		)
+		if levelFiveScores.size() > 10:
+			levelFiveScores = levelFiveScores.slice(0, 9)
 	
 	
 	

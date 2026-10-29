@@ -37,7 +37,10 @@ func _on_main_menu_button_pressed() -> void:
 # takes input for username, doesn't work in name includes a space
 func _on_line_edit_text_submitted(new_text):
 	
-	valid_name = true
+	if new_text != '':
+		valid_name = true
+	else:
+		valid_name = false
 	
 	if hasEnteredName == false:
 		for x in new_text:
@@ -49,6 +52,8 @@ func _on_line_edit_text_submitted(new_text):
 			SaveManager.append_score(new_text, CurrentLevelManager.current_level)
 			display_leaderboard()
 			hasEnteredName = true
+		else:
+			print('invalid name')
 	
 # iterates through the list of scores and names and adds them to the list
 func display_leaderboard():

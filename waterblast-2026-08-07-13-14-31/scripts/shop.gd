@@ -10,6 +10,20 @@ var healthLevel = 0
 var speedLevel = 0
 var reloadLevel = 0
 
+var weapons = ['pistol', 'rifle', 'shotgun', 'washer']
+var weaponLevels = [0, 0, 0, 0]
+
+var pistolCosts = [5, 10, 20, 35]
+var rifleCosts = [20, 50, 85, 120]
+var shotgunCosts = [10, 20, 50, 100]
+var washerCosts = [50, 100, 220, 500]
+
+var weaponCosts = [pistolCosts, rifleCosts, shotgunCosts, washerCosts]
+
+@onready var weaponCoins = [$Control/Rifle/Coin, $Control/Shotgun/Coin, $Control/Washer/Coin]
+@onready var weaponLocks = [$Control/Rifle/Lock, $Control/Shotgun/Lock, $Control/Washer/Lock]
+@onready var weaponUpgrades = [$Control/Rifle/rifleUpgrade, $Control/Shotgun/shotgunUpgrade, $Control/Washer/washerUpgrade]
+
 @onready var rifleCoin = $Control/Rifle/Coin
 @onready var rifleLock = $Control/Rifle/Lock
 @onready var rifleUpgrade = $Control/Rifle/rifleUpgrade
@@ -59,159 +73,65 @@ func _process(delta):
 			washerCoin.visible = true
 
 func _on_button_2_pressed() -> void:
-	if pistol < 4:
+	_upgrade_weapon(0)
 		
-		var hasUpgraded = false
-		
-		if pistol == 0 and player.playerCoins >= 5:
-			player.upgrade_pistol()
-			player.playerCoins += -5
-			pistol += 1
-			$Control/Pistol/pistolUpgrade.text = "Upgrade (" + str(pistol) + ')'
-			$Control/Pistol/pistolUpgrade/PistolCostLabel.text = "Cost: 10"
-			hasUpgraded = true
-		
-		if pistol == 1 and player.playerCoins >= 10 and hasUpgraded == false:
-			player.upgrade_pistol()
-			player.playerCoins += -10
-			pistol += 1
-			$Control/Pistol/pistolUpgrade.text = "Upgrade (" + str(pistol) + ')'
-			$Control/Pistol/pistolUpgrade/PistolCostLabel.text = "Cost: 20"
-			hasUpgraded = true
-
-		if pistol == 2 and player.playerCoins >= 20 and hasUpgraded == false:
-			player.upgrade_pistol()
-			player.playerCoins += -20
-			pistol += 1
-			$Control/Pistol/pistolUpgrade.text = "Upgrade (" + str(pistol) + ')'
-			$Control/Pistol/pistolUpgrade/PistolCostLabel.text = "Cost: 35"
-			hasUpgraded = true
-		
-		if pistol == 3 and player.playerCoins >= 35 and hasUpgraded == false:
-			player.upgrade_pistol()
-			player.playerCoins += -35
-			pistol += 1
-			$Control/Pistol/pistolUpgrade.text = "Upgrade (" + str(pistol) + ')'
-			$Control/Pistol/pistolUpgrade/PistolCostLabel.text = "Max Level"
-			hasUpgraded = true
-		
-		
-
 func _on_rifle_upgrade_pressed() -> void:
-	if rifle < 4 and "rifle" in player.unlockedWeapons:
+	_upgrade_weapon(1)
 		
-		var hasUpgraded = false
-		
-		if rifle == 0 and player.playerCoins >= 20 and hasUpgraded == false:
-			player.upgrade_rifle()
-			player.playerCoins += -20
-			rifle += 1
-			$Control/Rifle/rifleUpgrade.text = "Upgrade (" + str(rifle) + ')'
-			$Control/Rifle/rifleUpgrade/RifleCostLabel.text = "Cost: 50"
-			hasUpgraded = true
-			
-		if rifle == 1 and player.playerCoins >= 50 and hasUpgraded == false:
-			player.upgrade_rifle()
-			player.playerCoins += -50
-			rifle += 1
-			$Control/Rifle/rifleUpgrade.text = "Upgrade (" + str(rifle) + ')'
-			$Control/Rifle/rifleUpgrade/RifleCostLabel.text = "Cost: 85"
-			hasUpgraded = true
-			
-		if rifle == 2 and player.playerCoins >= 85 and hasUpgraded == false:
-			player.upgrade_rifle()
-			player.playerCoins += -85
-			rifle += 1
-			$Control/Rifle/rifleUpgrade.text = "Upgrade (" + str(rifle) + ')'
-			$Control/Rifle/rifleUpgrade/RifleCostLabel.text = "Cost: 120"
-			hasUpgraded = true
-		
-		if rifle == 3 and player.playerCoins >= 120 and hasUpgraded == false:
-			player.upgrade_rifle()
-			player.playerCoins += -120
-			rifle += 1
-			$Control/Rifle/rifleUpgrade.text = "Upgrade (" + str(rifle) + ')'
-			$Control/Rifle/rifleUpgrade/RifleCostLabel.text = "Max Level"
-			hasUpgraded = true
-		
-		
-
-
 func _on_shotgun_upgrade_pressed() -> void:
-	if shotgun < 4 and "shotgun" in player.unlockedWeapons:
-		
-		var hasUpgraded = false
-		
-		if shotgun == 0 and player.playerCoins >= 10 and hasUpgraded == false:
-			player.upgrade_shotgun()
-			player.playerCoins += -10
-			shotgun += 1
-			$Control/Shotgun/shotgunUpgrade.text = "Upgrade (" + str(shotgun) + ')'
-			$Control/Shotgun/shotgunUpgrade/ShotgunCostLabel.text = "Cost: 20"
-			hasUpgraded = true
-			
-		if shotgun == 1 and player.playerCoins >= 20 and hasUpgraded == false:
-			player.upgrade_shotgun()
-			player.playerCoins += -20
-			shotgun += 1
-			$Control/Shotgun/shotgunUpgrade.text = "Upgrade (" + str(shotgun) + ')'
-			$Control/Shotgun/shotgunUpgrade/ShotgunCostLabel.text = "Cost: 50"
-			hasUpgraded = true
-			
-		if shotgun == 2 and player.playerCoins >= 50 and hasUpgraded == false:
-			player.upgrade_shotgun()
-			player.playerCoins += -50
-			shotgun += 1
-			$Control/Shotgun/shotgunUpgrade.text = "Upgrade (" + str(shotgun) + ')'
-			$Control/Shotgun/shotgunUpgrade/ShotgunCostLabel.text = "Cost: 100"
-			hasUpgraded = true
-		
-		if shotgun == 3 and player.playerCoins >= 100 and hasUpgraded == false:
-			player.upgrade_shotgun()
-			player.playerCoins += -100
-			shotgun += 1
-			$Control/Shotgun/shotgunUpgrade.text = "Upgrade (" + str(shotgun) + ')'
-			$Control/Shotgun/shotgunUpgrade/ShotgunCostLabel.text = "Max Level"
-			hasUpgraded = true
-
+	_upgrade_weapon(2)
 
 func _on_washer_upgrade_pressed() -> void:
-	if washer < 4 and "washer" in player.unlockedWeapons:
-		
+	_upgrade_weapon(3)
+
+# upgrades the weapon depending on which is getting upgraded.
+func _upgrade_weapon(weapon):
+	
+	# if the selected weapon is not already max level and the player actually has the weapon
+	if weaponLevels[weapon] < 4 and weapons[weapon] in player.unlockedWeapons:
 		var hasUpgraded = false
 		
-		if washer == 0 and player.playerCoins >= 50 and hasUpgraded == false:
-			player.upgrade_washer()
-			player.playerCoins += -50
-			washer += 1
-			$Control/Washer/washerUpgrade.text = "Upgrade (" + str(washer) + ')'
-			$Control/Washer/washerUpgrade/WasherCostLabel.text = "Cost: 100"
-			hasUpgraded = true
-			
-		if washer == 1 and player.playerCoins >= 100 and hasUpgraded == false:
-			player.upgrade_washer()
-			player.playerCoins += -100
-			washer += 1
-			$Control/Washer/washerUpgrade.text = "Upgrade (" + str(washer) + ')'
-			$Control/Washer/washerUpgrade/WasherCostLabel.text = "Cost: 220"
-			hasUpgraded = true
-			
-		if washer == 2 and player.playerCoins >= 220 and hasUpgraded == false:
-			player.upgrade_washer()
-			player.playerCoins += -220
-			washer += 1
-			$Control/Washer/washerUpgrade.text = "Upgrade (" + str(washer) + ')'
-			$Control/Washer/washerUpgrade/WasherCostLabel.text = "Cost: 500"
-			hasUpgraded = true
-		
-		if washer == 3 and player.playerCoins >= 500 and hasUpgraded == false:
-			player.upgrade_washer()
-			player.playerCoins += -500
-			washer += 1
-			$Control/Washer/washerUpgrade.text = "Upgrade (" + str(washer) + ')'
-			$Control/Washer/washerUpgrade/WasherCostLabel.text = "Max Level"
-			hasUpgraded = true
-
+		# iterates through each upgrade level to see what upgrade is needed, and only upgrades once
+		for levelValue in 4:
+			if hasUpgraded == false:
+				
+				# checks for correct upgrade level and if player has enough coins to do so
+				if weaponLevels[weapon] == levelValue and player.playerCoins >= weaponCosts[weapon][levelValue]:
+					
+					# update value
+					weaponLevels[weapon] += 1
+					
+					# the actual upgrade and updating the text
+					if weapon == 0:
+						player.upgrade_pistol()
+						$Control/Pistol/pistolUpgrade.text = "Upgrade (" + str(weaponLevels[weapon]) + ')'
+						if weaponLevels[weapon] > 3:
+							$Control/Pistol/pistolUpgrade/PistolCostLabel.text = "Max Level"
+						else:
+							$Control/Pistol/pistolUpgrade/PistolCostLabel.text = "Cost: " + str(weaponCosts[weapon][weaponLevels[weapon]])
+					elif weapon == 1:
+						player.upgrade_rifle()
+						$Control/Rifle/rifleUpgrade.text = "Upgrade (" + str(weaponLevels[weapon]) + ')'
+						if weaponLevels[weapon] > 3:
+							$Control/Rifle/rifleUpgrade/RifleCostLabel.text = "Max Level"
+						else:
+							$Control/Rifle/rifleUpgrade/RifleCostLabel.text = "Cost: " + str(weaponCosts[weapon][weaponLevels[weapon]])
+					elif weapon == 2:
+						player.upgrade_shotgun()
+						$Control/Shotgun/shotgunUpgrade.text = "Upgrade (" + str(weaponLevels[weapon]) + ')'
+						if weaponLevels[weapon] > 3:
+							$Control/Shotgun/shotgunUpgrade/ShotgunCostLabel.text = "Max Level"
+						else:
+							$Control/Shotgun/shotgunUpgrade/ShotgunCostLabel.text = "Cost: " + str(weaponCosts[weapon][weaponLevels[weapon]])
+					elif weapon == 3:
+						player.upgrade_washer()
+						$Control/Washer/washerUpgrade.text = "Upgrade (" + str(weaponLevels[weapon]) + ')'
+						if weaponLevels[weapon] > 3:
+							$Control/Washer/washerUpgrade/WasherCostLabel.text = "Max Level"
+						else:
+							$Control/Washer/washerUpgrade/WasherCostLabel.text = "Cost: " + str(weaponCosts[weapon][weaponLevels[weapon]])
+					
+					hasUpgraded = true
 
 func _on_pistol_button_pressed() -> void:
 	player.change_weapon(0)
